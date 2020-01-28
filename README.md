@@ -1,4 +1,5 @@
 # Diving-Deep-Into-The-Waters-of-Deep-Learning
+**Abstract**
 Artificial Neural Network (ANN) Design &amp; Architecture for simplistic understanding and modeling
 As the field of Machine Learning (ML) becomes increasingly more popular around the field of Computer Science, there are simply not enough people who are willing or even have the slightest idea of what ML is all about.
 
