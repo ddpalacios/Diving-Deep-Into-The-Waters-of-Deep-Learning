@@ -1,4 +1,14 @@
 body {
     background-color: rgba(36, 117, 240, 0.822);
   }
- 
+ .dot{
+position: absolute;
+top: 300px;
+left: 600;
+height: 50px;
+width: 50px;
+background-color: black;
+border-radius: 50%;
+display: inline-block;
+
+ }
