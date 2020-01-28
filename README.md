@@ -1,7 +1,9 @@
 # Diving-Deep-Into-The-Waters-of-Deep-Learning
-**Abstract**
 
 Artificial Neural Network (ANN) Design &amp; Architecture for simplistic understanding and modeling
+
+**Abstract**
+
 As the field of Machine Learning (ML) becomes increasingly more popular around the field of Computer Science, there are simply not enough people who are willing or even have the slightest idea of what ML is all about.
 
 Imagine a domain where anyone of any age can easily enter this site and be able to understand how Artificial Neural Networks (ANN) work without involving any of the math and strictly relying on a visual representation on how data is processed through a Neural Network (NN).
