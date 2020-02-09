@@ -1,4 +1,9 @@
 //Make the DIV element draggagle:
+
+
+
+
+
 class Settings{
   constructor(){
     this.units = document.getElementById("units").value
@@ -10,6 +15,7 @@ class Settings{
 }
 function Train(){
   var setting = new Settings()
+  var simulation = new Render_NN()
   // Testing dataset
   const trainingData = [
     { input: [0, 0], output: [0] },
@@ -17,6 +23,9 @@ function Train(){
     { input: [1, 0], output: [1] },
     { input: [1, 1], output: [0] }
   ];
+  
+
+
   var div = document.getElementById("output")
     const net = new brain.NeuralNetwork({hiddenLayers: [parseInt(setting.units, 10)],
                                          activation: setting.activation, 
@@ -25,8 +34,8 @@ function Train(){
                                          log: true
                                         
                                         });
-
-  net.train(trainingData)
+  simulation.setup(setting.units)
+  net.train(trainingData).learningRate
   div.innerHTML = net.run([0,1])
 
 }
