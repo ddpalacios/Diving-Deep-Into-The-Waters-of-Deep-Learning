@@ -3,15 +3,56 @@
 <head>
 <link rel="stylesheet" href="styles.css">
 </head>
-Number of units: <input id="layers" type="text" size="4" maxlength="4">
-<button type="button" onclick="create_hidden_layers()">Add Hidden Layer</button>
+
 <body>
+<script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
 <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
 <script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
 <script src="https://d3js.org/d3-timer.v1.min.js"></script>
 <script src="https://d3js.org/d3-force.v2.min.js"></script>
 <script src="main.js"></script>
-<svg width="960" height="600"></svg>
+</head>
+<body >
+  <div class="flex-container">
+    <div class="form-wrapper">
+      <form id="network-settings" action="" method="POST">
+        <div class="input-wrapper">
+          <div class="input-label">Network type</div>
+          <select name="network-type">
+            <option value="NeuralNetwork">FeedForward (brain.NeuralNetwork)</option>
+          </select>
+        </div>
+        <div class="input-wrapper">
+          <div class="input-label">Network size</div>
+          <input id="units" type="text" name="size" placeholder="" value="2"/>
+        </div>
+    
+        <div class="input-wrapper">
+          <div class="input-label">Iterations</div>
+          <input id="iterations" type="text" name="hid-color" placeholder="" value="100"/>
+        </div>
+        <div class="input-wrapper">
+          <div class="input-label">Learning Rate</div>
+          <input id="lr" type="text" name="out-color" placeholder="" value=".3"/>
+        </div>
+        <div class="input-wrapper">
+          <div class="input-label">Activation</div>
+          <input id="activation" type="text" name="recurrent-line-color" placeholder="" value="sigmoid"/>
+        </div>
+      
+        <div class="input-wrapper">
+            <button type="button" onclick="Train()">Add Hidden Layer</button>
+        </div>
+      </form>
+    </div>
+    <div id="result"></div>
+  </div>
+  <div id="output" style="height:120px;width:320px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+ 
+</div>
+    
+    </div>
+<!-- <svg width="960" height="600"></svg> -->
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
