@@ -1,9 +1,4 @@
 //Make the DIV element draggagle:
-
-
-
-
-
 class Settings{
   constructor(){
     this.units = document.getElementById("units").value
@@ -13,7 +8,10 @@ class Settings{
   }
 
 }
+
+
 function Train(){
+  
   var setting = new Settings()
   var simulation = new Render_NN()
   // Testing dataset
@@ -31,11 +29,14 @@ function Train(){
                                          activation: setting.activation, 
                                          iterations: parseInt(setting.iterations),
                                          learningRate: parseFloat(setting.lr),
-                                         log: true
+                                         log: false
                                         
                                         });
   simulation.setup(setting.units)
-  net.train(trainingData).learningRate
+  document.getElementById("demo").innerHTML = 'Calculating...'
+  net.train(trainingData).learningRatelatin
   div.innerHTML = net.run([0,1])
+
+    
 
 }
