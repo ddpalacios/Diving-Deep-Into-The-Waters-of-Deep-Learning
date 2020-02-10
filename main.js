@@ -31,6 +31,21 @@ function Render(){
 function Reset(){
 location.reload()
 }
+
+function display_results(net){
+  res = net.run([0,0])
+  document.getElementById("output").innerHTML = "Probability result for current weights: " + res
+  if (res >=.5){
+    document.getElementById("result").innerHTML = "Predicted Result: " + 1
+
+  }
+  else{
+    document.getElementById("result").innerHTML = "Predicted Result: " + 0
+  }
+
+
+}
+
 function Train(){
   var setting = new Settings()
   var units_per_layers = setting.get_unit_layers()
@@ -54,8 +69,6 @@ function Train(){
   
   document.getElementById("demo").innerHTML = 'Calculating...'
   net.train(trainingData)
-  document.getElementById("output").innerHTML = "Probability result for current weights: " + net.run([0,1])
-
-    
+  display_results(net)
 
 }
