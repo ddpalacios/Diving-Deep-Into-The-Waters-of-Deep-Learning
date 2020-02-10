@@ -21,7 +21,7 @@ My goal is to express this field to a variety of people since this is a hot topi
 **Motivation**
 
 ---
-Building Artificical Neural Networks can become overwhelming and a user-interface can fix this issue. 
+Building Artificial Neural Networks can become overwhelming and a user-interface can fix this issue. 
 
 There are plenty of applications that allow you to visualize Neural Networks, however, most of these applications are still too complex and non-attractive or flexiable. 
 
