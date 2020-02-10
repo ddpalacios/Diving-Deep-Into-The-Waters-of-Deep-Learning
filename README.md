@@ -39,14 +39,26 @@ In these images, we see that the UI has block features that represent individual
 **Output Python file:**
 ![](images/output.png)
 
-
 We want to be able to make this a bit more flexiable... This application does not give the user a simple drag n drop as it still faces certain limitations when wanting to build bigger or more complex models, we need to be able to use those features when needed. 
 
-**Drag n Drop is a good implementation to use. It creates entertainment and flexibility for the user.**
+**Things to take note:**
 
-**We also need to give our application the needed features in order to generate complex models**
+- Drag n Drop is a good implementation to use. It creates entertainment and flexibility for the user.
 
-**Lastly, we need to render our model to visualize and train**
+- We also need to give our application the needed features in order to generate complex models
 
+- Lastly, we need to render our model to visualize and train
+
+
+For visualization, there exists a neural network playground for Tensorflow that allows these extra features to design further complex models in comparison to our first repository. 
+
+
+**Output Python file:**
+![](images/playground.png)
+
+
+
+
+This is a great application for designing complex models however, this does not provide drang n drop implementations. We want to be able to combine a simple drag n drop UI as well as have complexity in our models. 
 
 ---
