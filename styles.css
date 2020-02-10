@@ -18,3 +18,7 @@ body {
       left: 5px;
       cursor: pointer;
   }
+
+  table, td {
+    border: 1px solid black;
+  }
