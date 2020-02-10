@@ -8,10 +8,36 @@
 <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-force.v2.min.js"></script>
+<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+<script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
+<script src="https://d3js.org/d3-timer.v1.min.js"></script>
+<script src="https://d3js.org/d3-force.v2.min.js"></script>
 <script src="main.js"></script>
 <script src="Simulation.js"></script>
 </head>
 <body >
+  <h5>XOR DATA TOY EXAMPLE</h5>
+  <div>
+<table id="myTable">
+  <tr>
+    <td >[0, 0]</td>
+    <td width='30%'>[0]</td>
+  </tr>
+  <tr>
+    <td>[0, 1]</td>
+    <td>[1]</td>
+  </tr>
+  <tr>
+    <td>[1, 0]</td>
+    <td>[1]</td>
+  </tr>
+  <tr>
+    <td>[1, 1]</td>
+    <td>[0]</td>
+  </tr>
+</table>
+</div>
+<br>
   <div class="flex-container">
     <div class="form-wrapper">
       <form id="network-settings" action="" method="POST">
@@ -23,7 +49,7 @@
         </div>
         <div class="input-wrapper">
           <div class="input-label">Network size</div>
-          <input id="units" type="text" name="size" placeholder="" value="2"/>
+          <input id="units" type="text" name="size" placeholder="" value="2,8,12"/>
         </div>
     
         <div class="input-wrapper">
@@ -32,7 +58,7 @@
         </div>
         <div class="input-wrapper">
           <div class="input-label">Learning Rate</div>
-          <input id="lr" type="text" name="out-color" placeholder="" value=".3"/>
+          <input id="lr" type="text" name="out-color" placeholder="" value="0.01"/>
         </div>
         <div class="input-wrapper">
           <div class="input-label">Activation</div>
@@ -40,22 +66,22 @@
         </div>
       
         <div class="input-wrapper">
-            <button type="button" onclick="Train()">Render</button>
+            <button type="button" onclick="Render()">Render</button>
+            <button type="button" onclick="Train()">Train</button>
+            <button type="button" onclick="Reset()">Reset</button>
         </div>
       </form>
     </div>
     <p id="demo"></p>
     <div id="result"></div>
+    <p id="output"></p>
   </div>
-  <div id="output" style="height:120px;width:320px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+  
+  <svg width="960" height="600"></svg>
  
 </div>
     
     </div>
-
-
-
-
 </body>
 
 </html>
