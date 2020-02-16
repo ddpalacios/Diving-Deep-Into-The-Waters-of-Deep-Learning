@@ -25,7 +25,7 @@ class Settings{
 function Render(){
   var setting = new Settings()
   var simulation = new Render_NN()
-  setting.initialize(simulation)
+  simulation.setup(10)
 
 }
 function Reset(){

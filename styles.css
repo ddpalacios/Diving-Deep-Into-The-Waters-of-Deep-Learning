@@ -22,13 +22,17 @@ body {
   table, td {
     border: 1px solid black;
   }
-  .node {
-    fill: #ccc;
-    stroke: #fff;
-    stroke-width: 2px;
-}
-
-.link {
-    stroke: #777;
-    stroke-width: 2px;
-}
+  .link {
+    stroke: #aaa;
+  }
+  
+  .node text {
+  stroke:#333;
+  cursos:pointer;
+  }
+  
+  .node circle{
+  stroke:#fff;
+  stroke-width:3px;
+  fill:#555;
+  }
