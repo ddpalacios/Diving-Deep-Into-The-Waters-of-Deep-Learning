@@ -22,3 +22,13 @@ body {
   table, td {
     border: 1px solid black;
   }
+  .node {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.link {
+    stroke: #777;
+    stroke-width: 2px;
+}
