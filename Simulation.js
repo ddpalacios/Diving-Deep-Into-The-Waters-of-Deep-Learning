@@ -19,24 +19,41 @@ class create_canvas{
   }
 
 
-append_nodes(total_units){
+append_nodes(units, total_units){
+
+
+//   console
+//  for (var i=0; i<total_units; i++){
+      
+//     NODE_LIST.push({"name": name, "group": group_num})
+//     LINKS_LIST.push({"source": i, "target": 1, "weights": 5})
+//   }
+
 
 var name = " "
 var group_num = 1
 var NODE_LIST = this.json[0].nodes
+var LINKS_LIST = this.json[0].links
 
- for (var i=0; i<total_units; i++){
-      
+for(var i =0; i < units.length; i ++){
+  console.log(units[i])
+  var unit_layer_amount = units[i]
+  for (var j=0; j<unit_layer_amount;j++){
+    console.log(j)
     NODE_LIST.push({"name": name, "group": group_num})
+    LINKS_LIST.push({"source": j, "target": i, "weights": 5})
+
   }
+
+}
 
 
 }
 
-read_and_display_json_connections(total_units, force, svg){
+read_and_display_json_connections(units, total_units, force, svg){
     
   
-  this.append_nodes(total_units)
+  this.append_nodes(units, total_units)
     force.nodes(this.json[0].nodes)
         .links(this.json[0].links)
         .start();
@@ -100,7 +117,7 @@ var force = d3.layout.force()
     .charge(-10)
     .size([this.width, this.height]);
 
-    this.read_and_display_json_connections(total_units ,force, svg)
+    this.read_and_display_json_connections(units, total_units ,force, svg)
 
 
 }
