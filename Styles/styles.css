@@ -12,10 +12,18 @@ body {
 
 h1 {
     font-family: 'Source Code Pro', 'Roboto', monospace; 
-    color: #EC7357; 
+    color: #008000; 
     text-align: center;
     font-size: 2.5em;
    
+}
+h3{
+    font-family: 'Source Code Pro', 'Roboto', monospace; 
+    color: black; 
+    text-align: center;
+    /* font-size: 1.5em; */
+
+
 }
 
 
