@@ -100,3 +100,24 @@ div.buttons a:hover{
     font-size: 2.5em;
 }
 
+#footer ul{
+    
+    margin: 0px auto 0px auto;
+    text-align: center;
+}
+
+#footer li{
+    display: inline;
+    margin: 0px 5px;
+}
+
+#footer a{
+    color: black;
+    bottom: -100px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#footer a:hover{
+    color: black;
+}
