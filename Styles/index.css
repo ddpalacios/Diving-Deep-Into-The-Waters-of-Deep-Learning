@@ -7,7 +7,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
-    width: 100%; 
+    width: 70%; 
 }
 
 h1 {
@@ -33,14 +33,6 @@ hr{
     border-color: #EC7357;
 }
 
-img.fill_img{
-    
-    margin-right: 5em;
-    border-radius: 8px;
-    display: inline-block; 
-    width: auto; 
-   
-}
 
 div.buttons{
     display: inline-block;
@@ -76,22 +68,7 @@ img.fill_img2{
 
 }
 
-#footer ul{
-    
-    margin: 0px auto 0px auto;
-    text-align: center;
-}
 
-#footer li{
-    display: inline;
-    margin: 0px 5px;
-}
-
-#footer a{
-    color: #754F44;
-    text-decoration: none;
-    font-weight: bolder;
-}
 
 #footer a:hover{
     color: #EC7357;
