@@ -1,73 +1,72 @@
 <html>
 <title>Diving Deep Into The Waters of Deep Learning</title>
+
 <head>
-<link rel="stylesheet" href="HomePage\Styles\index.css">
-<div id="header">
-  <img src="images\header.jpg" />
+
+<div class="header_text">
+  <h1>Tinker With a <b >Neural Network</b> Right Here in Your Browser. <br>
+      Don't Worry, You Can't Break it. We Promise.</h1>
 </div>
-<h1>Get started learning about Neural Networks!</h1>
-<hr>
-<h4>Description:</h4>
-  <h3> The concept and diagram of an NN are simple to interpret.  <br>
-    Using a simple UI, The user (with no knowledge of Computer Science)  <br>
-    would be able to design their own NN (Imagine a drag n drop feature)  <br>
-    and feed the algorithm some input data and be able to observe exactly  <br>
-    how an image (for example) is then interpreted by a computer, visually. <br>
-    As a result, a person at the age of 12 who has no knowledge about computers  <br>
-    whatsoever would be able to create their own ANN that could solve a multitude  <br>
-    of problems without having to know any of the math (if they wish) <br></h3>
-    <div>
-    <h4>My Goal:</h4>
-  </div>
-    <h3><br>My goal is to express this field to a variety of people since this is a hot topic in Computer Science today. <br>
-    <br>Excitement is what gets people motivated to learn more in-depth - this is the the starting point for that excitement.  </h3>
-<hr>
+ <div class='rectangle'></div>
+</head>
+<body>
+  
+
+  <link rel="stylesheet" href="HomePage\Styles\index.css">
+<div class="background_image">
+<img src="images\NN1.png" class="left_img">
+<img src="images\NN2.png" class="right_img">
+</div>
+
+
 <div class="buttons">
   <a href="playground\index.html" class="button">Enter Playground</a> 
   <a href="Examples\index.html" class="button">View Examples</a> 
   <a href="Tutorial\index.html" class="button">Start with a tutorial</a>
 </div>
-<div class="login_description">
-<h5>Returning/New User?<br>Login or create your account here!</h5>
-</div>
-<button onclick="document.getElementById('id01').style.display='block'" style="width:20%; margin-top: -10px;">Login</button>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="images\img_avatar.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-
-</head>
-<body>
-  <div id="body_images">
-    <img src="images\deep_neural_net.png" />
-  </div>
 </body>
-<hr>
+
+<div class="login_button">
+  <h5 style="position: relative; left: 100px; top: -40px;">Returning/New User?</h5>
+  <h5 style="position: relative; left: 58px; top: -70px;" ><br>Login or create your account here!</h5>
+  <button onclick="document.getElementById('id01').style.display='block'" style="width:20%; margin-top: -10px;">Login</button>
+  
+  <div id="id01" class="modal">
+    
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="images\img_avatar.png" alt="Avatar" class="avatar">
+      </div>
+  
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+          
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+  
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+
+
+
 <div id="footer">
+  <hr>
   <ul>
       <li><a href="about.html">About</a></li>
       <li>○</li>
@@ -76,8 +75,9 @@
       <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
       <li><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></li>
   </ul>
+  <hr>
 </div>
-<hr>
+
 
 
 <script>
