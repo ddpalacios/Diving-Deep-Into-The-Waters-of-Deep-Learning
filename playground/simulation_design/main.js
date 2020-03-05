@@ -61,11 +61,23 @@ class Settings{
   ////////////////////////////////////////////////////////////////////
 
 function Render(){
+
   var setting = new Settings()
   var simulation = new create_canvas(900, 500)
   simulation.setup(setting.get_unit_layers(), 
                     setting.iterations, 
                     setting.lr, 
                     setting.activation)
+
+}
+
+function testRender(unit_layers = 2,iter = 100, lr=.01, activation ="sigmoid"){
+  var simulation = new create_canvas(900, 500)
+  simulation.testSetup(unit_layers, 
+                    iter, 
+                    lr, 
+                    activation)
+
+
 
 }

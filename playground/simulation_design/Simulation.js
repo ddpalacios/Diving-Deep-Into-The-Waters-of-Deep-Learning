@@ -101,6 +101,22 @@ get_total_units(units){
 
 }
 
+testSetup(units){
+  var total_units = units + 5
+  var svg = d3.select("body").append("svg")
+  .attr("width", this.width)
+  .attr("height", this.height);
+
+var force = d3.layout.force()
+  .gravity(.05)
+  .distance(100)
+  .charge(-10)
+  .size([this.width, this.height]);
+
+  this.read_and_display_json_connections(units, total_units ,force, svg)
+
+
+}
 
 setup(units, iterations, lr, activation){
 

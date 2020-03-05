@@ -3,37 +3,36 @@
 
 
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+body {margin:0;}
+
+.navbar {
   overflow: hidden;
-  background-color:rgb(47, 47, 49);
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-li {
+.navbar a {
   float: left;
-}
-
-li a {
   display: block;
-  color: white;
+  color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-}
-li a:hover:not(.active) {
-  background-color: #111;
+  font-size: 17px;
 }
 
-.active {
-  background-color: rgb(119, 79, 79);
+.navbar a:hover {
+  background: #ddd;
+  color: black;
 }
 
-li a:hover {
-  background-color: #111;
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
 }
-
 
 b{
 color: rgb(230, 215, 215);
@@ -46,8 +45,19 @@ color: rgb(230, 215, 215);
   top: 150px;
   left: 30%;
   color: rgb(39, 36, 44);
+}
+
+.body_text{
+  text-shadow: 1px 1px 1px rgb(129, 86, 86),
+             2px 2px 1px rgb(48, 30, 78);
+  position: relative;
+  bottom: 20%;
+  left: 40%;
+  color: rgb(39, 36, 44);
 
 }
+
+
 #header_text b {
   color: white;
 
@@ -72,6 +82,9 @@ color: rgb(230, 215, 215);
 body {
  
     background-color: rgba(53, 66, 85, 0.822);
+    background-image: url("NN2.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   
 hr{
