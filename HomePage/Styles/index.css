@@ -175,7 +175,7 @@ img.right_img{
 
 #footer{
 position: relative;
-bottom: 100px;
+bottom: 5px;
 }
 
 #footer ul{
@@ -190,14 +190,14 @@ bottom: 100px;
 }
 
 #footer a{
-    color: black;
+    color: rgb(230, 117, 25);
     bottom: -100px;
     text-decoration: none;
     font-weight: bolder;
 }
 
 #footer a:hover{
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 
