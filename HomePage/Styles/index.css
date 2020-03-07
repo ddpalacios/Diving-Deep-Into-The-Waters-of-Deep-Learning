@@ -28,11 +28,6 @@ body {margin:0;}
   color: black;
 }
 
-.main {
-  padding: 16px;
-  margin-top: 30px;
-  height: 1500px; /* Used in this example to enable scrolling */
-}
 
 b{
 color: rgb(230, 215, 215);
@@ -40,20 +35,20 @@ color: rgb(230, 215, 215);
 }
 .header_text{
   text-shadow: 1px 1px 1px rgb(129, 86, 86),
-             2px 2px 1px rgb(48, 30, 78);
+             2px 2px 1px rgba(40, 38, 42, 0.63);
   position: relative;
   top: 150px;
   left: 30%;
-  color: rgb(39, 36, 44);
+  color: rgb(133, 99, 187);
 }
 
 .body_text{
   text-shadow: 1px 1px 1px rgb(129, 86, 86),
              2px 2px 1px rgb(48, 30, 78);
   position: relative;
-  bottom: 20%;
+  top: 5%;
   left: 40%;
-  color: rgb(39, 36, 44);
+  color: rgb(133, 99, 187);
 
 }
 
@@ -67,7 +62,7 @@ color: rgb(230, 215, 215);
   height: 25%;
   width: 100%;
   bottom: 50px;
-  background-color: rgb(94, 94, 156);
+  background-color: rgba(31, 32, 49, 0.486);
 }
 
 
@@ -75,14 +70,13 @@ color: rgb(230, 215, 215);
 
   position: relative;
   left: 43%;
-  top: -130px;
+  top: 90px;
 }
 
 
 body {
  
     background-color: rgba(53, 66, 85, 0.822);
-    background-image: url("NN2.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
@@ -102,7 +96,7 @@ div.buttons{
 div.buttons a{
   position: relative;
   left: 700px;
-  bottom: 150px;
+  top: 80px;
     width: 550px;
     height: 50px;
     padding-top: 1.6em;
