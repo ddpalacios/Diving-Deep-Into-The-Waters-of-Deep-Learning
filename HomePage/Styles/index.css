@@ -311,3 +311,19 @@ span.psw {
      width: 100%;
   }
 }
+
+/* .main_description{
+  column-count: 2;
+  column-width: 10px;
+  column-gap: 50px;
+  background-color: rgba(255, 255, 255, 0.527);
+  position: relative; 
+  right: 0%;
+} */
+.text_description{
+  text-shadow: 1px 1px 1px rgb(129, 86, 86),2px 2px 1px
+   rgb(48, 30, 78);
+   color: rgb(212, 189, 255);
+
+
+}
