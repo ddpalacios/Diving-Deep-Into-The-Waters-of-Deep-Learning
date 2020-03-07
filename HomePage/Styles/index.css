@@ -187,6 +187,7 @@ bottom: 5px;
 #footer li{
     display: inline;
     margin: 0px 5px;
+    color: rgb(255, 255, 255);
 }
 
 #footer a{
