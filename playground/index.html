@@ -31,7 +31,7 @@ body{
 .render_button {
   position: relative;
   top: 50%;
-  left: 50%;
+  left: 45%;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -57,9 +57,9 @@ body{
 
 .train_button {
   position: relative;
-  top: 40%;
-  left: 675px;
-  width: 200px;
+  top: 60%;
+  left: 560px;
+  width: 250px;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -81,7 +81,32 @@ body{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+.reset_button {
+  position: relative;
+  top: 70%;
+  left: 310px;
+  width: 250px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(35, 40, 83);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(29, 30, 39);
+}
 
+.reset_button:hover {background-color: #2f3064}
+
+.reset_button:active {
+  background-color: #2b3168;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 
 
@@ -108,7 +133,7 @@ body{
 
 <button class="render_button" onclick="Render()">Build Neural Network</button>
 <button class="train_button" onclick="Train()">Train</button>
-<button class="reset_button" onclick="Reset()">Build Neural Network</button>
+<button class="reset_button" onclick="Reset()">Reset</button>
 </body>
 
 </html>
