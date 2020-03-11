@@ -19,6 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+  
 body{
   background-image: url("nn7.png");
   background-repeat: no-repeat;
@@ -27,12 +28,38 @@ body{
   background-size: 100%;
 
 }
+
+.button {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(35, 40, 83);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(29, 30, 39);
+}
+
+.button:hover {background-color: #2f3064}
+
+.button:active {
+  background-color: #2b3168;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 </style>
 
 
 </head>
 <body>
-
 
 <div class="navbar">
   <a href="#home">Home</a>
@@ -46,7 +73,7 @@ body{
 <body>
  
 
-
+<button class="button">Build Neural Network</button>
 </body>
 
 </html>
