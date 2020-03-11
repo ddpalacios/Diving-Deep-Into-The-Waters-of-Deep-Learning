@@ -19,7 +19,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  
 body{
   background-image: url("nn7.png");
   background-repeat: no-repeat;
@@ -29,7 +28,7 @@ body{
 
 }
 
-.button {
+.render_button {
   position: relative;
   top: 50%;
   left: 50%;
@@ -47,13 +46,45 @@ body{
   box-shadow: 0 9px rgb(29, 30, 39);
 }
 
-.button:hover {background-color: #2f3064}
+.render_button:hover {background-color: #2f3064}
 
-.button:active {
+.render_button:active {
   background-color: #2b3168;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+
+.train_button {
+  position: relative;
+  top: 40%;
+  left: 675px;
+  width: 200px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(35, 40, 83);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(29, 30, 39);
+}
+
+.train_button:hover {background-color: #2f3064}
+
+.train_button:active {
+  background-color: #2b3168;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+
+
 
 </style>
 
@@ -73,13 +104,14 @@ body{
 <body>
  
 
-<button class="button">Build Neural Network</button>
+
+
+<button class="render_button" onclick="Render()">Build Neural Network</button>
+<button class="train_button" onclick="Train()">Train</button>
+<button class="reset_button" onclick="Reset()">Build Neural Network</button>
 </body>
 
 </html>
-
-
-
   <!-- <div class="flex-container">
     <div class="form-wrapper">
       <form id="network-settings" action="" method="POST">
