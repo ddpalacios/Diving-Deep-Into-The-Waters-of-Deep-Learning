@@ -2,8 +2,8 @@
 
 .render_button {
   position: relative;
-  top: 50%;
-  left: 45%;
+  top: 300px;
+  left: 800px;
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -29,8 +29,8 @@
 
 .train_button {
   position: relative;
-  top: 60%;
-  left: 560px;
+  top: 400px;
+  left: 530px;
   width: 250px;
   display: inline-block;
   padding: 15px 25px;
@@ -55,8 +55,8 @@
 }
 .reset_button {
   position: relative;
-  top: 70%;
-  left: 310px;
+  top: 600px;
+  left: 280px;
   width: 250px;
   display: inline-block;
   padding: 15px 25px;
