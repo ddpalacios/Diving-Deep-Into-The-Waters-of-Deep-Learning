@@ -16,15 +16,7 @@
 <title>Diving Deep Into The Waters of Deep Learning</title>
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-
-
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 <style>
@@ -36,11 +28,66 @@ body{
   background-size: 100%;
 
 }
+input[type=text], select {
+  width: 20%;
+  height: 100px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+} */
+
+
 </style>
 
 
 </head>
 <body>
+
+  <div style="position: relative; top: 180px; left: 25%; background-color: rgb(78, 66, 66); width: 900px;">
+    <form action="/action_page.php" style="width: 1100px;">
+      <label for="fname"></label>
+      <input type="text" id="fname" name="units" placeholder="Number of units..">
+       <label for="lname"></label>
+      <input type="text" id="lname" name="lr" placeholder="Choose you learning rate..">
+  
+      <label for="lname"></label>
+      <input type="text" id="lname" name="iterations" placeholder="Amount of iterations..">
+  
+      <label for="activation"></label>
+      <select id="activation" name="activation">
+        <option value="sigmoid">Sigmoid</option>
+        <option value="softmax">Softmax</option>
+        <option value="relu">ReLu</option>
+      </select>
+   
+    </form>
+  </div>
+
+
 
 <div class="navbar">
   <a href="#home">Home</a>
@@ -53,13 +100,13 @@ body{
 
 <body>
  
-
-
-
 <button class="render_button" onclick="Render()">Build Neural Network</button>
 <button class="train_button" onclick="Train()">Train</button>
 <button class="reset_button" onclick="Reset()">Reset</button>
+
 </body>
+
+
 
 </html>
   <!-- <div class="flex-container">
