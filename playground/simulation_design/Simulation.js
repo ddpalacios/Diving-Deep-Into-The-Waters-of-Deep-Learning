@@ -22,13 +22,6 @@ class create_canvas{
 append_nodes(units, total_units){
 
 
-//   console
-//  for (var i=0; i<total_units; i++){
-      
-//     NODE_LIST.push({"name": name, "group": group_num})
-//     LINKS_LIST.push({"source": i, "target": 1, "weights": 5})
-//   }
-
 
 var name = " "
 var group_num = 1

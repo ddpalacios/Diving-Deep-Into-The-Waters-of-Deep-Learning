@@ -21,7 +21,7 @@ b{
   }
 .render_button {
   position: relative;
-  top: 300px;
+  top: 250px;
   left: 800px;
   display: inline-block;
   padding: 15px 25px;
@@ -74,7 +74,7 @@ b{
 }
 .reset_button {
   position: relative;
-  top: 600px;
+  top: 500px;
   left: 280px;
   width: 250px;
   display: inline-block;
