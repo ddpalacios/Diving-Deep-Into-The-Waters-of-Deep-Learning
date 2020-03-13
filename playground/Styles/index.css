@@ -1,5 +1,24 @@
 
+.rectangle{
+  position: static;
+  height: 25%;
+  width: 100%;
+  bottom: 50px;
+  background-color: rgba(31, 32, 49, 0.486);
+}
 
+b{
+  color: rgb(230, 215, 215);
+  
+  }
+  .header_text{
+    text-shadow: 1px 1px 1px rgb(129, 86, 86),
+               2px 2px 1px rgba(40, 38, 42, 0.63);
+    position: relative;
+    top: 150px;
+    left: 30%;
+    color: rgb(133, 99, 187);
+  }
 .render_button {
   position: relative;
   top: 300px;
