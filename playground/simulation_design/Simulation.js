@@ -11,7 +11,7 @@ class create_canvas{
       "nodes":[], 
   
   
-      "links":[]
+    
     }]
 
 
