@@ -27,32 +27,6 @@ body{
   background-size: 100%;
 
 }
-input[type=text], select {
-  width: 20%;
-  height: 100px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
 
 </style>
 
@@ -63,31 +37,24 @@ input[type=submit]:hover {
 </head>
 <body>
 
-  <div style="position: relative; top: 50px; left: 25%; background-color: rgb(78, 66, 66); width: 900px;">
-    <form action="/action_page.php" style="width: 1100px;">
-      <label for="fname"></label>
-      <input type="text" id="units" name="units_txt" placeholder="Number of units..">
-       <label for="lname"></label>
-      <input type="text" id="lr" name="lr_txt" placeholder="Choose you learning rate..">
-  
-      <label for="lname"></label>
-      <input type="text" id="iterations" name="iterations_txt" placeholder="Amount of iterations..">
-  
-      <label for="activation_selections"></label>
-      <select id="activation" name="activation">
-        <option value="sigmoid">Sigmoid</option>
-        <option value="softmax">Softmax</option>
-        <option value="relu">ReLu</option>
-      </select>
-   
-    </form>
-  </div>
 
 <div class="navbar">
   <a href="#home">Home</a>
   <a href="#news">News</a>
   <a href="#contact">Contact</a>
 </div>
+
+<form style="position: relative; left: 40%; top: 100px;">
+  <label for="fname">Input unit #:</label>
+  <input value =5 type="text" id="input_units" name="fname"><br><br>
+  <label for="lname">Hidden Layer(s):</label>
+  <input value = 5 type="text" id="hidden_units" name="fname"><br><br>
+   <label for="fname">Output Units:</label>
+  <input value= 5 type="text" id="output_units" name="fname"><br><br>
+ 
+</form>
+
+
 <body>
  <div style=" position: relative; top: -150px;">
 <button class="render_button" onclick="Render()">Build Neural Network</button>
@@ -96,8 +63,8 @@ input[type=submit]:hover {
 </div>
 </body>
 <script>
- class Create_Architecture {
-    constructor(x_pos, y_pos, json, width = 500, height = 200, nodeSize = 15) {
+   class Create_Architecture {
+    constructor(x_pos, y_pos, json, width = 800, height = 400, nodeSize = 15) {
 
       this.x_pos = x_pos
       this.y_pos = y_pos
@@ -107,7 +74,7 @@ input[type=submit]:hover {
       this.nodeSize = nodeSize
       this.color = d3.scale.category20()
       this.svg = d3.select("body").append("svg")
-        .attr("width", width)
+        .attr("width", window.innerWidth)
         .attr("height",900);
 
 
@@ -200,7 +167,6 @@ input[type=submit]:hover {
         .attr("dy", ".35em")
         .text(function (d) { return d.label; });
     }
-   
     build() {
 
       this._get_network_size()
@@ -214,11 +180,65 @@ input[type=submit]:hover {
 
 
   }
+</script>
+<script>
+function Reset(){
+location.reload()
+
+
+}
+
+
+
+
+function extract_values(id){
+
+  var value = document.getElementById(id).value
+  return value
+
+
+}
+
+
+
+function Render(){
+  var json =  [{
+
+"nodes":[], 
+
+
+
+}]
+
+var NODE_LIST = json[0].nodes
+console.log(NODE_LIST)
+var values = []
+var input_id = ["input_units", "hidden_units", "output_units"]
+for (var each_id =0; each_id < input_id.length; each_id++){
+
+   var value = extract_values(input_id[each_id])
+   values.push(value)
+
+}
+
+console.log(values)
+for (var i=0; i<values.length; i++){
+
+var label = values[i]
+for (var j=0; j<label; j++){
+  console.log(i, i+1)
+ NODE_LIST.push({ "label": i , "layer": i+1 })
+}
+}
+new Create_Architecture(-1.5,-4, json).build()
+NODE_LIST = []
+
+}
+
 
 
 
 </script>
-
 
 
 
