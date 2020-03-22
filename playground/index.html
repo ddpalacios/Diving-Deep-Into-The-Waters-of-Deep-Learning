@@ -221,18 +221,14 @@ for (var each_id =0; each_id < input_id.length; each_id++){
 
 }
 
-console.log(values)
 for (var i=0; i<values.length; i++){
 
 var label = values[i]
 for (var j=0; j<label; j++){
-  console.log(i, i+1)
  NODE_LIST.push({ "label": i , "layer": i+1 })
 }
 }
-new Create_Architecture(-1.5,-4, json).build()
-NODE_LIST = []
-
+new Create_Architecture(x_pos = -1.5, y_pos = -4, json).build()
 }
 
 
