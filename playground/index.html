@@ -46,9 +46,20 @@ body{
 
 <form style="position: relative; left: 40%; top: 100px;">
   <label for="fname">Input unit #:</label>
-  <input value =5 type="text" id="input_units" name="fname"><br><br>
+  <input value =5 type="text" id="input_units"><br><br>
+ 
+  
+
+  
   <label for="lname">Hidden Layer(s):</label>
-  <input value = 5 type="text" id="hidden_units" name="fname"><br><br>
+  <input value = 5 type="text" id="hidden_units1" ><br><br>
+  
+  <label for="lname">Hidden Layer(s):</label>
+  <input value = 5 type="text" id="hidden_units2" ><br><br>
+
+
+  
+
    <label for="fname">Output Units:</label>
   <input value= 5 type="text" id="output_units" name="fname"><br><br>
  
@@ -209,26 +220,32 @@ function Render(){
 
 
 }]
-
+var hashmap = new Map()
 var NODE_LIST = json[0].nodes
 console.log(NODE_LIST)
 var values = []
-var input_id = ["input_units", "hidden_units", "output_units"]
-for (var each_id =0; each_id < input_id.length; each_id++){
+  
 
-   var value = extract_values(input_id[each_id])
-   values.push(value)
+in_value = extract_values("input_units")
+h1_value = extract_values("hidden_units1")
+h2_value = extract_values("hidden_units2")
+out_value = extract_values("output_units")
 
+for (var i=0; i< in_value; i++){
+  NODE_LIST.push({"label": i, "layer": 0})
+}
+for (var i=0; i< h1_value; i++){
+  NODE_LIST.push({"label": i, "layer": 1})
+}
+for (var i=0; i< h2_value; i++){
+  NODE_LIST.push({"label": i, "layer": 2})
 }
 
-for (var i=0; i<values.length; i++){
+for (var i=0; i< out_value; i++){
+  NODE_LIST.push({"label": i, "layer": 3})
+}
 
-var label = values[i]
-for (var j=0; j<label; j++){
- NODE_LIST.push({ "label": i , "layer": i+1 })
-}
-}
-new Create_Architecture(x_pos = -1.5, y_pos = -4, json).build()
+new Create_Architecture(x_pos = -3.0, y_pos = -5.7, json).build()
 }
 
 
