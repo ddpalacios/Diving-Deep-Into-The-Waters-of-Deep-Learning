@@ -35,7 +35,7 @@
 
 <script>
   class Create_Architecture {
-    constructor(x_pos, y_pos, json, width = 500, height = 200, nodeSize = 15) {
+    constructor(x_pos, y_pos, json, width = 800, height = 200, nodeSize = 20) {
 
       this.x_pos = x_pos
       this.y_pos = y_pos
@@ -45,8 +45,8 @@
       this.nodeSize = nodeSize
       this.color = d3.scale.category20()
       this.svg = d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height",900);
+        .attr("width", window.innerWidth)
+        .attr("height", window.innerHeight);
 
 
     }
@@ -182,19 +182,14 @@
 
       { "label": "h1", "layer": 2 },
       { "label": "h2", "layer": 2 },
-      { "label": "h2", "layer": 2.5 },
-      { "label": "h3", "layer": 2 },
+     
       { "label": "o0", "layer": 3 },
-      { "label": "o0", "layer": 3 },
-      { "label": "o0", "layer": 3 },
-      { "label": "o0", "layer": 3 },
-      { "label": "o0", "layer": 4 },
-      { "label": "o0", "layer": 4 }
+      { "label": "o0", "layer": 3 }
      
     ]
   }]
   // new Create_Architecture(.8, -10, json).build()
-  new Create_Architecture(-1, -12, json3).build()
+  new Create_Architecture(-3, -5, json3).build()
   // new Create_Architecture(.1, -12, json3).build()
 
 
