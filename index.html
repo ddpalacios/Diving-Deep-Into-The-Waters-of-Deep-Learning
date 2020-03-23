@@ -46,6 +46,41 @@ div.text_history {
     right: 500px;
     letter-spacing: 3px;
   }
+
+
+ 
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
+.discription_title {
+  position: relative;
+  top: 5rem;
+  left: 37%;
+  top: -5px;
+  opacity: 0;
+  font-size: 50px;
+
+  animation-name: fadeInOut;
+  animation: fadeInOut 1s infinite alternate;
+  animation-duration: 5s;
+  text-shadow: 1px 1px 1px rgb(214, 210, 219),
+             2px 2px 1px rgba(253, 253, 253, 0.63);
+  
+  color: rgb(255, 255, 255);
+}
+
   
  
 </style>
@@ -121,15 +156,17 @@ div.text_history {
 
 </div>
 <hr>
-<h1 style="position: relative; left: 41%;  text-shadow: 1px 1px 1px rgb(129, 86, 86),2px 2px 1px rgb(48, 30, 78);color: rgb(213, 198, 238);">History of Neural Networks</h1>
+<section class="animation-box">
+  <div class="discription_title"> History Of Neural Networks</div>
+</section>
 <hr>
 <div class="main_description">
 <div class="text_description" style="position: relative; left: 33%;  width: 40%;">
 
   
  
-  <h1 class="header_text">text formatting</h1>
-  <div class="text_history" style="position: relative; top: 200px; right: 590px; font-size: 40px; width: 1900px;">
+  
+  <div class="text_history" style="position: relative; top: 100px; right: 590px; font-size: 40px; width: 1900px; background-color: rgba(34, 48, 48, 0.315);">
    
     The idea of neural networks began unsurprisingly as a model of how neurons in the brain function, 
     termed ‘connectionism’ and used connected circuits to simulate intelligent behaviour .In 1943, portrayed
@@ -149,22 +186,47 @@ div.text_history {
      i.e. a classification algorithm that makes its predictions based on a linear predictor 
      function combining a set of weights with the feature vector. 
     <hr>
+    <h2>Adaline</h2>
+    <br>
+    <img src="adaline.png" style="position: relative; top: -50px; left: 35%; width: 600px;">
+    <br>ADALINE (Adaptive Linear Neuron or later Adaptive Linear Element) is an early single-layer artificial 
+    neural network and the name of the physical device that implemented this network.[1][2][3][4][5] 
+    The network uses memistors. It was developed by Professor Bernard Widrow and his graduate student 
+    <br><br>Ted Hoff at Stanford University in 1960. It is based on the McCulloch–Pitts neuron. It consists of a weight, 
+    a bias and a summation function. <br><br> The difference between Adaline and the standard (McCulloch–Pitts) perceptron 
+    is that in the learning phase, the weights are adjusted according to the weighted sum of the inputs (the net). 
+    In the standard perceptron, the net is passed to the activation (transfer) function and the function's output is 
+    used for adjusting the weights. 
+
+    <hr>
+
+    
     <h2>Multi-Layer Perceptron</h2>
     <img src="mlp.png" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-    <br>The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this coloredThis text is styled with some of the text formatting properties. The heading uses the text-align, text-transform, and color properties.
+    <br>
+    A multilayer perceptron (MLP) is a class of feedforward artificial neural network (ANN).
+     The term MLP is used ambiguously, sometimes loosely to refer to any feedforward ANN, 
+     sometimes strictly to refer to networks composed of multiple layers of perceptrons 
+     (with threshold activation); Multilayer perceptrons are sometimes 
+     colloquially referred to as "vanilla" neural networks, especially when they have a single hidden layer.
     <hr>
     <h2>Deep Neural Network</h2>
     <img src="deep-neural-network.jpg" style=" position: relative;left: 35%; top: -50px; width: 650px;">
 
-    <br>The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this coloredThis text is styled with some of the text formatting properties. The heading uses the text-align, text-transform, and color properties.
-    The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this coloredThis text is styled with some of the text formatting properties. The heading uses the text-align, text-transform, and color properties.
-    
+    <br>
+    Deep learning (also known as deep structured learning or 
+    differential programming) is part of a broader family of machine 
+    learning methods based on artificial neural networks with representation learning. 
+    Learning can be supervised, semi-supervised or unsupervised.
     <hr>
     <h2>Evolution of Deep Neural Network</h2>
     <img src="evolv.jpg" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-    <br>The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this coloredThis text is styled with some of the text formatting properties. The heading uses the text-align, text-transform, and color properties.
-    The paragraph is indented, aligned, and the space between characters is specified. The underline is removed from this colored
-     link.</p>
+    <br>
+    Neuroevolution, or neuro-evolution, is a form of artificial intelligence that uses 
+    evolutionary algorithms to generate artificial neural networks (ANN), parameters, 
+    topology and rules. It is most commonly applied in artificial life, general game
+    playing and evolutionary robotics.
+  </p>
   </div>
   
  
