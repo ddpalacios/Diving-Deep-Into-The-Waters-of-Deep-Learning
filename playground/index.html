@@ -28,9 +28,9 @@ body{
 
 }
 .container {
-  width: 50%;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto-fill, 120px);
   grid-row-gap: 3em;
   grid-column-gap: 1em;
@@ -88,7 +88,7 @@ body{
 
 <body>
  <div style=" position: relative; top: -150px; right: 750px;">
-<button id='render_button' class="render_button" onclick="Render()">Build Neural Network</button>
+<button id='renders_button' class="render_button" onclick="Render()">Build Neural Network</button>
 <button class="train_button" onclick="Train()">Train</button>
 <button class="reset_button" onclick="Reset()">Reset</button>
 </div>
@@ -118,7 +118,7 @@ body{
 </template>
 </div>
 
-<script>
+<!-- <script>
 var json3 = [{
     "nodes": [
       { "label": "i0", "layer": 0 },
@@ -170,7 +170,7 @@ $(() => {
   });
 });
 
-</script>
+</script> -->
 
 <script>
    class Create_Architecture {
@@ -300,7 +300,27 @@ function extract_values(id){
 
 
 }
+const COLORS = [
+  '#FE9',
+  '#9AF',
+  '#F9A',
+  "#AFA",
+  "#FA7"
+];
+
+function addItem(container, template, json) {
+  let color = COLORS[_.random(COLORS.length - 1)];
+  let num = _.random(10000);
+  
+  container.append(Mustache.render(template, { color, num: JSON.stringify(json)}));
+}
+
+
+
 function Render(){
+
+
+  
   var json =  [{
 
 "nodes":[], 
@@ -310,7 +330,6 @@ function Render(){
 }]
 var hashmap = new Map()
 var NODE_LIST = json[0].nodes
-console.log(NODE_LIST)
 var values = []
   
 
@@ -333,9 +352,28 @@ for (var i=0; i< out_value; i++){
   NODE_LIST.push({"label": i, "layer": 3})
 }
 
+$(() => {
+  const tmpl = $('#item_template').html()
+  const container = $('#app');
+  console.log("clicked")
+  $('#renders_button').click(() => {
+    addItem(container, tmpl, json);
+  })
+  
+  container.on('click', '.del_el', (e) => {
+    var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
+    var saved_arch = JSON.parse(val.innerText);
+    console.log(saved_arch)
+    new Create_Architecture(-3, -5, saved_arch).build()
 
 
-new Create_Architecture(x_pos = -3.0, y_pos = -3.7, json).build()
+    // $(e.target).closest('.item').remove();
+  });
+});
+
+
+// console.log(json)
+// new Create_Architecture(x_pos = -3.0, y_pos = -3.7, json).build()
 }
 
 
