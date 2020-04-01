@@ -27,6 +27,26 @@ body{
   background-size: 100%;
 
 }
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 120px);
+  grid-row-gap: 3em;
+  grid-column-gap: 1em;
+}
+
+.container > div{
+  background: #eee;
+  padding: 1em;
+}
+
+.wrapper > div:nth-child(odd){
+    background: #ddd;
+
+
+
+  } 
 
 </style>
 
@@ -68,7 +88,7 @@ body{
 
 <body>
  <div style=" position: relative; top: -150px;">
-<button class="render_button" onclick="Render()">Build Neural Network</button>
+<button id='render_button' class="render_button" onclick="Render()">Build Neural Network</button>
 <button class="train_button" onclick="Train()">Train</button>
 <button class="reset_button" onclick="Reset()">Reset</button>
 </div>
@@ -76,21 +96,82 @@ body{
 <div style="position: relative; top: 45%; font-size: larger;"class="wrapper">
 
   <hr>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-Ipsam blanditiis velit eum et neque <br> asperiores repudiandae 
-iusto molestiae, accusamus aut maxime praesentium vitae tempora 
-laudantium est placeat cum hic voluptate! Voluptatibus veritatis
- voluptate ducimus impedit esse ipsam blanditiis quaerat quas
-  numquam earum! Repellendus, consectetur nostrum. Officia fugiat fugit adipisci 
-  soluta a incidunt repellat perferendis suscipit aliquam dicta earum, ullam corporis
-   reprehenderit inventore ducimus ipsa corrupti labore molestiae! Sed ad eaque eum 
-  consequuntur possimus inventore. Laboriosam a tempora harum dolores perferendis?
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, numquam incidunt possimus maxime dolorum laborum aut? Tempora voluptatibus sint nihil a fuga unde dicta necessitatibus eum quia asperiores ipsam excepturi delectus, earum nulla iure tempore eligendi facilis, iusto autem praesentium molestias itaque. Quod modi ratione, error, non accusamus excepturi perferendis sint autem ipsum labore doloribus cupiditate dolor, porro neque maxime vitae! Libero, perspiciatis alias in doloribus ipsum expedita pariatur omnis ducimus dolore! Placeat quasi sint sed similique veniam, quas quod, repellendus quisquam adipisci animi recusandae magnam! Id quisquam earum placeat harum recusandae, ipsa sed quibusdam saepe facilis corporis ipsam deserunt similique dolores dolorem ex perspiciatis. Laudantium quo distinctio, cumque possimus neque esse numquam adipisci ex dicta necessitatibus nostrum repellat dolore vitae iure sequi inventore soluta corrupti! Recusandae unde illo impedit placeat ducimus laborum quam, tempora porro libero asperiores hic exercitationem perferendis quas, soluta beatae enim rem inventore esse totam aut. Consequatur numquam dolorum culpa quae temporibus repellendus voluptatem rem esse maxime magni nihil repudiandae, deserunt illum quaerat porro non omnis, nam, accusantium consequuntur cumque facilis velit ad. Minima iusto officia quae, quo, non, vero reprehenderit error natus itaque iste at similique quibusdam molestiae omnis cum magni tempora voluptatum a aliquid.
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="app" class="container">
+</div>
+
+<div style="position: relative; top: 300px;">
+<template id="item_template">
+  <div class="item">
+    <p>{{ num }}</p>
+    <p>
+
+      
+      <button class="del_el">Render</button>
+    </p>
+  </div>
+
+</template>
+</div>
+
+<script>
+var json3 = [{
+    "nodes": [
+      { "label": "i0", "layer": 0 },
+      { "label": "i0", "layer": 0 },
+      { "label": "i0", "layer": 0 },
+      { "label": "i1", "layer": 1 },
+      { "label": "i2", "layer": 1 },
+      { "label": "h0", "layer": 2 },
+
+      { "label": "h1", "layer": 2 },
+      { "label": "h2", "layer": 2 },
+     
+      { "label": "o0", "layer": 3 },
+      { "label": "o0", "layer": 3 }
+     
+    ]
+  }]
+const COLORS = [
+  '#FE9',
+  '#9AF',
+  '#F9A',
+  "#AFA",
+  "#FA7"
+];
+
+function addItem(container, template) {
+  let color = COLORS[_.random(COLORS.length - 1)];
+  let num = _.random(10000);
+  
+  container.append(Mustache.render(template, { color, num: JSON.stringify(json3)}));
+}
+
+$(() => {
+  const tmpl = $('#item_template').html()
+  const container = $('#app');
+  
+  $('#render_button').click(() => {
+    addItem(container, tmpl);
+  })
+  
+  container.on('click', '.del_el', (e) => {
+    var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
+    var saved_arch = JSON.parse(val.innerText);
+    console.log(saved_arch)
+    new Create_Architecture(-3, -5, saved_arch).build()
 
 
+    // $(e.target).closest('.item').remove();
+  });
+});
 
-
+</script>
 
 <script>
    class Create_Architecture {
@@ -253,7 +334,9 @@ for (var i=0; i< out_value; i++){
   NODE_LIST.push({"label": i, "layer": 3})
 }
 
-new Create_Architecture(x_pos = -3.0, y_pos = -5.7, json).build()
+
+
+new Create_Architecture(x_pos = -3.0, y_pos = -3.7, json).build()
 }
 
 
