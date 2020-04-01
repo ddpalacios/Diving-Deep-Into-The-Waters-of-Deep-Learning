@@ -72,7 +72,26 @@ body{
 <button class="train_button" onclick="Train()">Train</button>
 <button class="reset_button" onclick="Reset()">Reset</button>
 </div>
+
+<div style="position: relative; top: 45%; font-size: larger;"class="wrapper">
+
+  <hr>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Ipsam blanditiis velit eum et neque <br> asperiores repudiandae 
+iusto molestiae, accusamus aut maxime praesentium vitae tempora 
+laudantium est placeat cum hic voluptate! Voluptatibus veritatis
+ voluptate ducimus impedit esse ipsam blanditiis quaerat quas
+  numquam earum! Repellendus, consectetur nostrum. Officia fugiat fugit adipisci 
+  soluta a incidunt repellat perferendis suscipit aliquam dicta earum, ullam corporis
+   reprehenderit inventore ducimus ipsa corrupti labore molestiae! Sed ad eaque eum 
+  consequuntur possimus inventore. Laboriosam a tempora harum dolores perferendis?
+</div>
 </body>
+
+
+
+
+
 <script>
    class Create_Architecture {
     constructor(x_pos, y_pos, json, width = 800, height = 400, nodeSize = 15) {
@@ -186,11 +205,7 @@ body{
 
 
 
-    }
-
-
-
-  }
+    }}
 </script>
 <script>
 function Reset(){
@@ -198,10 +213,6 @@ location.reload()
 
 
 }
-
-
-
-
 function extract_values(id){
 
   var value = document.getElementById(id).value
@@ -209,9 +220,6 @@ function extract_values(id){
 
 
 }
-
-
-
 function Render(){
   var json =  [{
 
@@ -248,7 +256,6 @@ for (var i=0; i< out_value; i++){
 new Create_Architecture(x_pos = -3.0, y_pos = -5.7, json).build()
 }
 
-Render()
 
 
 </script>
