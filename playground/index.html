@@ -28,9 +28,9 @@ body{
 
 }
 .container {
-  width: 100%;
+  width: 50%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto-fill, 120px);
   grid-row-gap: 3em;
   grid-column-gap: 1em;
@@ -63,7 +63,7 @@ body{
   <a href="#news">News</a>
   <a href="#contact">Contact</a>
 </div>
-
+<div style="position: relative; right: 700px;">
 <form style="position: relative; left: 40%; top: 100px;">
   <label for="fname">Input unit #:</label>
   <input value =5 type="text" id="input_units"><br><br>
@@ -84,10 +84,10 @@ body{
   <input value= 5 type="text" id="output_units" name="fname"><br><br>
  
 </form>
-
+</div>
 
 <body>
- <div style=" position: relative; top: -150px;">
+ <div style=" position: relative; top: -150px; right: 750px;">
 <button id='render_button' class="render_button" onclick="Render()">Build Neural Network</button>
 <button class="train_button" onclick="Train()">Train</button>
 <button class="reset_button" onclick="Reset()">Reset</button>
@@ -105,9 +105,9 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, numquam incidun
 <div id="app" class="container">
 </div>
 
-<div style="position: relative; top: 300px;">
+<div >
 <template id="item_template">
-  <div class="item">
+  <div class="item"  style="position: relative; left: 500px; top: -400px;">
     <p>{{ num }}</p>
     <p>
 

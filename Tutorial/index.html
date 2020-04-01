@@ -65,7 +65,7 @@
 <button style="position: relative; top: 600px" id="add_el">Add element</button>
 
 <template id="item_template">
-  <div class="item">
+  <div class="item" >
     <p>{{ num }}</p>
     <p>
 
@@ -232,6 +232,8 @@ function addItem(container, template) {
 $(() => {
   const tmpl = $('#item_template').html()
   const container = $('#app');
+  
+  // for(let i=0; i<5; i++) { addItem(container, tmpl); }
   
   $('#add_el').click(() => {
     addItem(container, tmpl);
