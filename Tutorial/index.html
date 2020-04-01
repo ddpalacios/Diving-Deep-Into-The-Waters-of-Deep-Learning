@@ -46,7 +46,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto-fill, 120px);
-  grid-row-gap: .5em;
+  grid-row-gap: 3em;
   grid-column-gap: 1em;
 }
 
@@ -79,13 +79,15 @@
 <div id="app" class="container">
 </div>
 
-<button id="add_el">Add element</button>
+<button style="position: relative; top: 600px" id="add_el">Add element</button>
 
 <template id="item_template">
   <div class="item">
     <p>{{ num }}</p>
     <p>
-      <button class="del_el">Delete</button>
+
+      
+      <button class="del_el">Render</button>
     </p>
   </div>
 </template>
@@ -228,7 +230,6 @@
      
     ]
   }]
-  console.log(json3)
 
   const COLORS = [
   '#FE9',
@@ -249,7 +250,7 @@ $(() => {
   const tmpl = $('#item_template').html()
   const container = $('#app');
   
-  for(let i=0; i<5; i++) { addItem(container, tmpl); }
+  // for(let i=0; i<5; i++) { addItem(container, tmpl); }
   
   $('#add_el').click(() => {
     addItem(container, tmpl);
