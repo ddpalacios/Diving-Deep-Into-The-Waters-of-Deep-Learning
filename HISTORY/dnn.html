@@ -1,92 +1,47 @@
 <html>
-    <style>
-
-body {
-  margin: 40px;
+<title></title>
+<style>
+    body {
+ overflow: hidden;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 1fr 30px;
 }
 
-.sidebar {
-  grid-area: sidebar;
+.body {
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+ overflow: hidden;
 }
 
 .content {
-  grid-area: content;
-  position: relative;
+ overflow-y: scroll;
+ padding: 20px;
 }
 
-.header {
-  grid-area: header;
-}
-
-.footer {
-  grid-area: footer;
-}
-
-.wrapper {
-        display: grid;
-    grid-gap: 10px;
-        grid-template-columns: 90vh 240px 200px;
-        grid-template-areas:
-    "header  header  header"
-        "sidebar content content"
-        "footer  footer  footer";
-        background-color: #fff;
-        color: #444;
-    }
-
-
-.box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 50px;
-  font-size: 150%;
-}
-
-.header,
-.footer {
-  background-color: #999;
-}
-
-.topleft {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.topright {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.bottomleft {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.bottomright {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-
-    </style>
-
-    <div style="position: relative; left: 62vh; top: 5vh;">
-    <div class="wrapper" style="height: 80vh;">
-        <div class="box header">Header</div>
-        <div class="box sidebar">Sidebar</div>
-        <div class="box content">Content
-          <br /> The four arrows are inline images inside the content area.
-          <img src="http://gridbyexample.com/examples/code/arrow-top-left.png" alt="top left" class="topleft" />
-          <img src="http://gridbyexample.com/examples/code/arrow-top-right.png" alt="top right" class="topright" />
-          <img src="http://gridbyexample.com/examples/code/arrow-bottom-left.png" alt="bottom left" class="bottomleft" />
-          <img src="http://gridbyexample.com/examples/code/arrow-bottom-right.png" alt="bottom right" class="bottomright" /></div>
-        <div class="box footer">Footer</div>
-      </div>
-
+</style>
+<head></head>
+<body>
+<div class="container">
+    <div class="head" style="background-color: rgb(127, 156, 156); height: 9vh;">.header</div>
+    <div class="body">
+        <div class="sidebar" style="background-color: aqua; height: 65vh; position: relative; top: 6vh;">.sidebar</div>
+        <div class="content" style="height: 90vh; position: relative; top: 7vh;" >
+        <img style="position: relative; top: 6vh; left: 40vh; width: 80vh;" src="../adaline.png" >
+        <div style="background-color: aqua; position: relative; top: 10vh; font-size: 30px;">
+           <div style="position: relative; left: 65vh;"><h2>Deep Neural Network</h2></div>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit deserunt minima suscipit debitis possimus quo a dignissimos, atque molestiae quia alias ad commodi placeat. Praesentium recusandae ipsum dolorem totam blanditiis unde voluptatibus molestias illo tenetur architecto soluta expedita iure fugit animi inventore accusantium a, quasi incidunt repellat vero minima culpa? Voluptatibus tempore fugiat atque reprehenderit nam? Praesentium maiores saepe consequuntur ipsum qui. Quia iure saepe obcaecati optio aut tenetur architecto corrupti fuga velit corporis veritatis numquam, dolore eaque facilis totam repudiandae nulla aliquam beatae error aperiam in, odio minus, assumenda maxime. Minus eaque exercitationem fugit repellat cumque in reiciendis, esse modi! Quas mollitia, tenetur itaque animi eaque, optio, enim repudiandae assumenda ut rem ab earum molestias ducimus officia. Nisi, blanditiis inventore dolorem delectus nesciunt eum natus non eaque quae aperiam labore suscipit voluptatem laudantium, impedit fuga nihil. Libero tenetur modi, incidunt dolorum mollitia aut qui temporibus ratione ipsum illo id unde nostrum distinctio nesciunt officia quis non rem provident architecto ipsam quae repellendus quia fugit! Sint autem esse saepe. Quam natus aut, dolor maiores temporibus laboriosam necessitatibus velit corrupti aliquam exercitationem, vitae dicta dolore qui adipisci earum molestiae quod nam cupiditate aspernatur magnam rem laborum! Voluptates amet veniam, ab cupiditate adipisci odio dignissimos, vero atque nihil corporis alias accusantium, sapiente itaque. Officia asperiores adipisci repellendus mollitia! Quidem minima exercitationem adipisci velit, voluptatem modi molestiae possimus nihil beatae aspernatur. Reiciendis exercitationem cum adipisci corrupti sapiente a, voluptatibus porro veritatis, nisi quae aliquam iure animi natus inventore? Eaque nostrum, ipsum nobis architecto voluptas quia natus. Illo est harum at laborum nobis officiis provident expedita atque tempora similique voluptates dolorem a, eligendi, voluptas unde deserunt qui necessitatibus ullam aperiam facere quia praesentium quam quidem! Reprehenderit tenetur voluptatem minima aliquid natus aperiam non fuga vel laborum magnam aut, hic commodi, sit fugit ad ab?
+    
+        </div>
+    
     </div>
+    <div class="foot" style="background-color: rgba(59, 87, 87, 0.575); height: 23vh; position: relative; bottom: 22vh;">.footer</div>
+   
+</div>
+
+</body>
 </html>
