@@ -1,256 +1,111 @@
 <html>
 <title>Tutorial</title>
 <style>
-  body {
-    background-image: url("nn7.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100%;
+  body{
+    overflow: hidden;
   }
-
-  text {
-    pointer-events: none;
+  .container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr 30px;
   }
-
-  .node:hover {
-    stroke: #999;
-    stroke-opacity: .6;
-    stroke-width: 4px;
-  }
-
-  .link {
-    stroke: #999;
-    stroke-opacity: .6;
-  }
-
-  .container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(auto-fill, 120px);
-  grid-row-gap: 3em;
-  grid-column-gap: 1em;
-}
-
-.container > div{
+  
+  .container > div{
   background: #eee;
   padding: 1em;
 }
-
-.wrapper > div:nth-child(odd){
-    background: #ddd;
-
-
-
-  } 
-
-</style>
-
-<head></head>
-
-<body>
-  
-
-
-
-
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<div id="app" class="container">
-</div>
-
-<button style="position: relative; top: 600px" id="add_el">Add element</button>
-
-<template id="item_template">
-  <div class="item" >
-    <p>{{ num }}</p>
-    <p>
-
-      
-      <button class="del_el">Render</button>
-    </p>
-  </div>
-</template>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<script>
-  class Create_Architecture {
-    constructor(x_pos, y_pos, json, width = 800, height = 200, nodeSize = 20) {
-
-      this.x_pos = x_pos
-      this.y_pos = y_pos
-      this.nodes = json[0].nodes;
-      this.width = width
-      this.height = height
-      this.nodeSize = nodeSize
-      this.color = d3.scale.category20()
-      this.svg = d3.select("body").append("svg")
-        .attr("width", window.innerWidth)
-        .attr("height", window.innerHeight);
-
-
-    }
-    _get_network_size() {
-      // get network size
-      var netsize = {};
-      this.nodes.forEach(function (d) {
-        if (d.layer in netsize) {
-          netsize[d.layer] += 1;
-        } else {
-          netsize[d.layer] = 1;
-        }
-        d["lidx"] = netsize[d.layer];
-      });
-
-      // calc distances between nodes
-      var largestLayerSize = Math.max.apply(
-        null, Object.keys(netsize).map(function (i) { return netsize[i]; }));
-
-      var xdist = this.width / Object.keys(netsize).length,
-        ydist = this.height / largestLayerSize,
-        x_pos = this.x_pos,
-        y_pos = this.y_pos;
-      // create node locations
-      this.nodes.map(function (d) {
-
-        d["x"] = (d.layer - x_pos) * xdist;
-        d["y"] = (d.lidx - y_pos) * ydist;
-      });
-
-
-    }
-
-    _autogenerate_links() {
-      // autogenerate links
-      var netsize = {}
-      var links = [];
-      var nodes = this.nodes;
-
-      this.nodes.map(function (d, i) {
-        for (var n in nodes) {
-          if (d.layer + 1 == nodes[n].layer) {
-            links.push({ "source": parseInt(i), "target": parseInt(n), "value": 1 })
-          }
-
-        }
-
-      }).filter(function (d) { return typeof d !== "undefined"; });
-
-
-      this._draw_links(links)
-    }
-
-    _draw_links(links) {
-      // draw links
-      var nodes = this.nodes
-      var link = this.svg.selectAll(".link")
-        .data(links)
-        .enter().append("line")
-        .attr("class", "link")
-        .attr("x1", function (d) { return nodes[d.source].x; })
-        .attr("y1", function (d) { return nodes[d.source].y; })
-        .attr("x2", function (d) { return nodes[d.target].x; })
-        .attr("y2", function (d) { return nodes[d.target].y; })
-        .style("stroke-width", function (d) { return Math.sqrt(d.value); });
-
-
-
-    }
-    _draw_nodes() {
-      var color = this.color
-      // draw nodes
-      var node = this.svg.selectAll(".node")
-        .data(this.nodes)
-        .enter().append("g")
-        .attr("transform", function (d) {
-          return "translate(" + d.x + "," + d.y + ")";
-        }
-        );
-
-      var circle = node.append("circle")
-        .attr("class", "node")
-        .attr("r", this.nodeSize)
-        .style("fill", function (d) { return color(d.layer); });
-
-
-      node.append("text")
-        .attr("dx", "-.35em")
-        .attr("dy", ".35em")
-        .text(function (d) { return d.label; });
-    }
-    build() {
-
-      this._get_network_size()
-      this._autogenerate_links()
-      this._draw_nodes()
-
-
-
-    }
-
-
-
-  }
-
-  var json3 = [{
-    "nodes": [
-      { "label": "i0", "layer": 0 },
-      { "label": "i0", "layer": 0 },
-      { "label": "i0", "layer": 0 },
-      { "label": "i1", "layer": 1 },
-      { "label": "i2", "layer": 1 },
-      { "label": "h0", "layer": 2 },
-
-      { "label": "h1", "layer": 2 },
-      { "label": "h2", "layer": 2 },
-     
-      { "label": "o0", "layer": 3 },
-      { "label": "o0", "layer": 3 }
-     
-    ]
-  }]
-
-  const COLORS = [
-  '#FE9',
-  '#9AF',
-  '#F9A',
-  "#AFA",
-  "#FA7"
-];
-
-function addItem(container, template) {
-  let color = COLORS[_.random(COLORS.length - 1)];
-  let num = _.random(10000);
-  
-  container.append(Mustache.render(template, { color, num: JSON.stringify(json3)}));
+  .body {
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+ overflow: hidden;
+}
+.content {
+ overflow-y: scroll;
+ padding: 20px;
 }
 
-$(() => {
-  const tmpl = $('#item_template').html()
-  const container = $('#app');
+.innerWrapper > div{ 
+  background: #eee;
+  padding: #ddd;
+}
+.innerWrapper > div:nth-child(odd){
+  background: #ddd;
+}
+.innerWrapper{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  /* grid-column-gap: 1em;
+  grid-row-gap: 1em;
+   */
+   grid-gap: 5em;
+
+}
+
+</style>
+<head></head>
+<body>
   
-  // for(let i=0; i<5; i++) { addItem(container, tmpl); }
+  <div class="container" >
+    <div class="header" style="height: 60px; background-color: rgba(0, 75, 236, 0.26); " >header</div>
+    <div class="body" style="position: relative; top: 65px;" >
+      <div class="sidebar" style=" background-color: rgba(0, 75, 236, 0.363); position: relative; right: 15px; bottom: 20px;">
+        <h1>Select Any Option</h1>
+      </div>
+    <div class="content" style=" position: relative; bottom: 15px;">
+      <div style= "position: relative; left: 50%;"class="discription_title"> 
+        <h1>History Of Neural Networks</h1>        
+      </div>
+      <div class="innerWrapper">
+        <div>
+        <p style="font-size: x-large;">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non tenetur saepe consequatur officiis pariatur numquam, sint exercitationem enim minima, dolorum accusamus rem, quibusdam modi! Iusto, nostrum? Quisquam vitae veritatis doloremque praesentium fugit maiores harum quo reprehenderit architecto similique, quibusdam excepturi soluta, a necessitatibus quod facilis ipsum. Accusamus similique vel hic totam omnis esse qui harum nihil minima amet aliquid commodi ducimus nemo debitis aspernatur molestiae praesentium consectetur, impedit, sapiente nesciunt est ea dignissimos ut. Perferendis earum incidunt doloremque dolore, dolor voluptatem ipsa similique accusantium nisi amet, officiis provident, doloribus odit ducimus eius? Sequi iure ducimus, laudantium laborum quia minus.
+
+        <p></div>
+
+          <div>
+          <p style="font-size: x-large;">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non tenetur saepe consequatur officiis pariatur numquam, sint exercitationem enim minima, dolorum accusamus rem, quibusdam modi! Iusto, nostrum? Quisquam vitae veritatis doloremque praesentium fugit maiores harum quo reprehenderit architecto similique, quibusdam excepturi soluta, a necessitatibus quod facilis ipsum. Accusamus similique vel hic totam omnis esse qui harum nihil minima amet aliquid commodi ducimus nemo debitis aspernatur molestiae praesentium consectetur, impedit, sapiente nesciunt est ea dignissimos ut. Perferendis earum incidunt doloremque dolore, dolor voluptatem ipsa similique accusantium nisi amet, officiis provident, doloribus odit ducimus eius? Sequi iure ducimus, laudantium laborum quia minus.
+
+          <p>
+          </div>
   
-  $('#add_el').click(() => {
-    addItem(container, tmpl);
-  })
+            <div>
+            <p style="font-size: x-large;">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non tenetur saepe consequatur officiis pariatur numquam, sint exercitationem enim minima, dolorum accusamus rem, quibusdam modi! Iusto, nostrum? Quisquam vitae veritatis doloremque praesentium fugit maiores harum quo reprehenderit architecto similique, quibusdam excepturi soluta, a necessitatibus quod facilis ipsum. Accusamus similique vel hic totam omnis esse qui harum nihil minima amet aliquid commodi ducimus nemo debitis aspernatur molestiae praesentium consectetur, impedit, sapiente nesciunt est ea dignissimos ut. Perferendis earum incidunt doloremque dolore, dolor voluptatem ipsa similique accusantium nisi amet, officiis provident, doloribus odit ducimus eius? Sequi iure ducimus, laudantium laborum quia minus.
+
+            <p>
+            </div>
+            <div>
+              <p style="font-size: x-large;">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non tenetur saepe consequatur officiis pariatur numquam, sint exercitationem enim minima, dolorum accusamus rem, quibusdam modi! Iusto, nostrum? Quisquam vitae veritatis doloremque praesentium fugit maiores harum quo reprehenderit architecto similique, quibusdam excepturi soluta, a necessitatibus quod facilis ipsum. Accusamus similique vel hic totam omnis esse qui harum nihil minima amet aliquid commodi ducimus nemo debitis aspernatur molestiae praesentium consectetur, impedit, sapiente nesciunt est ea dignissimos ut. Perferendis earum incidunt doloremque dolore, dolor voluptatem ipsa similique accusantium nisi amet, officiis provident, doloribus odit ducimus eius? Sequi iure ducimus, laudantium laborum quia minus.
+
+              <p>
+              </div>
+              <div>
+                <p style="font-size: x-large;">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non tenetur saepe consequatur officiis pariatur numquam, sint exercitationem enim minima, dolorum accusamus rem, quibusdam modi! Iusto, nostrum? Quisquam vitae veritatis doloremque praesentium fugit maiores harum quo reprehenderit architecto similique, quibusdam excepturi soluta, a necessitatibus quod facilis ipsum. Accusamus similique vel hic totam omnis esse qui harum nihil minima amet aliquid commodi ducimus nemo debitis aspernatur molestiae praesentium consectetur, impedit, sapiente nesciunt est ea dignissimos ut. Perferendis earum incidunt doloremque dolore, dolor voluptatem ipsa similique accusantium nisi amet, officiis provident, doloribus odit ducimus eius? Sequi iure ducimus, laudantium laborum quia minus.
   
-  container.on('click', '.del_el', (e) => {
-    var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
-    var saved_arch = JSON.parse(val.innerText);
-    console.log(saved_arch)
-    new Create_Architecture(-3, -5, saved_arch).build()
+                <p>
+                </div>
+                <div>
+                  <p style="font-size: x-large;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non tenetur saepe consequatur officiis pariatur numquam, sint exercitationem enim minima, dolorum accusamus rem, quibusdam modi! Iusto, nostrum? Quisquam vitae veritatis doloremque praesentium fugit maiores harum quo reprehenderit architecto similique, quibusdam excepturi soluta, a necessitatibus quod facilis ipsum. Accusamus similique vel hic totam omnis esse qui harum nihil minima amet aliquid commodi ducimus nemo debitis aspernatur molestiae praesentium consectetur, impedit, sapiente nesciunt est ea dignissimos ut. Perferendis earum incidunt doloremque dolore, dolor voluptatem ipsa similique accusantium nisi amet, officiis provident, doloribus odit ducimus eius? Sequi iure ducimus, laudantium laborum quia minus.
+    
+                  <p>
+                  </div>
+
+      </div>
+     
+    </div>
+    </div>
+    <div class="footer" >FOOTER</div>
 
 
-    // $(e.target).closest('.item').remove();
-  });
-});
 
-
-</script> 
-
+  </div>
+</body>
+<script></script>
 </html>
