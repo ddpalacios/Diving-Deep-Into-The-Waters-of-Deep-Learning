@@ -29,7 +29,7 @@
     position: relative;
     left: 5vh;
     width: 103vh;
-    height: 16vh;
+    height: 25vh;
 
 
   }
@@ -52,7 +52,7 @@
     top: 25vh;
     right: 5vh;
     width: 103vh;
-    height: 20vh;
+    height: 25vh;
   } 
 body{
   background-image: url('https://data.whicdn.com/images/262378523/original.gif');
@@ -60,16 +60,16 @@ body{
   .item5 {
     background-image: url('brain.jpg');
     position: relative;
-    top: 54vh;
+    top: 49vh;
     right: 5vh;
     width: 103vh;
-    height: 10vh;
+    height: 17vh;
   }
 
   .item6 {
     background-image: url('brain.jpg');
     position: relative;
-    top: 72vh;
+    top: 70vh;
     right: 15vh;
     width: 103vh;
 
@@ -81,6 +81,8 @@ body{
     position: relative;
     width: 20%;
     height: 35%;
+    right: 50vh;
+    bottom: 5vh;
   }
 
   /* .history_container {
@@ -241,6 +243,106 @@ bottom: 5px;
 }
 
 
+* {box-sizing: border-box}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 200vh;
+  position: relative;
+  left: 1vh;
+  top: 2vh;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 5vh;
+  right: 75vh;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
 
 
 
@@ -263,6 +365,37 @@ bottom: 5px;
       <h1 style="text-align: center;">Into The Waters Of</h1>
       <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
        
+<div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img  src="NN1.png" style="outline: 5px solid black; width:40vh; height: 25vh;">
+    <div class="text">Caption Text</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="NN2.png" style="outline: 5px solid black; width:40vh">
+    <div class="text">Caption Two</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="nn4.jpg" style="outline: 5px solid black; width:40vh">
+    <div class="text">Caption Three</div>
+  </div>
+  
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+  </div>
+  <br>
+  
+  <!-- <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+  </div> -->
         <!-- <img style="width: 100%; height: 55%;" src="https://wallpaperaccess.com/full/1593061.jpg"> -->
       </div>
 
@@ -296,7 +429,7 @@ bottom: 5px;
 
       <div class="container">
         <div class="middle">
-          <div style=" top: 10vh; height:27vh; outline: 5px solid black;" class="text">
+          <div style=" right: 40px; width: 100vh; top: 3vh; height:25vh; outline: 5px solid black;" class="text">
             <h1 style=" color: black;">Playground </h1>
           </div>
         </div>
@@ -307,7 +440,7 @@ bottom: 5px;
     <a href="Examples/index.html">
       <div class="container">
         <div class="middle">
-          <div style=" outline: 5px solid black;" class="text">
+          <div style="width: 100vh;height: 16vh; outline: 5px solid black;" class="text">
             <h1 style=" color: black;">Examples</h1>
           </div>
         </div>
@@ -318,7 +451,7 @@ bottom: 5px;
       <a href="Tutorial/index.html">
       <div class="container">
         <div class="middle">
-          <div style="top: 4.5vh;height: 19vh; outline: 5px solid black;" class="text">
+          <div style="width: 100vh; height: 13vh; outline: 5px solid black;" class="text">
             <h1 style=" color: black;">View History</h1>
           </div>
         </div>
@@ -331,5 +464,27 @@ bottom: 5px;
 
 
 </body>
+
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+   
+    slides[slideIndex-1].style.display = "block";  
+  }
+  </script>
 
 </html>
