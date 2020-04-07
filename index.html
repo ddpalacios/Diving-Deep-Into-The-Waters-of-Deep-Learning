@@ -1,271 +1,335 @@
 <html>
-  <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3-force.v2.min.js"></script>
-  <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
-  <script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
-  <script src="https://d3js.org/d3-timer.v1.min.js"></script>
-  <script src="https://d3js.org/d3-force.v2.min.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-  
-  <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
-  <script src="playground\simulation_design\main.js"></script>
-  <script src="playground\simulation_design\Simulation.js"></script>
-
-
-
-<title>Diving Deep Into The Waters of Deep Learning</title>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 5% 5% 5%;
+    grid-template-rows: 5% 5%;
+  }
+
+  .wrapper>div {
+    outline: 10px solid black;
+    padding-bottom: 45%;
+    background-color: rgba(25, 20, 95, 0.979);
+
+  }
+
+   .item2 {
+
+    position: relative;
+    left: 92vh;
+    width: 85vh;
+    height: 900%;
+    bottom: 1%;
+  }
+
+  .item1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    position: relative;
+    left: 5vh;
+    width: 103vh;
+    height: 16vh;
+
+
+  }
+
+  .item3 {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    position: relative;
+    top: 40vh;
+    width: 85vh;
+    height: 45vh;
+    left: 112vh;
+  }
+
+  .item4 {
+    background-image: url('brain.jpg');
+    grid-column-start: 2;
+    grid-column-end: 4;
+    position: relative;
+    top: 25vh;
+    right: 5vh;
+    width: 103vh;
+    height: 20vh;
+  } 
 body{
-  background-image: url("nn7.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 100%;
-
+  background-image: url('https://data.whicdn.com/images/262378523/original.gif');
 }
-
-
-div.text_history {
-    border: 1px solid gray;
-    padding: 8px;
-  }
-  
-  h1.header_text {
-    text-transform: uppercase;
-    color: #4CAF50;
+  .item5 {
+    background-image: url('brain.jpg');
     position: relative;
-    right: 200px;
+    top: 54vh;
+    right: 5vh;
+    width: 103vh;
+    height: 10vh;
   }
-  
-  p.body_text {
+
+  .item6 {
+    background-image: url('brain.jpg');
     position: relative;
-    right: 500px;
-    letter-spacing: 3px;
+    top: 72vh;
+    right: 15vh;
+    width: 103vh;
+
+    height: 13vh;
   }
 
 
- 
+  .container {
+    position: relative;
+    width: 20%;
+    height: 35%;
+  }
 
-@keyframes fadeInOut {
-  0% {
+  /* .history_container {
+    position: relative;
+    outline: 5px solid black;
+    height: 111%;
+    bottom: 4%;
+  } */
+
+  /* .image {
+    opacity: 1;
+    display: block;
+
+    height: 500%;
+    width: 500%;
+    position: relative;
+    bottom: 20px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  } */
+
+  .middle {
+    transition: .5s ease;
     opacity: 0;
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /* text-align: center; */
   }
 
-  45% {
+
+  /* .h_middle {
+    transition: .4s ease;
+    opacity: 1;
+    position: absolute;
+    top: 150%;
+    left: 250%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+ */
+
+
+  .container:hover .image {
+    opacity: 0.3;
+  }
+
+  .container:hover .middle {
     opacity: 1;
   }
 
-  100% {
-    opacity: 0%;
+  /* .history_container:hover .image {
+    opacity: 0.3;
   }
-}
 
-.discription_title {
+  .history_container:hover .middle {
+    opacity: 1;
+  } */
+
+
+
+  .text {
+    position: relative;
+    /* text-align: center; */
+    left: 51.3vh;
+    top: 3vh;
+    height: 16vh;
+    width: 102vh;
+    color: white;
+    font-size: 26px;
+    /* padding: 16px 32px; */
+  }
+
+  /* hover styles */
+.location-listing {
   position: relative;
-  top: 5rem;
-  left: 37%;
-  top: -5px;
-  opacity: 0;
-  font-size: 50px;
-
-  animation-name: fadeInOut;
-  animation: fadeInOut 1s infinite alternate;
-  animation-duration: 5s;
-  text-shadow: 1px 1px 1px rgb(214, 210, 219),
-             2px 2px 1px rgba(253, 253, 253, 0.63);
-  
-  color: rgb(255, 255, 255);
 }
 
+.location-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+
+.location-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s;
+  background: rgba(90,0,10,0.4);
+  color: white;
   
- 
-</style>
-</head>
-<body>
+  /* position the text in t’ middle*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-</div>
+.location-listing:hover .location-title {
+  opacity: 1;
+}
+
+.location-listing:hover .location-image img {
+  filter: blur(2px);
+}
 
 
-
-<div class="header_text">
-  <h1>Tinker With a <b >Neural Network</b> Right Here in Your Browser. <br>
-      Don't Worry, You Can't Break it. We Promise.</h1>
-</div>
- <div class='rectangle'></div>
-</head>
-<body>
-  
-
-  <link rel="stylesheet" href="HomePage\Styles\index.css">
-  <section class="animation-box">
-<div class="discription_title" style="font-size: 30px; top: 70px; left: 35%;">
- 
-  <h1>Start by <b >selecting</b> your options<br></h1>
-</section>
-</div>
-
-<div class="buttons">
-  <a href="playground\index.html" class="button">Enter Playground</a> 
-  <a href="Examples\index.html" class="button">View Examples</a> 
-  <a href="Tutorial\index.html" class="button">View History</a>
-</div>
-</body>
-
-<div class="login_button">
-  <div class="subtext" style=" position: relative; left: -30px" >
-  <h5 style="position: relative; left: 100px; top: -40px; text-shadow: 1px 1px 1px rgb(129, 86, 86),2px 2px 1px
-  rgb(8, 1, 19);
-  color: rgb(199, 199, 219);">Returning/New User?</h5>
-  <h5 style="position: relative; left: 58px; top: -70px; text-shadow: 1px 1px 1px rgb(129, 86, 86),2px 2px 1px
-  rgb(48, 30, 78);
-  color: rgb(255, 255, 255);" ><br>Login or create your account here!</h5>
-  </div>
-  <button style="position: relative; right: 10%; width: 300px;"onclick="document.getElementById('id01').style.display='block'" style="width:20%; margin-top: -10px;">Login</button>
-  
-  <div id="id01" class="modal">
-    
-    <form class="modal-content animate" action="/action_page.php" method="post">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="images\img_avatar.png" alt="Avatar" class="avatar">
-      </div>
-  
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-  
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-          
-        <button style="top: 5px;" type="submit">Login </button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-  
-      <div class="container" style="background-color:#f1f1f1">
-        <button style="position: relative; top: 5px;" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
-    </form>
-  </div>
-
-</div>
-<hr>
-<section class="animation-box">
-  <div style= "position: relative; left: 35%;"class="discription_title"> History Of Neural Networks</div>
-</section>
-<hr>
-<div class="main_description">
-<div class="text_description" style="position: relative; left: 33%;  width: 40%;">
-
-  
- 
-  
-  <div class="text_history" style="position: relative; top: 10px; right: 590px; font-size: 40px; width: 1900px; background-color: rgba(34, 48, 48, 0.315);">
-   
-    The idea of neural networks began unsurprisingly as a model of how neurons in the brain function, 
-    termed ‘connectionism’ and used connected circuits to simulate intelligent behaviour .In 1943, portrayed
-     with a simple electrical circuit by neurophysiologist Warren McCulloch and mathematician Walter Pitts. 
-     Donald Hebb took the idea further in his book, The Organization of Behaviour (1949), 
-    proposing that neural pathways strengthen over each successive use, especially between neurons 
-    that tend to fire at the same time thus beginning the long journey towards quantifying the complex processes of the brain.
-
-    <hr>
-    <h2>Perceptron</h2>
-    <img src="perceptron.png" style="position: relative; top: -50px; left: 35%;">
-   
-   <br> In machine learning, the perceptron is an algorithm for supervised
-     learning of binary classifiers. A binary classifier is a function
-      which can decide whether or not an input, represented by a vector 
-      of numbers, belongs to some specific class.[1] It is a type of linear classifier,
-     i.e. a classification algorithm that makes its predictions based on a linear predictor 
-     function combining a set of weights with the feature vector. 
-    <hr>
-    <h2>Adaline</h2>
-    <br>
-    <img src="adaline.png" style="position: relative; top: -50px; left: 35%; width: 600px;">
-    <br>ADALINE (Adaptive Linear Neuron or later Adaptive Linear Element) is an early single-layer artificial 
-    neural network and the name of the physical device that implemented this network.[1][2][3][4][5] 
-    The network uses memistors. It was developed by Professor Bernard Widrow and his graduate student 
-    <br><br>Ted Hoff at Stanford University in 1960. It is based on the McCulloch–Pitts neuron. It consists of a weight, 
-    a bias and a summation function. <br><br> The difference between Adaline and the standard (McCulloch–Pitts) perceptron 
-    is that in the learning phase, the weights are adjusted according to the weighted sum of the inputs (the net). 
-    In the standard perceptron, the net is passed to the activation (transfer) function and the function's output is 
-    used for adjusting the weights. 
-
-    <hr>
-
-    
-    <h2>Multi-Layer Perceptron</h2>
-    <img src="mlp.png" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-    <br>
-    A multilayer perceptron (MLP) is a class of feedforward artificial neural network (ANN).
-     The term MLP is used ambiguously, sometimes loosely to refer to any feedforward ANN, 
-     sometimes strictly to refer to networks composed of multiple layers of perceptrons 
-     (with threshold activation); Multilayer perceptrons are sometimes 
-     colloquially referred to as "vanilla" neural networks, especially when they have a single hidden layer.
-    <hr>
-    <h2>Deep Neural Network</h2>
-    <img src="deep-neural-network.jpg" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-
-    <br>
-    Deep learning (also known as deep structured learning or 
-    differential programming) is part of a broader family of machine 
-    learning methods based on artificial neural networks with representation learning. 
-    Learning can be supervised, semi-supervised or unsupervised.
-    <hr>
-    <h2>Evolution of Deep Neural Network</h2>
-    <img src="evolv.jpg" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-    <br>
-    Neuroevolution, or neuro-evolution, is a form of artificial intelligence that uses 
-    evolutionary algorithms to generate artificial neural networks (ANN), parameters, 
-    topology and rules. It is most commonly applied in artificial life, general game
-    playing and evolutionary robotics.
-  </p>
-  </div>
-  
- 
-</div>
-</div>
-<div style="position: relative; top: 500px;" >
-<hr >
-
-<div id="footer">
-    
-  <ul>
-    
-      <li><a href="about.html">About</a></li>
-      <li>○</li>
-      <li><a href="contact.html">Contact</a></li>
-      <li>○</li>
-      <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-      <li><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></li>
-  </ul>
-
-</div>
-<hr>
-</div>
-
-<script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
+/* for touch screen devices */
+@media (hover: none) { 
+  .location-title {
+    opacity: 1;
   }
-  </script>
+  .location-image img {
+    filter: blur(2px);
+  }
+}
 
+#footer{
+position: relative;
+bottom: 5px;
+}
+
+#footer ul{
+    
+    margin: 0px auto 0px auto;
+    text-align: center;
+}
+
+#footer li{
+    display: inline;
+    margin: 0px 5px;
+    color: rgb(75, 50, 50);
+}
+
+#footer a{
+    color: rgb(0, 0, 0);
+    bottom: -100px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#footer a:hover{
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
+</style>
+
+<head></head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="item1">1
+      <h2 style="text-align: center;">Diving Deep</h2>
+      <div style="height: 12vh; background-color: rgba(128, 128, 128, 0.74); text-align: center; font-size: 190%; outline: 5px solid black;">
+        <h4 style="position: relative; top: 2vh; " >Tinker With a <b >Neural Network</b> Right Here in Your Browser. <br>
+          Don't Worry, You Can't Break it. We Promise.</h4>
+      <!-- <img style="width: 100vh; height: 10vh;" src="https://cdn.wallpapersafari.com/96/92/7mznSF.jpg"> -->
+    </div>
+    </div>
+    <div class="item2">2
+      <h1 style="text-align: center;">Into The Waters Of</h1>
+      <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
+       
+        <!-- <img style="width: 100%; height: 55%;" src="https://wallpaperaccess.com/full/1593061.jpg"> -->
+      </div>
+
+    </div>
+    <div class="item3">3
+      <h1 style="text-align: center;">Deep Learning</h1>
+
+      <div style="text-align: center; font-size: 200%; outline: 5px solid black;">
+        <div style="height: 8vh; background-color: rgba(128, 128, 128, 0.712);">
+          <h2>SHARE</h2>
+          <div  id="footer" style="text-align: center; background-color: rgba(128, 128, 128, 0.486);height: 4.5vh; outline: 5px solid black; font-size: 3.5vh; position: relative; top: 1vh; left: .1vh;">
+            <div style="position: relative; top: .5vh;">
+            <ul>
+              <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+                <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw">Tweet</a></li>
+                <li>○</li>
+                <li><a href="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId">Facebook</a></li>
+                <li>○</li>
+                
+                <li><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        <!-- <img style="width: 100%; height: 85%;" src="https://data.whicdn.com/images/262378523/original.gif"> -->
+        
+      </div>
+    </div>
+    <div class="item4">4
+    <a href="playground/index.html">
+
+      <div class="container">
+        <div class="middle">
+          <div style=" top: 10vh; height:27vh; outline: 5px solid black;" class="text">
+            <h1 style=" color: black;">Playground </h1>
+          </div>
+        </div>
+      </div>
+    </a>
+</div>
+    <div class="item5">5
+    <a href="Examples/index.html">
+      <div class="container">
+        <div class="middle">
+          <div style=" outline: 5px solid black;" class="text">
+            <h1 style=" color: black;">Examples</h1>
+          </div>
+        </div>
+      </div>
+    </a>
+    </div> 
+     <div class="item6">6
+      <a href="Tutorial/index.html">
+      <div class="container">
+        <div class="middle">
+          <div style="top: 4.5vh;height: 19vh; outline: 5px solid black;" class="text">
+            <h1 style=" color: black;">View History</h1>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div> 
+
+
+  </div>
+
+
+</body>
 
 </html>

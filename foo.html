@@ -1,5 +1,6 @@
 <html>
 <style>
+
   .wrapper {
     display: grid;
     grid-template-columns: 5% 5% 5%;
@@ -53,11 +54,13 @@
     width: 103vh;
     height: 20vh;
   } 
-
+body{
+  background-image: url('https://data.whicdn.com/images/262378523/original.gif');
+}
   .item5 {
     background-image: url('brain.jpg');
     position: relative;
-    top: 53vh;
+    top: 54vh;
     right: 5vh;
     width: 103vh;
     height: 10vh;
@@ -143,14 +146,104 @@
 
   .text {
     position: relative;
-    left: 50vh;
-    top: 1vh;
-    height: 12vh;
-    width: 345%;
+    /* text-align: center; */
+    left: 51.3vh;
+    top: 3vh;
+    height: 16vh;
+    width: 102vh;
     color: white;
     font-size: 26px;
     /* padding: 16px 32px; */
   }
+
+  /* hover styles */
+.location-listing {
+  position: relative;
+}
+
+.location-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+
+.location-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s;
+  background: rgba(90,0,10,0.4);
+  color: white;
+  
+  /* position the text in t’ middle*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-listing:hover .location-title {
+  opacity: 1;
+}
+
+.location-listing:hover .location-image img {
+  filter: blur(2px);
+}
+
+
+/* for touch screen devices */
+@media (hover: none) { 
+  .location-title {
+    opacity: 1;
+  }
+  .location-image img {
+    filter: blur(2px);
+  }
+}
+
+#footer{
+position: relative;
+bottom: 5px;
+}
+
+#footer ul{
+    
+    margin: 0px auto 0px auto;
+    text-align: center;
+}
+
+#footer li{
+    display: inline;
+    margin: 0px 5px;
+    color: rgb(75, 50, 50);
+}
+
+#footer a{
+    color: rgb(0, 0, 0);
+    bottom: -100px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#footer a:hover{
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
 </style>
 
 <head></head>
@@ -160,14 +253,16 @@
   <div class="wrapper">
     <div class="item1">1
       <h2 style="text-align: center;">Diving Deep</h2>
-      <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
-      
+      <div style="height: 12vh; background-color: rgba(128, 128, 128, 0.74); text-align: center; font-size: 190%; outline: 5px solid black;">
+        <h4 style="position: relative; top: 2vh; " >Tinker With a <b >Neural Network</b> Right Here in Your Browser. <br>
+          Don't Worry, You Can't Break it. We Promise.</h4>
       <!-- <img style="width: 100vh; height: 10vh;" src="https://cdn.wallpapersafari.com/96/92/7mznSF.jpg"> -->
     </div>
     </div>
     <div class="item2">2
       <h1 style="text-align: center;">Into The Waters Of</h1>
       <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
+       
         <!-- <img style="width: 100%; height: 55%;" src="https://wallpaperaccess.com/full/1593061.jpg"> -->
       </div>
 
@@ -175,8 +270,25 @@
     <div class="item3">3
       <h1 style="text-align: center;">Deep Learning</h1>
 
-      <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
-        <!-- <img style="width: 100%; height: 95%;" src="https://images.unsplash.com/photo-1549074862-6173e20d02a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"> -->
+      <div style="text-align: center; font-size: 200%; outline: 5px solid black;">
+        <div style="height: 8vh; background-color: rgba(128, 128, 128, 0.712);">
+          <h2>SHARE</h2>
+          <div  id="footer" style="text-align: center; background-color: rgba(128, 128, 128, 0.486);height: 4.5vh; outline: 5px solid black; font-size: 3.5vh; position: relative; top: 1vh; left: .1vh;">
+            <div style="position: relative; top: .5vh;">
+            <ul>
+              <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+                <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw">Tweet</a></li>
+                <li>○</li>
+                <li><a href="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId">Facebook</a></li>
+                <li>○</li>
+                
+                <li><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        <!-- <img style="width: 100%; height: 85%;" src="https://data.whicdn.com/images/262378523/original.gif"> -->
+        
       </div>
     </div>
     <div class="item4">4
@@ -184,20 +296,18 @@
 
       <div class="container">
         <div class="middle">
-          <div style="text-align: center;top: 2vh; height: 14vh; outline: 5px solid black;" class="text">
+          <div style=" top: 10vh; height:27vh; outline: 5px solid black;" class="text">
             <h1 style=" color: black;">Playground </h1>
           </div>
         </div>
       </div>
-  </a>
-
-    </div>
+    </a>
+</div>
     <div class="item5">5
-
     <a href="Examples/index.html">
       <div class="container">
         <div class="middle">
-          <div style="text-align: center;position: relative; height: 10vh;width: 101vh; outline: 5px solid black;" class="text">
+          <div style=" outline: 5px solid black;" class="text">
             <h1 style=" color: black;">Examples</h1>
           </div>
         </div>
@@ -208,7 +318,7 @@
       <a href="Tutorial/index.html">
       <div class="container">
         <div class="middle">
-          <div style="text-align: center;position: relative; height: 5%;width: 270%; outline: 5px solid black;" class="text">
+          <div style="top: 4.5vh;height: 19vh; outline: 5px solid black;" class="text">
             <h1 style=" color: black;">View History</h1>
           </div>
         </div>
