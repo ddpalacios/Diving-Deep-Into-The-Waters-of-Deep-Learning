@@ -1,6 +1,5 @@
 <html>
 <style>
-  
   .wrapper {
     display: grid;
     grid-template-columns: 5% 5% 5%;
@@ -14,12 +13,12 @@
 
   }
 
-  .item2 {
+   .item2 {
 
     position: relative;
-    left: 650%;
-    width: 1140%;
-    height: 1010%;
+    left: 92vh;
+    width: 85vh;
+    height: 900%;
     bottom: 1%;
   }
 
@@ -27,9 +26,9 @@
     grid-column-start: 1;
     grid-column-end: 3;
     position: relative;
-    left: 5%;
-    width: 400%;
-    height: 850%;
+    left: 5vh;
+    width: 103vh;
+    height: 16vh;
 
 
   }
@@ -38,37 +37,40 @@
     grid-row-start: 2;
     grid-row-end: 4;
     position: relative;
-    top: 63%;
-    width: 920%;
-    height: 224%;
-    left: 1070%;
+    top: 40vh;
+    width: 85vh;
+    height: 45vh;
+    left: 112vh;
   }
 
   .item4 {
+    background-image: url('brain.jpg');
     grid-column-start: 2;
     grid-column-end: 4;
     position: relative;
-    top: 1200%;
-    right: 50%;
-    width: 525%;
-    height: 230%;
-  }
+    top: 25vh;
+    right: 5vh;
+    width: 103vh;
+    height: 20vh;
+  } 
 
   .item5 {
+    background-image: url('brain.jpg');
     position: relative;
-    top: 95%;
-    right: 100%;
-    width: 490%;
-    height: 195%;
+    top: 53vh;
+    right: 5vh;
+    width: 103vh;
+    height: 10vh;
   }
 
   .item6 {
+    background-image: url('brain.jpg');
     position: relative;
-    top: 95%;
-    left: 302%;
-    width: 550%;
+    top: 72vh;
+    right: 15vh;
+    width: 103vh;
 
-    height: 199%;
+    height: 13vh;
   }
 
 
@@ -78,14 +80,14 @@
     height: 35%;
   }
 
-  .history_container {
+  /* .history_container {
     position: relative;
     outline: 5px solid black;
     height: 111%;
     bottom: 4%;
-  }
+  } */
 
-  .image {
+  /* .image {
     opacity: 1;
     display: block;
 
@@ -95,22 +97,20 @@
     bottom: 20px;
     transition: .5s ease;
     backface-visibility: hidden;
-  }
+  } */
 
   .middle {
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top: 200%;
-    left: 250%;
 
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    text-align: center;
+    /* text-align: center; */
   }
 
 
-  .h_middle {
+  /* .h_middle {
     transition: .4s ease;
     opacity: 1;
     position: absolute;
@@ -120,7 +120,7 @@
     -ms-transform: translate(-50%, -50%);
     text-align: center;
   }
-
+ */
 
 
   .container:hover .image {
@@ -131,20 +131,25 @@
     opacity: 1;
   }
 
-  .history_container:hover .image {
+  /* .history_container:hover .image {
     opacity: 0.3;
   }
 
   .history_container:hover .middle {
     opacity: 1;
-  }
+  } */
 
 
 
   .text {
+    position: relative;
+    left: 50vh;
+    top: 1vh;
+    height: 12vh;
+    width: 345%;
     color: white;
     font-size: 26px;
-    padding: 16px 32px;
+    /* padding: 16px 32px; */
   }
 </style>
 
@@ -157,13 +162,13 @@
       <h2 style="text-align: center;">Diving Deep</h2>
       <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
       
-      <img style="width: 100%; height: 100%;" src="https://cdn.wallpapersafari.com/96/92/7mznSF.jpg">
+      <!-- <img style="width: 100vh; height: 10vh;" src="https://cdn.wallpapersafari.com/96/92/7mznSF.jpg"> -->
     </div>
     </div>
     <div class="item2">2
       <h1 style="text-align: center;">Into The Waters Of</h1>
       <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
-        <img style="width: 100%; height: 100%;" src="https://wallpaperaccess.com/full/1593061.jpg">
+        <!-- <img style="width: 100%; height: 55%;" src="https://wallpaperaccess.com/full/1593061.jpg"> -->
       </div>
 
     </div>
@@ -171,37 +176,45 @@
       <h1 style="text-align: center;">Deep Learning</h1>
 
       <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
-        <img style="width: 100%; height: 95%;" src="https://images.unsplash.com/photo-1549074862-6173e20d02a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+        <!-- <img style="width: 100%; height: 95%;" src="https://images.unsplash.com/photo-1549074862-6173e20d02a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"> -->
       </div>
     </div>
     <div class="item4">4
+    <a href="playground/index.html">
+
       <div class="container">
-        <img style="height: 694%;" src="deep_neural_net.png" alt="Avatar" class="image">
         <div class="middle">
-          <div class="text">
-            <h1 style="color: black;">Playground </h1>
+          <div style="text-align: center;top: 2vh; height: 14vh; outline: 5px solid black;" class="text">
+            <h1 style=" color: black;">Playground </h1>
           </div>
         </div>
       </div>
+  </a>
+
     </div>
     <div class="item5">5
+
+    <a href="Examples/index.html">
       <div class="container">
-        <img style="height:320%;" src="deep_neural_net.png" alt="Avatar" class="image">
         <div class="middle">
-          <div class="text">
-            <h1 style="text-align: center; color: black;">Examples </h1>
+          <div style="text-align: center;position: relative; height: 10vh;width: 101vh; outline: 5px solid black;" class="text">
+            <h1 style=" color: black;">Examples</h1>
           </div>
         </div>
       </div>
-    </div>
-    <div class="item6">6
-      
+    </a>
+    </div> 
+     <div class="item6">6
+      <a href="Tutorial/index.html">
       <div class="container">
-        <img  style="position: relative;bottom: 10%; width: 500%; height: 315%;" src="deep_neural_net.png" alt="Avatar"
-          class="image">
-        <div class="h_middle"><h1>View History</h1></div>
+        <div class="middle">
+          <div style="text-align: center;position: relative; height: 5%;width: 270%; outline: 5px solid black;" class="text">
+            <h1 style=" color: black;">View History</h1>
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
+  </div> 
 
 
   </div>
