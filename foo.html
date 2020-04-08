@@ -1,162 +1,81 @@
 <html>
+<title></title>
 <style>
-
-  .wrapper {
-    display: grid;
-    grid-template-columns: 5% 5% 5%;
-    grid-template-rows: 5% 5%;
-  }
-
-  .wrapper>div {
-    outline: 10px solid black;
-    padding-bottom: 45%;
-    background-color: rgba(25, 20, 95, 0.979);
-
-  }
-
-   .item2 {
-
-    position: relative;
-    left: 92vh;
-    width: 85vh;
-    height: 900%;
-    bottom: 1%;
-  }
-
-  .item1 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    position: relative;
-    left: 5vh;
-    width: 103vh;
-    height: 16vh;
-
-
-  }
-
-  .item3 {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    position: relative;
-    top: 40vh;
-    width: 85vh;
-    height: 45vh;
-    left: 112vh;
-  }
-
-  .item4 {
-    background-image: url('brain.jpg');
-    grid-column-start: 2;
-    grid-column-end: 4;
-    position: relative;
-    top: 25vh;
-    right: 5vh;
-    width: 103vh;
-    height: 20vh;
-  } 
-body{
-  background-image: url('https://data.whicdn.com/images/262378523/original.gif');
+    body {
+ overflow: hidden;
 }
-  .item5 {
-    background-image: url('brain.jpg');
-    position: relative;
-    top: 54vh;
-    right: 5vh;
-    width: 103vh;
-    height: 10vh;
-  }
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 1fr 30px;
+}
 
-  .item6 {
-    background-image: url('brain.jpg');
-    position: relative;
-    top: 72vh;
-    right: 15vh;
-    width: 103vh;
+.body {
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+ overflow: hidden;
+}
 
-    height: 13vh;
-  }
-
-
-  .container {
-    position: relative;
-    width: 20%;
-    height: 35%;
-  }
-
-  /* .history_container {
-    position: relative;
-    outline: 5px solid black;
-    height: 111%;
-    bottom: 4%;
-  } */
-
-  /* .image {
-    opacity: 1;
-    display: block;
-
-    height: 500%;
-    width: 500%;
-    position: relative;
-    bottom: 20px;
-    transition: .5s ease;
-    backface-visibility: hidden;
-  } */
-
-  .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    /* text-align: center; */
-  }
-
-
-  /* .h_middle {
-    transition: .4s ease;
-    opacity: 1;
-    position: absolute;
-    top: 150%;
-    left: 250%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  }
- */
-
-
-  .container:hover .image {
-    opacity: 0.3;
-  }
-
-  .container:hover .middle {
-    opacity: 1;
-  }
-
-  /* .history_container:hover .image {
-    opacity: 0.3;
-  }
-
-  .history_container:hover .middle {
-    opacity: 1;
-  } */
+.content {
+ overflow-y: scroll;
+ padding: 20px;
+ 
+}
 
 
 
-  .text {
-    position: relative;
-    /* text-align: center; */
-    left: 51.3vh;
-    top: 3vh;
-    height: 16vh;
-    width: 102vh;
-    color: white;
-    font-size: 26px;
-    /* padding: 16px 32px; */
-  }
 
-  /* hover styles */
+.text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 90%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+body {
+  padding: 20px;
+  font-family: sans-serif;
+  background: #f2f2f2;
+}
+img {
+  width: 80vh; /* need to overwrite inline dimensions */
+  height: 70vh;
+  overflow:hidden
+}
+h2 {
+  margin-bottom: .5em;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
+  grid-gap: 1em;
+
+}
+
+
+
+/* hover styles */
 .location-listing {
   position: relative;
 }
@@ -230,7 +149,7 @@ bottom: 5px;
 }
 
 #footer a{
-    color: rgb(0, 0, 0);
+    color: rgb(44, 39, 75);
     bottom: -100px;
     text-decoration: none;
     font-weight: bolder;
@@ -241,95 +160,216 @@ bottom: 5px;
 }
 
 
+* {
+  box-sizing: border-box;
+}
 
+form {
+  position: relative;
+  bottom: 7vh;
+  height: 95vh;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+form input {
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+form button {
+  background: lightgrey;
+  padding: 0.7em;
+  border: 0;
+}
+form button:hover {
+  background: gold;
+}
+
+label {
+  text-align: right;
+  display: block;
+  padding: 0.5em 1.5em 0.5em 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+}
+input:focus {
+  outline: 3px solid gold;
+}
+
+@media (min-width: 400px) {
+  form {
+    overflow: hidden;
+  }
+
+  label {
+    float: left;
+    width: 200px;
+  }
+
+  input {
+    float: left;
+    width: calc(100% - 200px);
+  }
+
+  button {
+    float: right;
+    width: calc(100% - 200px);
+  }
+}
+
+button{
+  width: 10vh;
+}
 
 
 </style>
-
 <head></head>
-
 <body>
-
-  <div class="wrapper">
-    <div class="item1">1
-      <h2 style="text-align: center;">Diving Deep</h2>
-      <div style="height: 12vh; background-color: rgba(128, 128, 128, 0.74); text-align: center; font-size: 190%; outline: 5px solid black;">
-        <h4 style="position: relative; top: 2vh; " >Tinker With a <b >Neural Network</b> Right Here in Your Browser. <br>
-          Don't Worry, You Can't Break it. We Promise.</h4>
-      <!-- <img style="width: 100vh; height: 10vh;" src="https://cdn.wallpapersafari.com/96/92/7mznSF.jpg"> -->
-    </div>
-    </div>
-    <div class="item2">2
-      <h1 style="text-align: center;">Into The Waters Of</h1>
-      <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
+<div class="container">
+    <div class="head" style=" background-color: rgba(44, 134, 134, 0.26);width: 0vh; height: 9vh;">
+        <div style="outline: 5px solid black; background-color: rgba(56, 56, 71, 0.329); height: 3vh;width: 202vh; position: relative;left: 1vh; top: 2vh;">
+            
+          <h2 style="position: relative; left: 5vh;bottom: .2vh;">PLAYGROUND</h2>
+        </div>
        
-        <!-- <img style="width: 100%; height: 55%;" src="https://wallpaperaccess.com/full/1593061.jpg"> -->
-      </div>
-
+    
     </div>
-    <div class="item3">3
-      <h1 style="text-align: center;">Deep Learning</h1>
+    <div class="body">
 
-      <div style="text-align: center; font-size: 200%; outline: 5px solid black;">
-        <div style="height: 8vh; background-color: rgba(128, 128, 128, 0.712);">
-          <h2>SHARE</h2>
-          <div  id="footer" style="text-align: center; background-color: rgba(128, 128, 128, 0.486);height: 4.5vh; outline: 5px solid black; font-size: 3.5vh; position: relative; top: 1vh; left: .1vh;">
-            <div style="position: relative; top: .5vh;">
-            <ul>
-              <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-                <li><a href="https://twitter.com/share?ref_src=twsrc%5Etfw">Tweet</a></li>
-                <li>○</li>
-                <li><a href="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId">Facebook</a></li>
-                <li>○</li>
-                
-                <li><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.google.com&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></li>
-            </ul>
-          </div>
-          </div>
-        </div>
-        <!-- <img style="width: 100%; height: 85%;" src="https://data.whicdn.com/images/262378523/original.gif"> -->
+      
         
-      </div>
-    </div>
-    <div class="item4">4
-    <a href="playground/index.html">
+         <div class="content" style="outline: 7px solid black; height: 87vh; width: 203vh; position: relative; top: 5vh; left: 1vh; background-color: rgba(68, 68, 73, 0.473);">
+          <div class="sidebar" style="outline: 6px solid black; background-color: rgba(112, 117, 179, 0.151);width: 50vh; height: 100.2vh; position: relative; bottom: 1vh;">
+            <div style="outline: 5px solid black; background-color: rgba(80, 80, 92, 0.205); height: 8vh; position: relative; bottom: 3.2vh;"> 
+              <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
+                </div>
+          
+            
+                <form style="outline: solid black;" class="form1" action="">
+                  <label for="firstName" class="first-name">First Name</label>
+                  <input id="firstName" type="text">
+          
+                  <label for="lastName" class="last-name">Last Name</label>
+                  <input id="lastName" type="text">
+          
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+          
+                  <label for="email">Email</label>
+                  <input id="email" type="email">
+          
+          
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+          
+                  <label for="email">Email</label>
+                  <input id="email" type="email">
+          
+                  <label for="email">Email</label>
+                  <input id="email" type="email">
+          
+          
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
 
-      <div class="container">
-        <div class="middle">
-          <div style=" top: 10vh; height:27vh; outline: 5px solid black;" class="text">
-            <h1 style=" color: black;">Playground </h1>
-          </div>
-        </div>
-      </div>
-    </a>
-</div>
-    <div class="item5">5
-    <a href="Examples/index.html">
-      <div class="container">
-        <div class="middle">
-          <div style=" outline: 5px solid black;" class="text">
-            <h1 style=" color: black;">Examples</h1>
-          </div>
-        </div>
-      </div>
-    </a>
-    </div> 
-     <div class="item6">6
-      <a href="Tutorial/index.html">
-      <div class="container">
-        <div class="middle">
-          <div style="top: 4.5vh;height: 19vh; outline: 5px solid black;" class="text">
-            <h1 style=" color: black;">View History</h1>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div> 
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
 
-
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+          
+          
+                 
+          
+          
+          
+              </form>
+          
+                  </div>
+            <div style="position: relative;top: 1vh; width: 10vh; height: 10vh; outline: solid black;" >
+            <button onclick="test()">Build</button>
+            </div>
+            <div style="position: relative;left: 16vh;bottom: 70.5px; width: 10vh; height: 10vh; outline: solid black;" >
+              <button onclick="test()">Train</button>
+            
+            </div>
+            
+            <div style="position: relative; left: 35vh;bottom: 19vh; width: 10vh; height: 10vh; outline: solid black;" >
+              <button onclick="test()">Reset</button>
+            
+            </div>
+            
+         
+    
+     </div>
+  
+       
+      </div>
   </div>
-
+</div>
 
 </body>
+<script>
 
+class SinglyNode{
+  constructor(data){
+    this.data = data;
+    this.next = null
+  }
+
+}
+class SinglyLinkedList{
+
+  constructor(){
+    this.tail = null;
+    this.head = null
+  }
+  append(data){
+    var new_node = new SinglyNode(data);
+    if (this.head){
+      this.head.next = new_node
+      this.head = new_node
+    }else{
+      this.tail = new_node
+      this.head = new_node
+    }
+  }
+
+
+
+}
+
+
+
+
+
+
+function test(){
+  alert("test")
+}
+
+
+</script>
 </html>

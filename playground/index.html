@@ -1,4 +1,395 @@
 <html>
+<title></title>
+<style>
+    body {
+ overflow: hidden;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px 1fr 30px;
+}
+
+.body {
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+ overflow: hidden;
+}
+
+.content {
+ overflow-y: scroll;
+ padding: 20px;
+ 
+}
+
+
+
+
+.text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 90%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+body {
+  padding: 20px;
+  font-family: sans-serif;
+  background: #f2f2f2;
+}
+img {
+  width: 80vh; /* need to overwrite inline dimensions */
+  height: 70vh;
+  overflow:hidden
+}
+h2 {
+  margin-bottom: .5em;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
+  grid-gap: 1em;
+
+}
+
+
+
+/* hover styles */
+.location-listing {
+  position: relative;
+}
+
+.location-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+
+.location-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s;
+  background: rgba(90,0,10,0.4);
+  color: white;
+  
+  /* position the text in t’ middle*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-listing:hover .location-title {
+  opacity: 1;
+}
+
+.location-listing:hover .location-image img {
+  filter: blur(2px);
+}
+
+
+/* for touch screen devices */
+@media (hover: none) { 
+  .location-title {
+    opacity: 1;
+  }
+  .location-image img {
+    filter: blur(2px);
+  }
+}
+
+#footer{
+position: relative;
+bottom: 5px;
+}
+
+#footer ul{
+    
+    margin: 0px auto 0px auto;
+    text-align: center;
+}
+
+#footer li{
+    display: inline;
+    margin: 0px 5px;
+    color: rgb(75, 50, 50);
+}
+
+#footer a{
+    color: rgb(44, 39, 75);
+    bottom: -100px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+#footer a:hover{
+    color: rgb(255, 255, 255);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+form {
+  position: relative;
+  bottom: 7vh;
+  height: 95vh;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+form input {
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+form button {
+  background: lightgrey;
+  padding: 0.7em;
+  border: 0;
+}
+form button:hover {
+  background: gold;
+}
+
+label {
+  text-align: right;
+  display: block;
+  padding: 0.5em 1.5em 0.5em 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+}
+input:focus {
+  outline: 3px solid gold;
+}
+
+@media (min-width: 400px) {
+  form {
+    overflow: hidden;
+  }
+
+  label {
+    float: left;
+    width: 200px;
+  }
+
+  input {
+    float: left;
+    width: calc(100% - 200px);
+  }
+
+  button {
+    float: right;
+    width: calc(100% - 200px);
+  }
+}
+
+button{
+  width: 10vh;
+}
+
+
+</style>
+<head></head>
+<body>
+<div class="container">
+    <div class="head" style=" background-color: rgba(44, 134, 134, 0.26);width: 0vh; height: 9vh;">
+        <div style="outline: 5px solid black; background-color: rgba(56, 56, 71, 0.329); height: 3vh;width: 202vh; position: relative;left: 1vh; bottom: 3vh;">
+            
+          <h2 style="position: relative; left: 5vh;bottom: .2vh;">PLAYGROUND</h2>
+        </div>
+       
+    
+    </div>
+    <div class="body">
+
+      
+        
+         <div class="content" style="outline: 7px solid black; height: 90vh; width: 203vh; position: relative; top: 1vh; left: 1vh; background-color: rgba(68, 68, 73, 0.473);">
+          <div class="sidebar" style="outline: 6px solid black; background-color: rgba(112, 117, 179, 0.151);width: 50vh; height: 100.2vh; position: relative; bottom: 1vh;">
+            <div style="outline: 5px solid black; background-color: rgba(80, 80, 92, 0.205); height: 8vh; position: relative; bottom: 3.2vh;"> 
+              <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
+                </div>
+          
+            
+                <form style="outline: solid black;" class="form1" action="">
+                  <label for="firstName" class="first-name">First Name</label>
+                  <input id="firstName" type="text">
+          
+                  <label for="lastName" class="last-name">Last Name</label>
+                  <input id="lastName" type="text">
+          
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+          
+                  <label for="email">Email</label>
+                  <input id="email" type="email">
+          
+          
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+          
+                  <label for="email">Email</label>
+                  <input id="email" type="email">
+          
+                  <label for="email">Email</label>
+                  <input id="email" type="email">
+          
+          
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+
+                  <label for="job">Job</label>
+                  <input id="job" type="text">
+          
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+
+                  <label for="age">Age</label>
+                  <input id="age" type="text">
+          
+          
+                 
+          
+          
+          
+              </form>
+          
+                  </div>
+            <div style="position: relative;top: 1vh; width: 10vh; height: 10vh; outline: solid black;" >
+            <button onclick="test()">Build</button>
+            </div>
+            <div style="position: relative;left: 16vh;bottom: 70.5px; width: 10vh; height: 10vh; outline: solid black;" >
+              <button onclick="test()">Train</button>
+            
+            </div>
+            
+            <div style="position: relative; left: 35vh;bottom: 19vh; width: 10vh; height: 10vh; outline: solid black;" >
+              <button onclick="test()">Reset</button>
+            
+            </div>
+            
+         
+    
+     </div>
+  
+       
+      </div>
+  </div>
+</div>
+
+</body>
+<script>
+
+class SinglyNode{
+  constructor(data){
+    this.data = data;
+    this.next = null
+  }
+
+}
+class SinglyLinkedList{
+
+  constructor(){
+    this.tail = null;
+    this.head = null
+  }
+  append(data){
+    var new_node = new SinglyNode(data);
+    if (this.head){
+      this.head.next = new_node
+      this.head = new_node
+    }else{
+      this.tail = new_node
+      this.head = new_node
+    }
+  }
+
+
+
+}
+
+
+
+
+
+
+function test(){
+  alert("test")
+}
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
   <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://d3js.org/d3-force.v2.min.js"></script>
@@ -116,7 +507,7 @@ body{
   </div>
 
 </template>
-</div>
+</div> -->
 
 <!-- <script>
 var json3 = [{
@@ -172,7 +563,7 @@ $(() => {
 
 </script> -->
 
-<script>
+<!-- <script>
    class Create_Architecture {
     constructor(x_pos, y_pos, json, width = 800, height = 400, nodeSize = 15) {
 
@@ -385,4 +776,4 @@ $(() => {
 
 
 </html>
- 
+  -->
