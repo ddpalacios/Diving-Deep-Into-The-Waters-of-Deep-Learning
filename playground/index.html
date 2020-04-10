@@ -1,5 +1,19 @@
 <html>
 <title></title>
+
+<script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-force.v2.min.js"></script>
+  <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+  <script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
+  <script src="https://d3js.org/d3-timer.v1.min.js"></script>
+  <script src="https://d3js.org/d3-force.v2.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  
+  <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
+
+
+
 <style>
     body {
  overflow: hidden;
@@ -231,13 +245,28 @@ button{
   width: 10vh;
 }
 
+text {
+  pointer-events: none;
+}
+
+.node:hover {
+  stroke: #999;
+  stroke-opacity: .6;
+  stroke-width: 4px;
+}
+
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
 
 </style>
 <head></head>
 <body>
-<div class="container">
-    <div class="head" style=" background-color: rgba(44, 134, 134, 0.26);width: 0vh; height: 9vh;">
-        <div style="outline: 5px solid black; background-color: rgba(56, 56, 71, 0.329); height: 3vh;width: 202vh; position: relative;left: 1vh; bottom: 3vh;">
+<!-- <div class="container">
+    <div class="head" style=" background-color: rgba(44, 134, 134, 0);width: 0vh; height: 9vh;">
+        <div style="outline: 5px solid black; background-color: rgba(56, 56, 71, 0); height: 3vh;width: 202vh; position: relative;left: 1vh; bottom: 3vh;">
             
           <h2 style="position: relative; left: 5vh;bottom: .2vh;">PLAYGROUND</h2>
         </div>
@@ -248,8 +277,8 @@ button{
 
       
         
-         <div class="content" style="outline: 7px solid black; height: 90vh; width: 203vh; position: relative; top: 1vh; left: 1vh; background-color: rgba(68, 68, 73, 0.473);">
-          <div class="sidebar" style="outline: 6px solid black; background-color: rgba(112, 117, 179, 0.151);width: 50vh; height: 100.2vh; position: relative; bottom: 1vh;">
+         <div class="content" style="outline: 7px solid black; height: 90vh; width: 203vh; position: relative; top: 1vh; left: 1vh; background-color: rgba(213, 213, 230, 0);">
+          <div class="sidebar" style="outline: 6px solid black; background-color: rgba(3, 6, 66, 0.151);width: 50vh; height: 100.2vh; position: relative; bottom: 1vh;">
             <div style="outline: 5px solid black; background-color: rgba(80, 80, 92, 0.205); height: 8vh; position: relative; bottom: 3.2vh;"> 
               <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
                 </div>
@@ -328,8 +357,10 @@ button{
        
       </div>
   </div>
-</div>
+</div> -->
+<div style="outline: 5px solid black; height: 10vh;" class="container">
 
+</div>
 </body>
 <script>
 
@@ -372,6 +403,152 @@ function test(){
 
 
 </script>
+
+<script>
+  class Create_Architecture {
+   constructor(x_pos, y_pos, json, width = 800, height = 400, nodeSize = 15) {
+
+     this.x_pos = x_pos
+     this.y_pos = y_pos
+     this.nodes = json[0].nodes;
+     this.width = width
+     this.height = height
+     this.nodeSize = nodeSize
+     this.color = d3.scale.category20()
+     this.svg = d3.select("body").append("svg")
+       .attr("width", window.innerWidth)
+       .attr("height",window.innerHeight);
+
+
+   }
+   _get_network_size() {
+     // get network size
+     var netsize = {};
+     this.nodes.forEach(function (d) {
+       if (d.layer in netsize) {
+         netsize[d.layer] += 1;
+       } else {
+         netsize[d.layer] = 1;
+       }
+       d["lidx"] = netsize[d.layer];
+     });
+
+     // calc distances between nodes
+     var largestLayerSize = Math.max.apply(
+       null, Object.keys(netsize).map(function (i) { return netsize[i]; }));
+
+     var xdist = this.width / Object.keys(netsize).length,
+       ydist = this.height / largestLayerSize,
+       x_pos = this.x_pos,
+       y_pos = this.y_pos;
+     // create node locations
+     this.nodes.map(function (d) {
+
+       d["x"] = (d.layer - x_pos) * xdist;
+       d["y"] = (d.lidx - y_pos) * ydist;
+     });
+
+
+   }
+
+   _autogenerate_links() {
+     // autogenerate links
+     var netsize = {}
+     var links = [];
+     var nodes = this.nodes;
+
+     this.nodes.map(function (d, i) {
+       for (var n in nodes) {
+         if (d.layer + 1 == nodes[n].layer) {
+           links.push({ "source": parseInt(i), "target": parseInt(n), "value": 1 })
+         }
+
+       }
+
+     }).filter(function (d) { return typeof d !== "undefined"; });
+
+
+     this._draw_links(links)
+   }
+
+   _draw_links(links) {
+     // draw links
+     var nodes = this.nodes
+     var link = this.svg.selectAll(".link")
+       .data(links)
+       .enter().append("line")
+       .attr("class", "link")
+       .attr("x1", function (d) { return nodes[d.source].x; })
+       .attr("y1", function (d) { return nodes[d.source].y; })
+       .attr("x2", function (d) { return nodes[d.target].x; })
+       .attr("y2", function (d) { return nodes[d.target].y; })
+       .style("stroke-width", function (d) { return Math.sqrt(d.value); });
+
+
+
+   }
+   _draw_nodes() {
+     var color = this.color
+     // draw nodes
+     var node = this.svg.selectAll(".node")
+       .data(this.nodes)
+       .enter().append("g")
+       .attr("transform", function (d) {
+         return "translate(" + d.x + "," + d.y + ")";
+       }
+       );
+
+     var circle = node.append("circle")
+       .attr("class", "node")
+       .attr("r", this.nodeSize)
+       .style("fill", function (d) { return color(d.layer); });
+
+
+     node.append("text")
+       .attr("dx", "-.35em")
+       .attr("dy", ".35em")
+       .text(function (d) { return d.label; });
+   }
+   build() {
+
+     this._get_network_size()
+     this._autogenerate_links()
+     this._draw_nodes()
+
+
+
+   }}
+
+
+   var json3 = [{
+    "nodes": [
+      { "label": "i0", "layer": 0 },
+      { "label": "i0", "layer": 0 },
+      { "label": "i0", "layer": 0 },
+      { "label": "i1", "layer": 1 },
+      { "label": "i2", "layer": 1 },
+      { "label": "h0", "layer": 2 },
+
+      { "label": "h1", "layer": 2 },
+      { "label": "h2", "layer": 2 },
+     
+      { "label": "o0", "layer": 3 },
+      { "label": "o0", "layer": 3 }
+     
+    ]
+  }]
+
+
+new Create_Architecture(x_pos = -3.0, y_pos = -1.0, json3).build()
+
+
+
+
+</script>
+
+
+
+
 </html>
 
 
