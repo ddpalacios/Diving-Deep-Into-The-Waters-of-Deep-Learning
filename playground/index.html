@@ -242,9 +242,9 @@ svg{
   outline:5px solid black;
   position: relative;
   width: 145vh;
-  left: 50vh;
+  left: .5vh;
   height: 83vh;
-  bottom: 260vh;
+  bottom: 0vh;
 }
 
 </style>
@@ -256,7 +256,7 @@ svg{
 </div>
   <div class="sidebar" style="outline: 6px solid black; background-color: rgba(3, 6, 66, 0.151);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
       <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
-        </div>  
+        </div> 
          <form style="background-color: aliceblue; height: 74vh; width: 50vh; position: relative; bottom: 75vh; outline: solid black;" class="form1" action="">
                  <div style="position: relative; top: 10vh; right: 5vh; ">
                   <label for="firstName" class="first-name"># Of Inputs:</label>
@@ -277,11 +277,11 @@ svg{
                   <button onclick="test()">Train</button>
                   <button onclick="test()">Reset</button>
                 </div>
-      </form> 
-
-
-  
+      </form>
           </div>
+
+
+<div class="body_model" style="position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;"></div>
 
 
 
@@ -400,7 +400,7 @@ new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build()
      this.height = height
      this.nodeSize = nodeSize
      this.color = d3.scale.category20()
-     this.svg = d3.select("body").append("svg")
+     this.svg = d3.select(".body_model").append("svg")
        .attr("width", window.innerWidth)
        .attr("height",window.innerHeight);
 
