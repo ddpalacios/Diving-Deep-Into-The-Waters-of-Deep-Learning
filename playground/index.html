@@ -9,6 +9,9 @@
   <script src="https://d3js.org/d3-timer.v1.min.js"></script>
   <script src="https://d3js.org/d3-force.v2.min.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
   <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
 
@@ -178,32 +181,7 @@ bottom: 5px;
   box-sizing: border-box;
 }
 
-/* form {
-  position: relative;
-  bottom: 7vh;
-  height: 95vh;
-  padding: 1em;
-  background: #f9f9f9;
-  border: 1px solid #c1c1c1;
-  margin-top: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1em;
-}
-form input {
-  margin-bottom: 1rem;
-  background: #fff;
-  border: 1px solid #9c9c9c;
-}
-form button {
-  background: lightgrey;
-  padding: 0.7em;
-  border: 0;
-}
-form button:hover {
-  background: gold;
-} */
+
 
 label {
   text-align: right;
@@ -492,6 +470,12 @@ new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build()
        .style("stroke-width", function (d) { return Math.sqrt(d.value); });
 
 
+
+   }
+
+
+   clear_contents(){
+     this.svg.selectAll("*").remove()
 
    }
    _draw_nodes() {
