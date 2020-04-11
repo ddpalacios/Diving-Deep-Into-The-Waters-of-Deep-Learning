@@ -264,166 +264,44 @@ svg{
   outline:5px solid black;
   position: relative;
   width: 145vh;
-  left: 53vh;
+  left: 50vh;
   height: 83vh;
-  bottom: 160vh;
+  bottom: 260vh;
 }
 
 </style>
 <head></head>
 <body>
-<!-- <div class="container">
-    <div class="head" style=" background-color: rgba(44, 134, 134, 0);width: 0vh; height: 9vh;">
-        <div style="outline: 5px solid black; background-color: rgba(56, 56, 71, 0); height: 3vh;width: 202vh; position: relative;left: 1vh; bottom: 3vh;">
-            
-          <h2 style="position: relative; left: 5vh;bottom: .2vh;">PLAYGROUND</h2>
-        </div>
-       
-    
-    </div>
-    <div class="body">
 
-      
-        
-         <div class="content" style="outline: 7px solid black; height: 90vh; width: 203vh; position: relative; top: 1vh; left: 1vh; background-color: rgba(213, 213, 230, 0);">
-          <div class="sidebar" style="outline: 6px solid black; background-color: rgba(3, 6, 66, 0.151);width: 50vh; height: 100.2vh; position: relative; bottom: 1vh;">
-            <div style="outline: 5px solid black; background-color: rgba(80, 80, 92, 0.205); height: 8vh; position: relative; bottom: 3.2vh;"> 
-              <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
-                </div>
-          
-            
-                <form style="outline: solid black;" class="form1" action="">
-                  <label for="firstName" class="first-name">First Name</label>
-                  <input id="firstName" type="text">
-          
-                  <label for="lastName" class="last-name">Last Name</label>
-                  <input id="lastName" type="text">
-          
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-          
-                  <label for="email">Email</label>
-                  <input id="email" type="email">
-          
-          
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-          
-                  <label for="email">Email</label>
-                  <input id="email" type="email">
-          
-                  <label for="email">Email</label>
-                  <input id="email" type="email">
-          
-          
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-          
-          
-                 
-          
-          
-          
-              </form>
-          
-                  </div>
-            <div style="position: relative;top: 1vh; width: 10vh; height: 10vh; outline: solid black;" >
-            <button onclick="test()">Build</button>
-            </div>
-            <div style="position: relative;left: 16vh;bottom: 70.5px; width: 10vh; height: 10vh; outline: solid black;" >
-              <button onclick="test()">Train</button>
-            
-            </div>
-            
-            <div style="position: relative; left: 35vh;bottom: 19vh; width: 10vh; height: 10vh; outline: solid black;" >
-              <button onclick="test()">Reset</button>
-            
-            </div>
-            
-         
-    
-     </div>
-  
-       
-      </div>
-  </div>
-</div> -->
-<div style="outline: 5px solid black; height: 10vh;" class="container">
+<div style="outline: 5px solid black;width: 198vh; height: 10vh;" class="container">
 
 </div>
-
-
-<!-- <div class="content" style="outline: 7px solid black; height: 90vh; width: 203vh; position: relative; top: 1vh; left: 1vh; background-color: rgba(213, 213, 230, 0);"> -->
   <div class="sidebar" style="outline: 6px solid black; background-color: rgba(3, 6, 66, 0.151);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
-    <!-- <div style="outline: 5px solid black; background-color: rgba(80, 80, 92, 0.205); height: 8vh; position: relative; bottom: 3.2vh;">  -->
       <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
-        </div>
-  
-    
+        </div>  
          <form style="background-color: aliceblue; height: 74vh; width: 50vh; position: relative; bottom: 75vh; outline: solid black;" class="form1" action="">
-          <label for="firstName" class="first-name">First Name</label>
-                  <input id="firstName" type="text">
-          
-                  <label for="lastName" class="last-name">Last Name</label>
-                  <input id="lastName" type="text">
-          
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
+                 <div style="position: relative; top: 10vh; right: 5vh; ">
+                  <label for="firstName" class="first-name"># Of Inputs:</label>
+                  <input id="input_units" type="text">
+                  <label for="lastName" class="last-name">Hidden Layers:</label>
+                  <input id="hidden_units1" type="text">          
+                  <label for="job">Hidden Units:</label>
+                  <input id="hidden_units2" type="text">         
+                  <label for="age">Output Units:</label>
+                  <input id="output_units" type="text">          
+                  <label for="email">Activation:</label>
+                  <input id="email" type="email">          
+                  <label for="job">Learning Rate:</label>
+                  <input id="job" type="text">         
+                  <label for="age">Iterations</label>
                   <input id="age" type="text">
-          
-                  <label for="email">Email</label>
-                  <input id="email" type="email">
-          
-          
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-          
-                  <label for="email">Email</label>
-                  <input id="email" type="email">
-          
-                  <label for="email">Email</label>
-                  <input id="email" type="email">
-          
-          
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-
-                  <label for="job">Job</label>
-                  <input id="job" type="text">
-          
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-
-                  <label for="age">Age</label>
-                  <input id="age" type="text">
-          
+                  <button type="button" onclick="Render()">Build</button>
+                  <button onclick="test()">Train</button>
+                  <button onclick="test()">Reset</button>
+                </div>
       </form> 
+
+
   
           </div>
 
@@ -461,13 +339,73 @@ class SinglyLinkedList{
 
 }
 
+function extract_values(id){
+
+var value = document.getElementById(id).value
+return value
+
+
+}
 
 
 
+function Render(){
 
 
-function test(){
-  alert("test")
+  
+var json =  [{
+
+"nodes":[], 
+
+
+
+}]
+var hashmap = new Map()
+var NODE_LIST = json[0].nodes
+var values = []
+
+
+in_value = extract_values("input_units")
+h1_value = extract_values("hidden_units1")
+h2_value = extract_values("hidden_units2")
+out_value = extract_values("output_units")
+console.log(in_value, h1_value, h2_value, out_value)
+for (var i=0; i< in_value; i++){
+NODE_LIST.push({"label": i, "layer": 0})
+}
+for (var i=0; i< h1_value; i++){
+NODE_LIST.push({"label": i, "layer": 1})
+}
+for (var i=0; i< h2_value; i++){
+NODE_LIST.push({"label": i, "layer": 2})
+}
+
+for (var i=0; i< out_value; i++){
+NODE_LIST.push({"label": i, "layer": 3})
+}
+
+$(() => {
+const tmpl = $('#item_template').html()
+const container = $('#app');
+console.log("clicked")
+$('#renders_button').click(() => {
+  addItem(container, tmpl, json);
+})
+
+container.on('click', '.del_el', (e) => {
+  var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
+  var saved_arch = JSON.parse(val.innerText);
+  console.log(saved_arch)
+  new Create_Architecture(-1.5, -.1, saved_arch).build()
+
+
+  // $(e.target).closest('.item').remove();
+});
+});
+
+
+console.log(json)
+new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build()
 }
 
 
@@ -476,7 +414,7 @@ function test(){
 <script>
   class Create_Architecture {
    constructor(x_pos, y_pos, json, width = 800, height = 400, nodeSize = 15) {
-
+    // alert('testing')
      this.x_pos = x_pos
      this.y_pos = y_pos
      this.nodes = json[0].nodes;
@@ -589,29 +527,32 @@ function test(){
    }}
 
 
-   var json3 = [{
-    "nodes": [
-      { "label": "i0", "layer": 0 },
-      { "label": "i0", "layer": 0 },
-      { "label": "i0", "layer": 0 },
-      { "label": "i1", "layer": 1 },
-      { "label": "i2", "layer": 1 },
-      { "label": "h0", "layer": 2 },
 
-      { "label": "h1", "layer": 2 },
-      { "label": "h2", "layer": 2 },
+// function Render(){
+
+//    var json3 = [{
+//     "nodes": [
+//       { "label": "i0", "layer": 0 },
+//       { "label": "i0", "layer": 0 },
+//       { "label": "i0", "layer": 0 },
+//       { "label": "i1", "layer": 1 },
+//       { "label": "i2", "layer": 1 },
+//       { "label": "h0", "layer": 2 },
+
+//       { "label": "h1", "layer": 2 },
+//       { "label": "h2", "layer": 2 },
      
-      { "label": "o0", "layer": 3 },
-      { "label": "o0", "layer": 3 }
+//       { "label": "o0", "layer": 3 },
+//       { "label": "o0", "layer": 3 }
      
-    ]
-  }]
+//     ]
+//   }]
+
+// console.log(json3)
+// new Create_Architecture(x_pos = -1.5, y_pos = .1, json3).build()
 
 
-new Create_Architecture(x_pos = -1.5, y_pos = .1, json3).build()
-
-
-
+// }
 
 </script>
 
