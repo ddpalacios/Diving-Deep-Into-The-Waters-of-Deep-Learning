@@ -255,7 +255,7 @@ body{
 <body>
 
 <div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;" class="container">
-<h1 style="position: relative; left: 1vh; bottom: 2vh;" >Welcome to The Playground</h1>
+<h1 style="position: relative; left: 1vh; bottom: 2vh; " >Welcome to The Playground</h1>
 <a href="../index.html"> <h3 style="position: relative; left:1vh;">Return to Homepage</h3> </a>
 </div>
   <div class="sidebar" style="outline: 6px solid black; background-color: rgb(84, 86, 131);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
@@ -291,36 +291,18 @@ body{
 
 
 </body>
+
+
 <script>
 
-class SinglyNode{
-  constructor(data){
-    this.data = data;
-    this.next = null
-  }
-
-}
-class SinglyLinkedList{
-
-  constructor(){
-    this.tail = null;
-    this.head = null
-  }
-  append(data){
-    var new_node = new SinglyNode(data);
-    if (this.head){
-      this.head.next = new_node
-      this.head = new_node
-    }else{
-      this.tail = new_node
-      this.head = new_node
-    }
-  }
 
 
 
-}
+</script>
 
+
+
+<script>
 function extract_values(id){
 
 var value = document.getElementById(id).value
@@ -328,9 +310,6 @@ return value
 
 
 }
-
-
-
 function Render(){
 
 
@@ -386,10 +365,59 @@ container.on('click', '.del_el', (e) => {
 
 
 console.log(json)
-new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build()
+
+if ($(".body_model").find("svg").length > 0){
+  $("svg").remove()
+  in_value = extract_values("input_units")
+h1_value = extract_values("hidden_units1")
+h2_value = extract_values("hidden_units2")
+out_value = extract_values("output_units")
+console.log(in_value, h1_value, h2_value, out_value)
+for (var i=0; i< in_value; i++){
+NODE_LIST.push({"label": i, "layer": 0})
+}
+for (var i=0; i< h1_value; i++){
+NODE_LIST.push({"label": i, "layer": 1})
+}
+for (var i=0; i< h2_value; i++){
+NODE_LIST.push({"label": i, "layer": 2})
 }
 
+for (var i=0; i< out_value; i++){
+NODE_LIST.push({"label": i, "layer": 3})
+}
 
+$(() => {
+const tmpl = $('#item_template').html()
+const container = $('#app');
+console.log("clicked")
+$('#renders_button').click(() => {
+  addItem(container, tmpl, json);
+})
+
+container.on('click', '.del_el', (e) => {
+  var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
+  var saved_arch = JSON.parse(val.innerText);
+  console.log(saved_arch)
+  new Create_Architecture(-1.5, -.1, saved_arch).build()
+
+
+});
+});
+
+
+  new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build() 
+
+  
+
+
+}
+else{
+  new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build() 
+
+  }
+
+}
 </script>
 
 <script>
