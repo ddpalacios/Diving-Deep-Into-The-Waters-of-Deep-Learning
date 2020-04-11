@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  
+<script src="//unpkg.com/brain.js"></script>
   <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
 
 
@@ -269,16 +269,16 @@ body{
                   <input id="hidden_units1" type="text">          
                   <label for="job">Hidden Units:</label>
                   <input id="hidden_units2" type="text">         
-                  <label for="age">Output Units:</label>
+                  <label >Output Units:</label>
                   <input id="output_units" type="text">          
-                  <label for="email">Activation:</label>
-                  <input id="email" type="email">          
-                  <label for="job">Learning Rate:</label>
-                  <input id="job" type="text">         
-                  <label for="age">Iterations</label>
-                  <input id="age" type="text">
+                  <label >Activation:</label>
+                  <input id="activation" type="email">          
+                  <label >Learning Rate:</label>
+                  <input id="learning_rate" type="text">         
+                  <label >Iterations</label>
+                  <input id="iterations" type="text">
                   <button type="button" onclick="Render()">Build</button>
-                  <button onclick="test()">Train</button>
+                  <button type="button" onclick="Train()">Train</button>
                   <button onclick="test()">Reset</button>
                 </div>
       </form>
@@ -286,10 +286,6 @@ body{
 
 
 <div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;"></div>
-
-
-
-
 </body>
 
 
@@ -310,6 +306,33 @@ return value
 
 
 }
+function Train(){
+
+// provide optional config object (or undefined). Defaults shown.
+const config = {
+  binaryThresh: 0.5,
+  hiddenLayers: [3], // array of ints for the sizes of the hidden layers in the network
+  activation: 'sigmoid', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+  leakyReluAlpha: 0.01, // supported for activation type 'leaky-relu'
+}
+
+// create a simple feed forward neural network with backpropagation
+const net = new brain.NeuralNetwork(config)
+
+net.train([
+  { input: [0, 0], output: [0] },
+  { input: [0, 1], output: [1] },
+  { input: [1, 0], output: [1] },
+  { input: [1, 1], output: [0] },
+])
+
+const output = net.run([1, 0]) // [0.987]
+console.log(output)
+
+}
+
+
+
 function Render(){
 
 
