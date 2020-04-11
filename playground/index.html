@@ -235,7 +235,7 @@ text {
 
 
 .link {
-  stroke: #999;
+  stroke: rgb(0, 0, 0);
   stroke-opacity: .6;
 }
 svg{
@@ -246,15 +246,19 @@ svg{
   height: 83vh;
   bottom: 0vh;
 }
+body{
+  background-image: url('https://data.whicdn.com/images/262378523/original.gif');
+}
 
 </style>
 <head></head>
 <body>
 
-<div style="outline: 5px solid black;width: 198vh; height: 10vh;" class="container">
-
+<div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;" class="container">
+<h1 style="position: relative; left: 1vh; bottom: 2vh;" >Welcome to The Playground</h1>
+<a href="../index.html"> <h3 style="position: relative; left:1vh;">Return to Homepage</h3> </a>
 </div>
-  <div class="sidebar" style="outline: 6px solid black; background-color: rgba(3, 6, 66, 0.151);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
+  <div class="sidebar" style="outline: 6px solid black; background-color: rgb(84, 86, 131);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
       <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
         </div> 
          <form style="background-color: aliceblue; height: 74vh; width: 50vh; position: relative; bottom: 75vh; outline: solid black;" class="form1" action="">
@@ -281,7 +285,7 @@ svg{
           </div>
 
 
-<div class="body_model" style="position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;"></div>
+<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;"></div>
 
 
 
@@ -377,7 +381,6 @@ container.on('click', '.del_el', (e) => {
   new Create_Architecture(-1.5, -.1, saved_arch).build()
 
 
-  // $(e.target).closest('.item').remove();
 });
 });
 
