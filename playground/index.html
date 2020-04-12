@@ -262,21 +262,26 @@ body{
       <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
         </div> 
          <form style="background-color: aliceblue; height: 74vh; width: 50vh; position: relative; bottom: 75vh; outline: solid black;" class="form1" action="">
+
+          <select id="XOR" style="position: relative; top: 5vh; left:30vh">
+            
+            <option value="xor">XOR DATASET</option>
+          </select>
                  <div style="position: relative; top: 10vh; right: 5vh; ">
                   <label for="firstName" class="first-name"># Of Inputs:</label>
-                  <input id="input_units" type="text">
+                  <input id="input_units" type="text" value="10">
                   <label for="lastName" class="last-name">Hidden Layers:</label>
-                  <input id="hidden_units1" type="text">          
+                  <input id="hidden_units1" type="text" value="10" >          
                   <label for="job">Hidden Units:</label>
-                  <input id="hidden_units2" type="text">         
+                  <input id="hidden_units2" type="text" value="10">         
                   <label >Output Units:</label>
-                  <input id="output_units" type="text">          
+                  <input id="output_units" type="text" value="10">          
                   <label >Activation:</label>
-                  <input id="activation" >          
+                  <input id="activation"value="sigmoid" >          
                   <label >Learning Rate:</label>
-                  <input id="learning_rate" type="text">         
+                  <input id="learning_rate" type="text" value=".01">         
                   <label >Iterations</label>
-                  <input id="iterations" type="text">
+                  <input id="iterations" type="text" value="1000">
                   <button type="button" onclick="Render()">Build</button>
                   <button type="button" onclick="Train()">Train</button>
                   <button onclick="test()">Reset</button>
@@ -313,7 +318,7 @@ const config = {
   binaryThresh: 0.5,
   hiddenLayers: [3], // array of ints for the sizes of the hidden layers in the network
   activation: 'sigmoid', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-  leakyReluAlpha: 0.01, // supported for activation type 'leaky-relu'
+  relu: 0.01, // supported for activation type 'leaky-relu'
 }
 
 // create a simple feed forward neural network with backpropagation
@@ -436,7 +441,7 @@ container.on('click', '.del_el', (e) => {
 
 }
 else{
-  new Create_Architecture(x_pos = -1.5, y_pos = -1, json).build() 
+  new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
 
   }
 
