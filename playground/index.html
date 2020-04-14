@@ -238,9 +238,9 @@ text {
 svg{
   position: relative;
   width: 145vh;
-  right: 25vh;
   height: 83vh;
-  bottom: 97vh;
+  left: 25vh;
+  bottom: 85vh;
 }
 body{
   background-image: url('https://data.whicdn.com/images/262378523/original.gif');
@@ -291,7 +291,6 @@ body{
 
 
 <div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;">
-
 <div style="background-color: #999; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" ><H1>Training:</H1></div>
 <div style="position: relative; top: 3vh; height: 32vh;width: 100%; outline:5px solid black;"><h1>hello</h1></div>
 
@@ -478,7 +477,7 @@ if ($(".body_model").find("svg").length > 0){
 
 <script>
   class Create_Architecture {
-   constructor(x_pos, y_pos, json, width = 800, height = 400, nodeSize = 15) {
+   constructor(x_pos, y_pos, json, width = 300, height = 300, nodeSize = 15) {
     // alert('testing')
      this.x_pos = x_pos
      this.y_pos = y_pos
