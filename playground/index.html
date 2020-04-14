@@ -41,9 +41,6 @@
  
 }
 
-
-
-
 .text {
   color: white;
   font-size: 16px;
@@ -241,9 +238,9 @@ text {
 svg{
   position: relative;
   width: 145vh;
-  left: .5vh;
+  right: 25vh;
   height: 83vh;
-  bottom: 0vh;
+  bottom: 97vh;
 }
 body{
   background-image: url('https://data.whicdn.com/images/262378523/original.gif');
@@ -272,7 +269,7 @@ body{
           </select>
                  <div style="position: relative; top: 3vh; right: 5vh; ">
                   <label for="firstName" class="first-name"># Of Inputs:</label>
-                  <input id="input_units" type="text" value="10">
+                  <input id="input_units" type="text" value="2">
                   <label for="lastName" class="last-name">Hidden Layers:</label>
                   <input id="hidden_units1" type="text" value="10" >          
                   <label for="job">Hidden Units:</label>
@@ -293,16 +290,19 @@ body{
           </div>
 
 
-<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;"></div>
+<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;">
+
+<div style="background-color: #999; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" ><H1>Training:</H1></div>
+<div style="position: relative; top: 3vh; height: 32vh;width: 100%; outline:5px solid black;"><h1>hello</h1></div>
+
+</div>
+
+
+
 </body>
 
 
-<script>
-
-
-
-
-</script>
+<script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js" ></script>
 
 
 
@@ -315,6 +315,14 @@ return value
 
 }
 function Train(){
+  // var training_header = document.createElement('training_header')
+  // training_header.setAttribute("id", 'training_header')
+  // document.body.appendChild(training_header)
+
+
+  // var elem = document.createElement("H3")
+  // var text_node = document.createTextNode("Training...")
+
 
 // provide optional config object (or undefined). Defaults shown.
 const config = {
@@ -326,6 +334,27 @@ const config = {
 
 // create a simple feed forward neural network with backpropagation
 const net = new brain.NeuralNetwork(config)
+
+
+
+// Requiring fs module in which 
+// readFile function is defined. 
+const fs = require('fs') 
+  
+// Reading data in utf-8 format 
+// which is a type of character set. 
+// Instead of 'utf-8' it can be  
+// other character set also like 'ascii' 
+fs.readFile('xor.txt', 'utf-8', (err, data) => { 
+    if (err) throw err; 
+  
+    // Converting Raw Buffer to text 
+    // data using tostring function. 
+    console.log(data); 
+}) 
+
+
+
 
 net.train([
   { input: [0, 0], output: [0] },
@@ -345,110 +374,106 @@ function Render(){
 
 
   
-var json =  [{
+    var json =  [{
 
-"nodes":[], 
-
-
-
-}]
-var hashmap = new Map()
-var NODE_LIST = json[0].nodes
-var values = []
+    "nodes":[], 
 
 
-in_value = extract_values("input_units")
-h1_value = extract_values("hidden_units1")
-h2_value = extract_values("hidden_units2")
-out_value = extract_values("output_units")
-console.log(in_value, h1_value, h2_value, out_value)
-for (var i=0; i< in_value; i++){
-NODE_LIST.push({"label": i, "layer": 0})
-}
-for (var i=0; i< h1_value; i++){
-NODE_LIST.push({"label": i, "layer": 1})
-}
-for (var i=0; i< h2_value; i++){
-NODE_LIST.push({"label": i, "layer": 2})
-}
 
-for (var i=0; i< out_value; i++){
-NODE_LIST.push({"label": i, "layer": 3})
-}
-
-$(() => {
-const tmpl = $('#item_template').html()
-const container = $('#app');
-console.log("clicked")
-$('#renders_button').click(() => {
-  addItem(container, tmpl, json);
-})
-
-container.on('click', '.del_el', (e) => {
-  var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
-  var saved_arch = JSON.parse(val.innerText);
-  console.log(saved_arch)
-  new Create_Architecture(-1.5, -3, saved_arch).build()
+    }]
+    var hashmap = new Map()
+    var NODE_LIST = json[0].nodes
+    var values = []
 
 
-});
-});
+    in_value = extract_values("input_units")
+    h1_value = extract_values("hidden_units1")
+    h2_value = extract_values("hidden_units2")
+    out_value = extract_values("output_units")
+    console.log(in_value, h1_value, h2_value, out_value)
+    for (var i=0; i< in_value; i++){
+    NODE_LIST.push({"label": i, "layer": 0})
+    }
+    for (var i=0; i< h1_value; i++){
+    NODE_LIST.push({"label": i, "layer": 1})
+    }
+    for (var i=0; i< h2_value; i++){
+    NODE_LIST.push({"label": i, "layer": 2})
+    }
+
+    for (var i=0; i< out_value; i++){
+    NODE_LIST.push({"label": i, "layer": 3})
+    }
+
+    $(() => {
+    const tmpl = $('#item_template').html()
+    const container = $('#app');
+    console.log("clicked")
+    $('#renders_button').click(() => {
+      addItem(container, tmpl, json);
+    })
+
+    container.on('click', '.del_el', (e) => {
+      var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
+      var saved_arch = JSON.parse(val.innerText);
+      new Create_Architecture(-1.5, -3, saved_arch).build()
 
 
-console.log(json)
+    });
+    });
 
 if ($(".body_model").find("svg").length > 0){
-  $("svg").remove()
-  in_value = extract_values("input_units")
-h1_value = extract_values("hidden_units1")
-h2_value = extract_values("hidden_units2")
-out_value = extract_values("output_units")
-console.log(in_value, h1_value, h2_value, out_value)
-for (var i=0; i< in_value; i++){
-NODE_LIST.push({"label": i, "layer": 0})
-}
-for (var i=0; i< h1_value; i++){
-NODE_LIST.push({"label": i, "layer": 1})
-}
-for (var i=0; i< h2_value; i++){
-NODE_LIST.push({"label": i, "layer": 2})
-}
+      $("svg").remove()
+      in_value = extract_values("input_units")
+    h1_value = extract_values("hidden_units1")
+    h2_value = extract_values("hidden_units2")
+    out_value = extract_values("output_units")
+    console.log(in_value, h1_value, h2_value, out_value)
+    for (var i=0; i< in_value; i++){
+    NODE_LIST.push({"label": i, "layer": 0})
+    }
+    for (var i=0; i< h1_value; i++){
+    NODE_LIST.push({"label": i, "layer": 1})
+    }
+    for (var i=0; i< h2_value; i++){
+    NODE_LIST.push({"label": i, "layer": 2})
+    }
 
-for (var i=0; i< out_value; i++){
-NODE_LIST.push({"label": i, "layer": 3})
-}
+    for (var i=0; i< out_value; i++){
+    NODE_LIST.push({"label": i, "layer": 3})
+    }
 
-$(() => {
-const tmpl = $('#item_template').html()
-const container = $('#app');
-console.log("clicked")
-$('#renders_button').click(() => {
-  addItem(container, tmpl, json);
-})
+    $(() => {
+    const tmpl = $('#item_template').html()
+    const container = $('#app');
+    console.log("clicked")
+    $('#renders_button').click(() => {
+      addItem(container, tmpl, json);
+    })
 
-container.on('click', '.del_el', (e) => {
-  var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
-  var saved_arch = JSON.parse(val.innerText);
-  console.log(saved_arch)
-  new Create_Architecture(-1.5, -.1, saved_arch).build()
-
-
-});
-});
+    container.on('click', '.del_el', (e) => {
+      var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
+      var saved_arch = JSON.parse(val.innerText);
+      console.log(saved_arch)
+      new Create_Architecture(-1.5, -.1, saved_arch).build()
 
 
-  new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
+    });
+    });
 
-  
+
+      new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
+
+      
 
 
-}
-else{
-  new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
+    }
+    else{
+      new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
 
-  }
+      }
 
-}
+    }
 </script>
 
 <script>
@@ -571,34 +596,6 @@ else{
 
 
    }}
-
-
-
-// function Render(){
-
-//    var json3 = [{
-//     "nodes": [
-//       { "label": "i0", "layer": 0 },
-//       { "label": "i0", "layer": 0 },
-//       { "label": "i0", "layer": 0 },
-//       { "label": "i1", "layer": 1 },
-//       { "label": "i2", "layer": 1 },
-//       { "label": "h0", "layer": 2 },
-
-//       { "label": "h1", "layer": 2 },
-//       { "label": "h2", "layer": 2 },
-     
-//       { "label": "o0", "layer": 3 },
-//       { "label": "o0", "layer": 3 }
-     
-//     ]
-//   }]
-
-// console.log(json3)
-// new Create_Architecture(x_pos = -1.5, y_pos = .1, json3).build()
-
-
-// }
 
 </script>
 
