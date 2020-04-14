@@ -237,10 +237,11 @@ text {
 }
 svg{
   position: relative;
-  width: 145vh;
-  height: 83vh;
-  left: 25vh;
-  bottom: 90vh;
+  width: 95vh;
+  outline: solid black;
+  height: 50vh;
+  left: 1vh;
+  bottom: 80vh;
 }
 body{
   background-image: url('https://data.whicdn.com/images/262378523/original.gif');
@@ -270,12 +271,21 @@ body{
                  <div style="position: relative; top: 3vh; right: 5vh; ">
                   <label for="firstName" class="first-name"># Of Inputs:</label>
                   <input id="input_units" type="text" value="2">
-                  <label for="lastName" class="last-name">Hidden Layers:</label>
-                  <input id="hidden_units1" type="text" value="10" >          
+
+                  <label for="firstName" class="first-name"># Hidden Layers:</label>
+                  <input id="hidden_amount" type="text" value="2">
+
+
+                  <label for="lastName" class="last-name">Hidden Layer Units:</label>
+                  <input id="hidden_units1" type="text" value="10" >
+                  
+                  <label for="lastName" class="last-name">Hidden Activation:</label>
+                  <input id="hidden_activation" type="text" value="relu" >       
+
                   <label for="job">Hidden Units:</label>
                   <input id="hidden_units2" type="text" value="10">         
                   <label >Output Units:</label>
-                  <input id="output_units" type="text" value="10">          
+                  <input id="output_units" type="text" value="2">          
                   <label >Activation:</label>
                   <input id="activation"value="sigmoid" >          
                   <label >Learning Rate:</label>
@@ -292,7 +302,7 @@ body{
 
 <div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;">
 <div style="background-color: #999; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" ><H1>Training:</H1></div>
-<div style="position: relative; top: 3vh; height: 32vh;width: 100%; outline:5px solid black;"><h1>hello</h1></div>
+<div style= " background-color: #999; position: relative; top: 3vh; height: 32vh;width: 100%; outline:5px solid black;"><h1>hello</h1></div>
 
 </div>
 
@@ -324,33 +334,19 @@ function Train(){
 
 
 // provide optional config object (or undefined). Defaults shown.
+var hidden_activation= extract_values('hidden_activation')
 const config = {
   binaryThresh: 0.5,
-  hiddenLayers: [3], // array of ints for the sizes of the hidden layers in the network
-  activation: 'sigmoid', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-  relu: 0.01, // supported for activation type 'leaky-relu'
+  hiddenLayers: [extract_values("hidden_units1"),extract_values("hidden_units2")], // array of ints for the sizes of the hidden layers in the network
+  activation: extract_values('activation'), // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+  hidden_activation: extract_values("learning_rate"), // supported for activation type 'leaky-relu'
 }
 
 // create a simple feed forward neural network with backpropagation
 const net = new brain.NeuralNetwork(config)
 
+console.log(hidden_activation, extract_values("hidden_units1"),extract_values("hidden_units2"))
 
-
-// Requiring fs module in which 
-// readFile function is defined. 
-const fs = require('fs') 
-  
-// Reading data in utf-8 format 
-// which is a type of character set. 
-// Instead of 'utf-8' it can be  
-// other character set also like 'ascii' 
-fs.readFile('xor.txt', 'utf-8', (err, data) => { 
-    if (err) throw err; 
-  
-    // Converting Raw Buffer to text 
-    // data using tostring function. 
-    console.log(data); 
-}) 
 
 
 
@@ -368,107 +364,177 @@ console.log(output)
 }
 
 
+function create_node(node_list, layer_num, label="node"){
 
-function Render(){
+  node_list.push({"label": label, "layer": layer_num})
+
+}
+
+function create_model(in_value, h1_value, h2_value, out_value, hidden_amount){
+  var json =  [{
+    "nodes":[], 
+
+    }]
+    var NODE_LIST = json[0].nodes
+
+    for (var i=0; i< in_value; i++){
+      create_node(NODE_LIST, layer=0, label="in")
+    }
+
+  for (var i=1; i  <= hidden_amount; i++){
+    create_node(NODE_LIST,layer=parseInt(i), label="hidden")
+
+    if (parseInt(i) == 1){
+       for (var j=1; j  < 10; j++){
+
+         create_node(NODE_LIST,layer=1, label="hidden")
+       }
+    }
+
+
+    if (parseInt(i) == 2){
+       for (var j=1; j  < 12; j++){
+
+         create_node(NODE_LIST,layer=2, label="hidden")
+       }
+    }
+
+    if (parseInt(i) == 3){
+       for (var j=1; j  < 23; j++){
+
+         create_node(NODE_LIST,layer=3, label="hidden")
+       }
+    }
+
+    if (parseInt(i) == 4){
+       for (var j=1; j  < 14; j++){
+
+         create_node(NODE_LIST,layer=4, label="hidden")
+       }
+    }
+
+    if (parseInt(i) == 5){
+       for (var j=1; j  < 15; j++){
+
+         create_node(NODE_LIST,layer=5, label="hidden")
+       }
+    }
+
+
+    // for (var j=1; j  < h1_value; j++){
+
+
+    // create_node(NODE_LIST,layer=parseInt(i), label="hidden")
+
+    // }
+
+    }
+
+   
+
+    
+
+
+  for (var i=0; i< out_value; i++){
+      
+      var res = parseInt(hidden_amount) +1
+      console.log("out", res)
+      create_node(NODE_LIST, layer=res, label="out")
+    }
 
 
   
-    var json =  [{
-
-    "nodes":[], 
 
 
-
-    }]
-    var hashmap = new Map()
-    var NODE_LIST = json[0].nodes
-    var values = []
+    return json
+}
 
 
-    in_value = extract_values("input_units")
-    h1_value = extract_values("hidden_units1")
-    h2_value = extract_values("hidden_units2")
-    out_value = extract_values("output_units")
-    console.log(in_value, h1_value, h2_value, out_value)
-    for (var i=0; i< in_value; i++){
-    NODE_LIST.push({"label": i, "layer": 0})
-    }
-    for (var i=0; i< h1_value; i++){
-    NODE_LIST.push({"label": i, "layer": 1})
-    }
-    for (var i=0; i< h2_value; i++){
-    NODE_LIST.push({"label": i, "layer": 2})
-    }
-
-    for (var i=0; i< out_value; i++){
-    NODE_LIST.push({"label": i, "layer": 3})
-    }
-
-    $(() => {
-    const tmpl = $('#item_template').html()
-    const container = $('#app');
-    console.log("clicked")
-    $('#renders_button').click(() => {
-      addItem(container, tmpl, json);
-    })
-
-    container.on('click', '.del_el', (e) => {
-      var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
-      var saved_arch = JSON.parse(val.innerText);
-      new Create_Architecture(-1.5, -3, saved_arch).build()
 
 
-    });
-    });
+function Render(){
+  var hidden_amount = extract_values("hidden_amount")
+  var in_value = extract_values("input_units")
+  var h1_value = extract_values("hidden_units1")
+  var h2_value = extract_values("hidden_units2")
+  var out_value = extract_values("output_units")
+  
+    // var hidden_amount = extract_values("hidden_amount")
+    // in_value = extract_values("input_units")
+    // h1_value = extract_values("hidden_units1")
+    // h2_value = extract_values("hidden_units2")
+    // out_value = extract_values("output_units")
+    // console.log(in_value, h1_value, h2_value, out_value)
 
+
+    // for (var i=0; i< in_value; i++){
+    //   create_node(NODE_LIST, layer=0, label=i)
+    //   }
+
+    // for (var i=0; i  < hidden_amount; i++){
+    //   create_node(NODE_LIST,layer=i+1, label=i)
+
+    // }
+
+    // for (var i=0; i< out_value; i++){
+    //   create_node(NODE_LIST, layer=hidden_amount+1, label=i)
+    // }
+
+  //   for (var i=0; i< in_value; i++){
+  //     create_node(NODE_LIST, layer=0, label="in")
+  //   }
+
+  // for (var i=0; i  < hidden_amount; i++){
+  //   console.log("hidden", i+1)
+  //   //   create_node(NODE_LIST,layer=i+1, label="hidden")
+
+  //   }
+
+    // for (var i=0; i< out_value; i++){
+    //   // var res = hidden_amount+1
+    //   // console.log("out", res)
+    //   // create_node(NODE_LIST, layer=hidden_amount+1, label="out")
+    // }
+
+  
 if ($(".body_model").find("svg").length > 0){
-      $("svg").remove()
-      in_value = extract_values("input_units")
-    h1_value = extract_values("hidden_units1")
-    h2_value = extract_values("hidden_units2")
-    out_value = extract_values("output_units")
-    console.log(in_value, h1_value, h2_value, out_value)
-    for (var i=0; i< in_value; i++){
-    NODE_LIST.push({"label": i, "layer": 0})
-    }
-    for (var i=0; i< h1_value; i++){
-    NODE_LIST.push({"label": i, "layer": 1})
-    }
-    for (var i=0; i< h2_value; i++){
-    NODE_LIST.push({"label": i, "layer": 2})
-    }
+    
+    
+    $("svg").remove()
+    
+    
+    var json = create_model(in_value, h1_value, h2_value, out_value, hidden_amount)
+    console.log(json)
+   
+    // console.log(in_value, h1_value, h2_value, out_value)
+    // for (var i=0; i< in_value; i++){
+    // NODE_LIST.push({"label": i, "layer": 0})
+    // }
+    // for (var i=0; i< h1_value; i++){
+    // NODE_LIST.push({"label": i, "layer": 1})
+    // }
+    // for (var i=0; i< h2_value; i++){
+    // NODE_LIST.push({"label": i, "layer": 2})
+    // }
 
-    for (var i=0; i< out_value; i++){
-    NODE_LIST.push({"label": i, "layer": 3})
-    }
+    // for (var i=0; i< out_value; i++){
+    // NODE_LIST.push({"label": i, "layer": 3})
+    // }
 
-    $(() => {
-    const tmpl = $('#item_template').html()
-    const container = $('#app');
-    console.log("clicked")
-    $('#renders_button').click(() => {
-      addItem(container, tmpl, json);
-    })
-
-    container.on('click', '.del_el', (e) => {
-      var val = document.getElementsByClassName('item')[0].getElementsByTagName('p')[0]
-      var saved_arch = JSON.parse(val.innerText);
-      console.log(saved_arch)
-      new Create_Architecture(-1.5, -.1, saved_arch).build()
-
-
-    });
-    });
-
-
-      new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
+  
+new Create_Architecture(x_pos = -1.5, y_pos = .1, json).build() 
 
       
 
 
     }
     else{
-      new Create_Architecture(x_pos = -1.5, y_pos = -3, json).build() 
+
+      var json = create_model(in_value, h1_value, h2_value, out_value, hidden_amount)
+      console.log(json)
+
+      new Create_Architecture(x_pos = -1.5, y_pos = .1, json).build() 
+
 
       }
 
