@@ -336,7 +336,11 @@ body{
 function extract_values(id){
 
 var value = document.getElementById(id).value
-return value
+
+
+
+var res = parseInt(value)
+return res
 
 
 }
@@ -528,32 +532,65 @@ for (var i=0; i< in_value; i++){
 
 
 function Train(){
-  // var training_header = document.createElement('training_header')
-  // training_header.setAttribute("id", 'training_header')
-  // document.body.appendChild(training_header)
-
-
-  // var elem = document.createElement("H3")
-  // var text_node = document.createTextNode("Training...")
-
-
-// provide optional config object (or undefined). Defaults shown.
+  var hidden_amount = extract_values("hidden_amount")
+  var h1_value = extract_values("hidden_units1")
+  var h2_value = extract_values("hidden_units2")
+  var h3_value = extract_values("hidden_units3")
+  var h4_value = extract_values("hidden_units4")
+  var h5_value = extract_values("hidden_units5")
+ 
 var hidden_activation= extract_values('hidden_activation')
-const config = {
-  binaryThresh: 0.5,
-  hiddenLayers: [extract_values("hidden_units1"),extract_values("hidden_units2")], // array of ints for the sizes of the hidden layers in the network
-  activation: extract_values('activation'), // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-  hidden_activation: extract_values("learning_rate"), // supported for activation type 'leaky-relu'
+
+var hiddenLayers = []
+
+if (hidden_amount == 1){
+  hiddenLayers.push(h1_value)
+
+
 }
 
+else if (hidden_amount == 2){
+  hiddenLayers.push(h1_value, h2_value)
+
+
+}
+
+else if (hidden_amount == 3){
+  hiddenLayers.push(h1_value, h2_value, h3_value)
+
+
+}
+
+else if (hidden_amount == 4){
+  hiddenLayers.push(h1_value, h2_value, h3_value, h4_value)
+
+
+}
+
+else if (hidden_amount == 5){
+  hiddenLayers.push(h1_value, h2_value, h3_value, h4_value, h5_value)
+
+
+}
+
+
+
+
+
+
+const config = {
+  binaryThresh: 0.5,
+  hiddenLayers: hiddenLayers, // array of ints for the sizes of the hidden layers in the network
+  activation: document.getElementById("activation").value, // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+  relu: 0.01, 
+  iterations: parseInt(document.getElementById("iterations").value),
+  learningRate: parseFloat(document.getElementById("learning_rate").value),
+
+
+}
+console.log(config)
 // create a simple feed forward neural network with backpropagation
 const net = new brain.NeuralNetwork(config)
-
-console.log(hidden_activation, extract_values("hidden_units1"),extract_values("hidden_units2"))
-
-
-
-
 
 net.train([
   { input: [0, 0], output: [0] },
