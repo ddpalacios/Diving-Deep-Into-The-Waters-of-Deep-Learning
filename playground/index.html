@@ -255,6 +255,8 @@ body{
 <h1 style="position: relative; left: 1vh; bottom: 2vh; " >Welcome to The Playground</h1>
 <a href="../index.html"> <h3 style="position: relative; left:1vh;">Return to Homepage</h3> </a>
 </div>
+
+
   <div class="sidebar" style="outline: 6px solid black; background-color: rgb(84, 86, 131);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
       <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
         </div> 
@@ -338,46 +340,6 @@ return value
 
 
 }
-function Train(){
-  // var training_header = document.createElement('training_header')
-  // training_header.setAttribute("id", 'training_header')
-  // document.body.appendChild(training_header)
-
-
-  // var elem = document.createElement("H3")
-  // var text_node = document.createTextNode("Training...")
-
-
-// provide optional config object (or undefined). Defaults shown.
-var hidden_activation= extract_values('hidden_activation')
-const config = {
-  binaryThresh: 0.5,
-  hiddenLayers: [extract_values("hidden_units1"),extract_values("hidden_units2")], // array of ints for the sizes of the hidden layers in the network
-  activation: extract_values('activation'), // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-  hidden_activation: extract_values("learning_rate"), // supported for activation type 'leaky-relu'
-}
-
-// create a simple feed forward neural network with backpropagation
-const net = new brain.NeuralNetwork(config)
-
-console.log(hidden_activation, extract_values("hidden_units1"),extract_values("hidden_units2"))
-
-
-
-
-
-net.train([
-  { input: [0, 0], output: [0] },
-  { input: [0, 1], output: [1] },
-  { input: [1, 0], output: [1] },
-  { input: [1, 1], output: [0] },
-])
-
-const output = net.run([1, 0]) // [0.987]
-console.log(output)
-
-}
-
 
 function create_node(node_list, layer_num, label="node"){
 
@@ -399,15 +361,16 @@ function create_model(in_value,
     }]
     var NODE_LIST = json[0].nodes
 
-    for (var i=0; i< in_value; i++){
-      create_node(NODE_LIST, layer=0, label="in")
+
+    // input layers
+for (var i=0; i< in_value; i++){
+    create_node(NODE_LIST, layer=0, label="in")
     }
 
 
-
+//fill in hidden layers
   for (var i=1; i  <= hidden_amount; i++){
     create_node(NODE_LIST,layer=parseInt(i), label="hidden")
-
 
 
     if (h2_value == null){
@@ -441,10 +404,6 @@ function create_model(in_value,
 
 
     }
-
-
-
-
     else if (h4_value == null){
 
     if (parseInt(i) == 1){
@@ -543,23 +502,12 @@ function create_model(in_value,
        }
     }
 
-
-    // for (var j=1; j  < h1_value; j++){
-
-
-    // create_node(NODE_LIST,layer=parseInt(i), label="hidden")
-
-    // }
-
     }
 
   }
 
    
-
-    
-
-
+//output layers
   for (var i=0; i< out_value; i++){
       
       var res = parseInt(hidden_amount) +1
@@ -577,51 +525,72 @@ function create_model(in_value,
 
 
 
+
+
+function Train(){
+  // var training_header = document.createElement('training_header')
+  // training_header.setAttribute("id", 'training_header')
+  // document.body.appendChild(training_header)
+
+
+  // var elem = document.createElement("H3")
+  // var text_node = document.createTextNode("Training...")
+
+
+// provide optional config object (or undefined). Defaults shown.
+var hidden_activation= extract_values('hidden_activation')
+const config = {
+  binaryThresh: 0.5,
+  hiddenLayers: [extract_values("hidden_units1"),extract_values("hidden_units2")], // array of ints for the sizes of the hidden layers in the network
+  activation: extract_values('activation'), // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+  hidden_activation: extract_values("learning_rate"), // supported for activation type 'leaky-relu'
+}
+
+// create a simple feed forward neural network with backpropagation
+const net = new brain.NeuralNetwork(config)
+
+console.log(hidden_activation, extract_values("hidden_units1"),extract_values("hidden_units2"))
+
+
+
+
+
+net.train([
+  { input: [0, 0], output: [0] },
+  { input: [0, 1], output: [1] },
+  { input: [1, 0], output: [1] },
+  { input: [1, 1], output: [0] },
+])
+
+const output = net.run([1, 0]) // [0.987]
+console.log(output)
+
+}
 function Render(){
   var hidden_amount = extract_values("hidden_amount")
   var in_value = extract_values("input_units")
   var h1_value = extract_values("hidden_units1")
   var h2_value = extract_values("hidden_units2")
-
   var h3_value = extract_values("hidden_units3")
   var h4_value = extract_values("hidden_units4")
   var h5_value = extract_values("hidden_units5")
   var out_value = extract_values("output_units")
   
-   
-  
-if ($(".body_model").find("svg").length > 0){
-    
-    $("svg").remove()
-    var json = create_model(in_value, 
-                            h1_value, 
-                            h2_value, 
-                            h3_value,
-                            h4_value,
-                            h5_value,
-                            out_value, 
-                            hidden_amount)
-  console.log(json)
-  new Create_Architecture(x_pos = -.5, y_pos = .1, json).build() 
-
-
+if ($(".body_model").find("svg").length > 0){ // remove old model
+    $("svg").remove() 
   }
-    else{
-
-      var json = create_model(in_value, 
-                              h1_value, 
-                              h2_value, 
-                              h3_value,
-                              h4_value,
-                              h5_value,
-                              out_value, 
-                              hidden_amount)
-      console.log(json)
-
-      new Create_Architecture(x_pos = -.5, y_pos = .1, json).build() 
-
-
-      }
+ // creates json formatted model
+  var json = create_model(in_value, 
+                          h1_value, 
+                          h2_value, 
+                          h3_value,
+                          h4_value,
+                          h5_value,
+                          out_value, 
+                          hidden_amount)
+  console.log(json)
+  new Create_Architecture(x_pos = -.5, y_pos = .1, json).build() //creates arch. based on json format
+  
 
     }
 </script>
