@@ -260,30 +260,45 @@ body{
         </div> 
 
          <form style="background-color: aliceblue; height: 74vh; width: 50vh; position: relative; bottom: 75vh; outline: solid black;" class="form1" action="">
-          <a href="xor.txt"> <h3 style="position: relative; left: 27vh; top: 1vh;" > To View Dataset </h3></a>
+          <!-- <a href="xor.txt"> <h3 style="position: relative; left: 27vh; top: 1vh;" > To View Dataset </h3></a>
           <a href="https://www.pcmag.com/encyclopedia/term/xor"> <h3 style="position: relative; left: 25vh; top: 1vh;" > Dataset Description </h3></a>
 
           
           <select id="XOR" style="position: relative; bottom: 5.5vh; left:5vh">
             
-            <option value="xor">XOR DATASET</option>
+            <option value="xor">XOR DATASET</option> -->
           </select>
-                 <div style="position: relative; top: 3vh; right: 5vh; ">
+                 <div style="position: relative; top: 2vh; right: 5vh; ">
                   <label for="firstName" class="first-name"># Of Inputs:</label>
                   <input id="input_units" type="text" value="2">
 
                   <label for="firstName" class="first-name"># Hidden Layers:</label>
-                  <input id="hidden_amount" type="text" value="2">
+                  <input id="hidden_amount" type="text" value="5">
 
 
-                  <label for="lastName" class="last-name">Hidden Layer Units:</label>
+                  <label for="lastName" class="last-name">Hidden 1:</label>
                   <input id="hidden_units1" type="text" value="10" >
+                  
+                
+                  <label for="job">Hidden 2:</label>
+                  <input id="hidden_units2" type="text" value="10">
+                  
+                  
+                  <label for="job">Hidden 3:</label>
+                  <input id="hidden_units3" type="text" value="10">
+
+
+                  <label for="job">Hidden 4:</label>
+                  <input id="hidden_units4" type="text" value="10">
+
+
+                  <label for="job">Hidden 5:</label>
+                  <input id="hidden_units5" type="text" value="10">
                   
                   <label for="lastName" class="last-name">Hidden Activation:</label>
                   <input id="hidden_activation" type="text" value="relu" >       
 
-                  <label for="job">Hidden Units:</label>
-                  <input id="hidden_units2" type="text" value="10">         
+
                   <label >Output Units:</label>
                   <input id="output_units" type="text" value="2">          
                   <label >Activation:</label>
@@ -370,7 +385,14 @@ function create_node(node_list, layer_num, label="node"){
 
 }
 
-function create_model(in_value, h1_value, h2_value, out_value, hidden_amount){
+function create_model(in_value, 
+                      h1_value=null, 
+                      h2_value=null, 
+                      h3_value=null,
+                      h4_value=null,
+                      h5_value=null,
+                      out_value, 
+                      hidden_amount){
   var json =  [{
     "nodes":[], 
 
@@ -381,11 +403,28 @@ function create_model(in_value, h1_value, h2_value, out_value, hidden_amount){
       create_node(NODE_LIST, layer=0, label="in")
     }
 
+
+
   for (var i=1; i  <= hidden_amount; i++){
     create_node(NODE_LIST,layer=parseInt(i), label="hidden")
 
-    if (parseInt(i) == 1){
-       for (var j=1; j  < 10; j++){
+
+
+    if (h2_value == null){
+
+      if (parseInt(i) == 1){
+       for (var j=1; j  < h1_value; j++){
+
+         create_node(NODE_LIST,layer=1, label="hidden")
+       }
+    }
+    }
+
+
+    else if (h3_value == null){
+
+      if (parseInt(i) == 1){
+       for (var j=1; j  < h1_value; j++){
 
          create_node(NODE_LIST,layer=1, label="hidden")
        }
@@ -393,28 +432,112 @@ function create_model(in_value, h1_value, h2_value, out_value, hidden_amount){
 
 
     if (parseInt(i) == 2){
-       for (var j=1; j  < 12; j++){
+       for (var j=1; j  < h2_value; j++){
+
+         create_node(NODE_LIST,layer=2, label="hidden")
+       }
+    }
+
+
+
+    }
+
+
+
+
+    else if (h4_value == null){
+
+    if (parseInt(i) == 1){
+       for (var j=1; j  < h1_value; j++){
+
+         create_node(NODE_LIST,layer=1, label="hidden")
+       }
+    }
+
+
+    if (parseInt(i) == 2){
+       for (var j=1; j  < h2_value; j++){
 
          create_node(NODE_LIST,layer=2, label="hidden")
        }
     }
 
     if (parseInt(i) == 3){
-       for (var j=1; j  < 23; j++){
+       for (var j=1; j  < h3_value; j++){
+
+         create_node(NODE_LIST,layer=3, label="hidden")
+       }
+    }
+
+    }
+
+
+    else if (h5_value == null){
+
+      if (parseInt(i) == 1){
+       for (var j=1; j  < h1_value; j++){
+
+         create_node(NODE_LIST,layer=1, label="hidden")
+       }
+    }
+
+
+    if (parseInt(i) == 2){
+       for (var j=1; j  < h2_value; j++){
+
+         create_node(NODE_LIST,layer=2, label="hidden")
+       }
+    }
+
+    if (parseInt(i) == 3){
+       for (var j=1; j  < h3_value; j++){
 
          create_node(NODE_LIST,layer=3, label="hidden")
        }
     }
 
     if (parseInt(i) == 4){
-       for (var j=1; j  < 14; j++){
+       for (var j=1; j  < h4_value; j++){
+
+         create_node(NODE_LIST,layer=4, label="hidden")
+       }
+    }
+
+    }
+
+    else{
+
+    if (parseInt(i) == 1){
+       for (var j=1; j  < h1_value; j++){
+
+         create_node(NODE_LIST,layer=1, label="hidden")
+       }
+    }
+
+
+    if (parseInt(i) == 2){
+       for (var j=1; j  < h2_value; j++){
+
+         create_node(NODE_LIST,layer=2, label="hidden")
+       }
+    }
+
+    if (parseInt(i) == 3){
+       for (var j=1; j  < h3_value; j++){
+
+         create_node(NODE_LIST,layer=3, label="hidden")
+       }
+    }
+
+    if (parseInt(i) == 4){
+       for (var j=1; j  < h4_value; j++){
 
          create_node(NODE_LIST,layer=4, label="hidden")
        }
     }
 
     if (parseInt(i) == 5){
-       for (var j=1; j  < 15; j++){
+       for (var j=1; j  < h5_value; j++){
 
          create_node(NODE_LIST,layer=5, label="hidden")
        }
@@ -429,6 +552,8 @@ function create_model(in_value, h1_value, h2_value, out_value, hidden_amount){
     // }
 
     }
+
+  }
 
    
 
@@ -457,83 +582,43 @@ function Render(){
   var in_value = extract_values("input_units")
   var h1_value = extract_values("hidden_units1")
   var h2_value = extract_values("hidden_units2")
+
+  var h3_value = extract_values("hidden_units3")
+  var h4_value = extract_values("hidden_units4")
+  var h5_value = extract_values("hidden_units5")
   var out_value = extract_values("output_units")
   
-    // var hidden_amount = extract_values("hidden_amount")
-    // in_value = extract_values("input_units")
-    // h1_value = extract_values("hidden_units1")
-    // h2_value = extract_values("hidden_units2")
-    // out_value = extract_values("output_units")
-    // console.log(in_value, h1_value, h2_value, out_value)
-
-
-    // for (var i=0; i< in_value; i++){
-    //   create_node(NODE_LIST, layer=0, label=i)
-    //   }
-
-    // for (var i=0; i  < hidden_amount; i++){
-    //   create_node(NODE_LIST,layer=i+1, label=i)
-
-    // }
-
-    // for (var i=0; i< out_value; i++){
-    //   create_node(NODE_LIST, layer=hidden_amount+1, label=i)
-    // }
-
-  //   for (var i=0; i< in_value; i++){
-  //     create_node(NODE_LIST, layer=0, label="in")
-  //   }
-
-  // for (var i=0; i  < hidden_amount; i++){
-  //   console.log("hidden", i+1)
-  //   //   create_node(NODE_LIST,layer=i+1, label="hidden")
-
-  //   }
-
-    // for (var i=0; i< out_value; i++){
-    //   // var res = hidden_amount+1
-    //   // console.log("out", res)
-    //   // create_node(NODE_LIST, layer=hidden_amount+1, label="out")
-    // }
-
+   
   
 if ($(".body_model").find("svg").length > 0){
     
-    
     $("svg").remove()
-    
-    
-    var json = create_model(in_value, h1_value, h2_value, out_value, hidden_amount)
-    console.log(json)
-   
-    // console.log(in_value, h1_value, h2_value, out_value)
-    // for (var i=0; i< in_value; i++){
-    // NODE_LIST.push({"label": i, "layer": 0})
-    // }
-    // for (var i=0; i< h1_value; i++){
-    // NODE_LIST.push({"label": i, "layer": 1})
-    // }
-    // for (var i=0; i< h2_value; i++){
-    // NODE_LIST.push({"label": i, "layer": 2})
-    // }
-
-    // for (var i=0; i< out_value; i++){
-    // NODE_LIST.push({"label": i, "layer": 3})
-    // }
-
-  
-new Create_Architecture(x_pos = -1.5, y_pos = .1, json).build() 
-
-      
+    var json = create_model(in_value, 
+                            h1_value, 
+                            h2_value, 
+                            h3_value,
+                            h4_value,
+                            h5_value,
+                            out_value, 
+                            hidden_amount)
+  console.log(json)
+  new Create_Architecture(x_pos = -.5, y_pos = .1, json).build() 
 
 
-    }
+  }
     else{
 
-      var json = create_model(in_value, h1_value, h2_value, out_value, hidden_amount)
+      var json = create_model(in_value, 
+                              h1_value, 
+                              h2_value, 
+                              h3_value,
+                              h4_value,
+                              h5_value,
+                              out_value, 
+                              hidden_amount)
       console.log(json)
 
-      new Create_Architecture(x_pos = -1.5, y_pos = .1, json).build() 
+      new Create_Architecture(x_pos = -.5, y_pos = .1, json).build() 
 
 
       }
@@ -543,7 +628,7 @@ new Create_Architecture(x_pos = -1.5, y_pos = .1, json).build()
 
 <script>
   class Create_Architecture {
-   constructor(x_pos, y_pos, json, width = 300, height = 300, nodeSize = 15) {
+   constructor(x_pos, y_pos, json, width = 770, height = 300, nodeSize = 15) {
     // alert('testing')
      this.x_pos = x_pos
      this.y_pos = y_pos
@@ -661,7 +746,6 @@ new Create_Architecture(x_pos = -1.5, y_pos = .1, json).build()
 
 
    }}
-
 </script>
 
 
