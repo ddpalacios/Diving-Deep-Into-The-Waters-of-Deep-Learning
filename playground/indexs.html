@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Form Dynamically And Increment Value</title>
+<script src="js/form.js" type="text/javascript"></script>
+<link href="css/form.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+
+
+
+.name{
+padding:8px 90px;
+font-size:16px;
+font-weight:700;
+background-color:#9acd32;
+border:2px solid gray;
+color:#fff;
+box-shadow:0 0 10px gray;
+margin-bottom:10px;
+margin-top:5px;
+cursor:pointer
+}
+input{
+padding:8px;
+width:65%;
+border:3px solid #ddd;
+box-shadow:0 0 2px;
+margin-bottom:20px
+}
+
+.two{
+text-align:center;
+background-color:#fff;
+width:290px;
+height:593px;
+padding:40px 15px;
+border:1px solid #000;
+border-radius:4px;
+box-shadow:0 0 5px #000;
+float:left;
+margin:20px
+}
+
+
+</style>
+
+
+<body>
+
+
+<!--
+=================
+First Div for the buttons. Click on the button to add field in the form.
+=================
+-->
+<div class="two", id="two">
+<button class="name" onclick="textBoxCreate()">Add Layer</button>
+</div>
+
+</body>
+<script>
+
+// FormGet Online Form Builder JS Code
+// Creating and Adding Dynamic Form Elements.
+var i = 1; // Global Variable for Name
+var j = 1; // Global Variable for E-mail
+/*
+=================
+Creating Text Box for name field in the Form.
+=================
+*/
+function textBoxCreate(){
+var y = document.createElement("INPUT");
+y.setAttribute("type", "text");
+y.setAttribute("Placeholder", "Layer_" + i);
+y.setAttribute("Name", "Name_" + i);
+document.getElementById("two").appendChild(y);
+i++;
+}
+
+</script>
+</html>
