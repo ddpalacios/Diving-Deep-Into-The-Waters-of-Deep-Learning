@@ -2,324 +2,395 @@
 <title></title>
 
 <script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3-force.v2.min.js"></script>
-  <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
-  <script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
-  <script src="https://d3js.org/d3-timer.v1.min.js"></script>
-  <script src="https://d3js.org/d3-force.v2.min.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-force.v2.min.js"></script>
+<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+<script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
+<script src="https://d3js.org/d3-timer.v1.min.js"></script>
+<script src="https://d3js.org/d3-force.v2.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="//unpkg.com/brain.js"></script>
-  <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
+<script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
+<style>
+  form {
+    margin: 50px 0 0 0;
+  }
 
+  label {
+    font: bold 20px Helvetica, sans-serif;
+    display: block;
+    float: left;
+    text-align: right;
+    padding: 5px 10px 0 0;
+    width: 140px;
+  }
+
+  /* input[type=text] {
+  float: left;
+  width: 40px;
+  font: bold 20px Helvetica, sans-serif;
+  padding: 3px 0 0 0;
+  text-align: center;
+} */
+  form div {
+    overflow: hidden;
+    margin: 0 0 5px 0;
+  }
+
+  .button {
+    margin: 0 0 0 5px;
+    text-indent: -9999px;
+    cursor: pointer;
+    width: 29px;
+    height: 29px;
+    float: left;
+    text-align: center;
+    background: url(../images/buttons.png) no-repeat;
+  }
+
+  .dec {
+    background-position: 0 -29px;
+  }
+
+  .buttons {
+    padding: 20px 0 0 140px;
+  }
+</style>
 
 
 <style>
-    body {
- overflow: hidden;
-}
-.container{
+  body {
+    overflow: hidden;
+  }
+
+  .container {
     height: 100vh;
     width: 100vw;
     display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 30px 1fr 30px;
-}
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr 30px;
+  }
 
-.body {
- display: grid;
- grid-template-columns: 1fr 3fr;
- overflow: hidden;
-}
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    overflow: hidden;
+  }
 
-.content {
- overflow-y: scroll;
- padding: 20px;
- 
-}
+  .content {
+    overflow-y: scroll;
+    padding: 20px;
 
-.text {
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
+  }
 
-.image {
-  opacity: 1;
-  display: block;
-  width: 90%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}
+  .text {
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
 
-.middle {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
+  .image {
+    opacity: 1;
+    display: block;
+    width: 90%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
 
-body {
-  padding: 20px;
-  font-family: sans-serif;
-  background: #f2f2f2;
-}
-img {
-  width: 80vh; /* need to overwrite inline dimensions */
-  height: 70vh;
-  overflow:hidden
-}
-h2 {
-  margin-bottom: .5em;
-}
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
-  grid-gap: 1em;
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
-}
+  body {
+    padding: 20px;
+    font-family: sans-serif;
+    background: #f2f2f2;
+  }
 
+  img {
+    width: 80vh;
+    /* need to overwrite inline dimensions */
+    height: 70vh;
+    overflow: hidden
+  }
 
+  h2 {
+    margin-bottom: .5em;
+  }
 
-/* hover styles */
-.location-listing {
-  position: relative;
-}
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30vh, 1fr));
+    grid-gap: 1em;
 
-.location-image {
-  line-height: 0;
-  overflow: hidden;
-}
-
-.location-image img {
-  filter: blur(0px);
-  transition: filter 0.3s ease-in;
-  transform: scale(1.1);
-}
-
-.location-title {
-  font-size: 1.5em;
-  font-weight: bold;
-  text-decoration: none;
-  z-index: 1;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity .5s;
-  background: rgba(90,0,10,0.4);
-  color: white;
-  
-  /* position the text in t’ middle*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.location-listing:hover .location-title {
-  opacity: 1;
-}
-
-.location-listing:hover .location-image img {
-  filter: blur(2px);
-}
+  }
 
 
-/* for touch screen devices */
-@media (hover: none) { 
+
+  /* hover styles */
+  .location-listing {
+    position: relative;
+  }
+
+  .location-image {
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  .location-image img {
+    filter: blur(0px);
+    transition: filter 0.3s ease-in;
+    transform: scale(1.1);
+  }
+
   .location-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s;
+    background: rgba(90, 0, 10, 0.4);
+    color: white;
+
+    /* position the text in t’ middle*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .location-listing:hover .location-title {
     opacity: 1;
   }
-  .location-image img {
+
+  .location-listing:hover .location-image img {
     filter: blur(2px);
   }
-}
 
-#footer{
-position: relative;
-bottom: 5px;
-}
 
-#footer ul{
-    
+  /* for touch screen devices */
+  @media (hover: none) {
+    .location-title {
+      opacity: 1;
+    }
+
+    .location-image img {
+      filter: blur(2px);
+    }
+  }
+
+  #footer {
+    position: relative;
+    bottom: 5px;
+  }
+
+  #footer ul {
+
     margin: 0px auto 0px auto;
     text-align: center;
-}
+  }
 
-#footer li{
+  #footer li {
     display: inline;
     margin: 0px 5px;
     color: rgb(75, 50, 50);
-}
+  }
 
-#footer a{
+  #footer a {
     color: rgb(44, 39, 75);
     bottom: -100px;
     text-decoration: none;
     font-weight: bolder;
-}
+  }
 
-#footer a:hover{
+  #footer a:hover {
     color: rgb(255, 255, 255);
-}
+  }
 
 
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
 
 
-label {
-  text-align: right;
-  display: block;
-  padding: 0.5em 1.5em 0.5em 0;
-}
+  label {
+    text-align: right;
+    display: block;
+    padding: 0.5em 1.5em 0.5em 0;
+  }
 
-input {
+  /* input {
   width: 100%;
-  padding: 0.7em;
+  padding: 0.7inputem;
   margin-bottom: 0.5rem;
 }
 input:focus {
   outline: 3px solid gold;
-}
+} */
 
-@media (min-width: 400px) {
-  form {
-    overflow: hidden;
+  @media (min-width: 400px) {
+    form {
+      overflow: hidden;
+    }
+
+    label {
+      float: left;
+      width: 200px;
+    }
+
+    input {
+      float: left;
+      width: calc(100% - 200px);
+    }
+
+
   }
 
-  label {
-    float: left;
-    width: 200px;
+
+
+  text {
+    pointer-events: none;
+  }
+
+  .node:hover {
+    stroke: #999;
+    stroke-opacity: .6;
+    stroke-width: 4px;
+  }
+
+
+  .link {
+    stroke: rgb(0, 0, 0);
+    stroke-opacity: .6;
+  }
+
+  svg {
+    position: relative;
+    width: 95vh;
+    /* outline: solid black; */
+    height: 50vh;
+    left: 1vh;
+    bottom: 76vh;
+  }
+
+  body {
+    background-image: url('https://data.whicdn.com/images/262378523/original.gif');
+  }
+</style>
+
+<style>
+  .name {
+    padding: 8px 90px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #9acd32;
+    border: 2px solid gray;
+    color: #fff;
+    box-shadow: 0 0 10px gray;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    cursor: pointer
   }
 
   input {
+    padding: 8px;
+    width: 65%;
+    border: 3px solid #ddd;
+    box-shadow: 0 0 2px;
+    margin-bottom: 20px
+  }
+
+  .two {
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    width: 50vh;
+    right: 2.7vh;
+    bottom: 2vh;
+    height: 75vh;
+    padding: 40px 15px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #000;
     float: left;
-    width: calc(100% - 200px);
+    margin: 20px
   }
-
-  button {
-    float: right;
-    width: calc(100% - 200px);
-  }
-}
-
-button{
-  width: 10vh;
-}
-
-text {
-  pointer-events: none;
-}
-
-.node:hover {
-  stroke: #999;
-  stroke-opacity: .6;
-  stroke-width: 4px;
-}
-
-
-.link {
-  stroke: rgb(0, 0, 0);
-  stroke-opacity: .6;
-}
-svg{
-  position: relative;
-  width: 95vh;
-  outline: solid black;
-  height: 50vh;
-  left: 1vh;
-  bottom: 80vh;
-}
-body{
-  background-image: url('https://data.whicdn.com/images/262378523/original.gif');
-}
-
 </style>
+
+
 <head></head>
+
 <body>
 
-<div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;" class="container">
-<h1 style="position: relative; left: 1vh; bottom: 2vh; " >Welcome to The Playground</h1>
-<a href="../index.html"> <h3 style="position: relative; left:1vh;">Return to Homepage</h3> </a>
+  <div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;"
+    class="container">
+    <h1 style="position: relative; left: 1vh; bottom: 2vh; ">Welcome to The Playground</h1>
+    <a href="../index.html">
+      <h3 style="position: relative; left:1vh;">Return to Homepage</h3>
+    </a>
+  </div>
+
+<div class="sidebar" style="outline: 6px solid black;background-color: aliceblue;width: 50vh; position: relative; bottom: 1vh;">
+
+  <div style="outline: solid; background-color: rgb(84, 86, 131); height: 10vh;">
+    <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
+  </div>
+
+  <div class="two", id="two">
+    <div>
+      <label for="firstName" class="first-name"># Of Inputs:</label>
+      <input id="input_units" type="text" value="2">
+      </div>
+
+      <div>
+        <label ># Of Outputs:</label>
+                      <input id="input_units" type="text" value="2">
+        </div>
+
+<button style="position: relative; left: .2vh; top: 10vh;"  class="name" onclick="textBoxCreate()">Add Layer</button>
+  
+  
+
+
+  </div>
+
 </div>
 
-
-  <div class="sidebar" style="outline: 6px solid black; background-color: rgb(84, 86, 131);width: 50vh; height: 83.2vh; position: relative; bottom: 1vh;">
-      <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
-        </div> 
-
-         <form style="background-color: aliceblue; height: 74vh; width: 50vh; position: relative; bottom: 75vh; outline: solid black;" class="form1" action="">
-          <!-- <a href="xor.txt"> <h3 style="position: relative; left: 27vh; top: 1vh;" > To View Dataset </h3></a>
-          <a href="https://www.pcmag.com/encyclopedia/term/xor"> <h3 style="position: relative; left: 25vh; top: 1vh;" > Dataset Description </h3></a>
-
-          
-          <select id="XOR" style="position: relative; bottom: 5.5vh; left:5vh">
-            
-            <option value="xor">XOR DATASET</option> -->
-          </select>
-                 <div style="position: relative; top: 2vh; right: 5vh; ">
-                  <label for="firstName" class="first-name"># Of Inputs:</label>
-                  <input id="input_units" type="text" value="2">
-
-                  <label for="firstName" class="first-name"># Hidden Layers:</label>
-                  <input id="hidden_amount" type="text" value="5">
+ 
 
 
-                  <label for="lastName" class="last-name">Hidden 1:</label>
-                  <input id="hidden_units1" type="text" value="10" >
-                  
-                
-                  <label for="job">Hidden 2:</label>
-                  <input id="hidden_units2" type="text" value="10">
-                  
-                  
-                  <label for="job">Hidden 3:</label>
-                  <input id="hidden_units3" type="text" value="10">
 
+  
+<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 12vh; height:82vh; outline: 5px solid black;">
+<div style="background-color:aliceblue; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" >
+  <div id="training_box" style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 10vh;">
+    <h1 style="  position: relative; bottom: 75vh;">Output</h1>
+    <div id="scroller" style=" overflow: scroll; height: 34vh;position: relative;bottom: 74vh; "></div>
+  </div>  
+</div>
+<div style= " background-color:aliceblue; position: relative; top: 5.3vh; height: 29vh;width: 100%; outline:5px solid black;">
+  <div style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 5vh;">
+    <h1 style="  position: relative; top: .5vh;">Here Are its Computations:</h1>
 
-                  <label for="job">Hidden 4:</label>
-                  <input id="hidden_units4" type="text" value="10">
-
-
-                  <label for="job">Hidden 5:</label>
-                  <input id="hidden_units5" type="text" value="10">
-                  
-                  <label for="lastName" class="last-name">Hidden Activation:</label>
-                  <input id="hidden_activation" type="text" value="relu" >       
-
-
-                  <label >Output Units:</label>
-                  <input id="output_units" type="text" value="2">          
-                  <label >Activation:</label>
-                  <input id="activation"value="sigmoid" >          
-                  <label >Learning Rate:</label>
-                  <input id="learning_rate" type="text" value=".01">         
-                  <label >Iterations</label>
-                  <input id="iterations" type="text" value="1000">
-                  <button type="button" onclick="Render()">Build</button>
-                  <button type="button" onclick="Train()">Train</button>
-                  <button onclick="test()">Reset</button>
-                </div>
-      </form>
-          </div>
-
-
-<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 160vh; height:83vh; outline: 5px solid black;">
-<div style="background-color: #999; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" ><H1>Training:</H1></div>
-<div style= " background-color: #999; position: relative; top: 3vh; height: 32vh;width: 100%; outline:5px solid black;"><h1>hello</h1></div>
+  </div>
+</div>
 
 </div>
 
@@ -328,430 +399,467 @@ body{
 </body>
 
 
-<script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js" ></script>
-
-
+<script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 
 <script>
-function extract_values(id){
 
-var value = document.getElementById(id).value
+  // FormGet Online Form Builder JS Code
+  // Creating and Adding Dynamic Form Elements.
+  var i = 1; // Global Variable for Name
+  var j = 1; // Global Variable for E-mail
+  /*
+  =================
+  Creating Text Box for name field in the Form.
+  =================
+  */
+  function textBoxCreate() {
+    var y = document.createElement("INPUT");
+    y.setAttribute("type", "text");
+    y.setAttribute("Placeholder", "Layer_" + i);
+    y.setAttribute("Name", "Name_" + i);
+    y.style.cssText = "position: relative; top: 10vh; left: 8vh"
+    document.getElementById("two").appendChild(y);
+    i++;
+  }
+
+</script>
+
+<script>
+  function extract_values(id) {
+
+    var value = document.getElementById(id).value
 
 
 
-var res = parseInt(value)
-return res
+    var res = parseInt(value)
+    return res
 
 
-}
+  }
+  function create_node(node_list, layer_num, label = "node") {
 
-function create_node(node_list, layer_num, label="node"){
+    node_list.push({ "label": label, "layer": layer_num })
 
-  node_list.push({"label": label, "layer": layer_num})
+  }
 
-}
-
-function create_model(in_value, 
-                      h1_value=null, 
-                      h2_value=null, 
-                      h3_value=null,
-                      h4_value=null,
-                      h5_value=null,
-                      out_value, 
-                      hidden_amount){
-  var json =  [{
-    "nodes":[], 
+  function create_model(in_value,
+    h1_value = null,
+    h2_value = null,
+    h3_value = null,
+    h4_value = null,
+    h5_value = null,
+    out_value,
+    hidden_amount) {
+    var json = [{
+      "nodes": [],
 
     }]
     var NODE_LIST = json[0].nodes
 
 
     // input layers
-for (var i=0; i< in_value; i++){
-    create_node(NODE_LIST, layer=0, label="in")
+    for (var i = 0; i < in_value; i++) {
+      create_node(NODE_LIST, layer = 0, label = "in")
     }
 
 
-//fill in hidden layers
-  for (var i=1; i  <= hidden_amount; i++){
-    create_node(NODE_LIST,layer=parseInt(i), label="hidden")
+    //fill in hidden layers
+    for (var i = 1; i <= hidden_amount; i++) {
+      create_node(NODE_LIST, layer = parseInt(i), label = "hidden")
 
 
-    if (h2_value == null){
+      if (h2_value == null) {
 
-      if (parseInt(i) == 1){
-       for (var j=1; j  < h1_value; j++){
+        if (parseInt(i) == 1) {
+          for (var j = 1; j < h1_value; j++) {
 
-         create_node(NODE_LIST,layer=1, label="hidden")
-       }
+            create_node(NODE_LIST, layer = 1, label = "hidden")
+          }
+        }
+      }
+
+
+      else if (h3_value == null) {
+
+        if (parseInt(i) == 1) {
+          for (var j = 1; j < h1_value; j++) {
+
+            create_node(NODE_LIST, layer = 1, label = "hidden")
+          }
+        }
+
+
+        if (parseInt(i) == 2) {
+          for (var j = 1; j < h2_value; j++) {
+
+            create_node(NODE_LIST, layer = 2, label = "hidden")
+          }
+        }
+
+
+
+      }
+      else if (h4_value == null) {
+
+        if (parseInt(i) == 1) {
+          for (var j = 1; j < h1_value; j++) {
+
+            create_node(NODE_LIST, layer = 1, label = "hidden")
+          }
+        }
+
+
+        if (parseInt(i) == 2) {
+          for (var j = 1; j < h2_value; j++) {
+
+            create_node(NODE_LIST, layer = 2, label = "hidden")
+          }
+        }
+
+        if (parseInt(i) == 3) {
+          for (var j = 1; j < h3_value; j++) {
+
+            create_node(NODE_LIST, layer = 3, label = "hidden")
+          }
+        }
+
+      }
+
+
+      else if (h5_value == null) {
+
+        if (parseInt(i) == 1) {
+          for (var j = 1; j < h1_value; j++) {
+
+            create_node(NODE_LIST, layer = 1, label = "hidden")
+          }
+        }
+
+
+        if (parseInt(i) == 2) {
+          for (var j = 1; j < h2_value; j++) {
+
+            create_node(NODE_LIST, layer = 2, label = "hidden")
+          }
+        }
+
+        if (parseInt(i) == 3) {
+          for (var j = 1; j < h3_value; j++) {
+
+            create_node(NODE_LIST, layer = 3, label = "hidden")
+          }
+        }
+
+        if (parseInt(i) == 4) {
+          for (var j = 1; j < h4_value; j++) {
+
+            create_node(NODE_LIST, layer = 4, label = "hidden")
+          }
+        }
+
+      }
+
+      else {
+
+        if (parseInt(i) == 1) {
+          for (var j = 1; j < h1_value; j++) {
+
+            create_node(NODE_LIST, layer = 1, label = "hidden")
+          }
+        }
+
+
+        if (parseInt(i) == 2) {
+          for (var j = 1; j < h2_value; j++) {
+
+            create_node(NODE_LIST, layer = 2, label = "hidden")
+          }
+        }
+
+        if (parseInt(i) == 3) {
+          for (var j = 1; j < h3_value; j++) {
+
+            create_node(NODE_LIST, layer = 3, label = "hidden")
+          }
+        }
+
+        if (parseInt(i) == 4) {
+          for (var j = 1; j < h4_value; j++) {
+
+            create_node(NODE_LIST, layer = 4, label = "hidden")
+          }
+        }
+
+        if (parseInt(i) == 5) {
+          for (var j = 1; j < h5_value; j++) {
+
+            create_node(NODE_LIST, layer = 5, label = "hidden")
+          }
+        }
+
+      }
+
     }
-    }
 
 
-    else if (h3_value == null){
+    //output layers
+    for (var i = 0; i < out_value; i++) {
 
-      if (parseInt(i) == 1){
-       for (var j=1; j  < h1_value; j++){
-
-         create_node(NODE_LIST,layer=1, label="hidden")
-       }
-    }
-
-
-    if (parseInt(i) == 2){
-       for (var j=1; j  < h2_value; j++){
-
-         create_node(NODE_LIST,layer=2, label="hidden")
-       }
-    }
-
-
-
-    }
-    else if (h4_value == null){
-
-    if (parseInt(i) == 1){
-       for (var j=1; j  < h1_value; j++){
-
-         create_node(NODE_LIST,layer=1, label="hidden")
-       }
-    }
-
-
-    if (parseInt(i) == 2){
-       for (var j=1; j  < h2_value; j++){
-
-         create_node(NODE_LIST,layer=2, label="hidden")
-       }
-    }
-
-    if (parseInt(i) == 3){
-       for (var j=1; j  < h3_value; j++){
-
-         create_node(NODE_LIST,layer=3, label="hidden")
-       }
-    }
-
-    }
-
-
-    else if (h5_value == null){
-
-      if (parseInt(i) == 1){
-       for (var j=1; j  < h1_value; j++){
-
-         create_node(NODE_LIST,layer=1, label="hidden")
-       }
-    }
-
-
-    if (parseInt(i) == 2){
-       for (var j=1; j  < h2_value; j++){
-
-         create_node(NODE_LIST,layer=2, label="hidden")
-       }
-    }
-
-    if (parseInt(i) == 3){
-       for (var j=1; j  < h3_value; j++){
-
-         create_node(NODE_LIST,layer=3, label="hidden")
-       }
-    }
-
-    if (parseInt(i) == 4){
-       for (var j=1; j  < h4_value; j++){
-
-         create_node(NODE_LIST,layer=4, label="hidden")
-       }
-    }
-
-    }
-
-    else{
-
-    if (parseInt(i) == 1){
-       for (var j=1; j  < h1_value; j++){
-
-         create_node(NODE_LIST,layer=1, label="hidden")
-       }
-    }
-
-
-    if (parseInt(i) == 2){
-       for (var j=1; j  < h2_value; j++){
-
-         create_node(NODE_LIST,layer=2, label="hidden")
-       }
-    }
-
-    if (parseInt(i) == 3){
-       for (var j=1; j  < h3_value; j++){
-
-         create_node(NODE_LIST,layer=3, label="hidden")
-       }
-    }
-
-    if (parseInt(i) == 4){
-       for (var j=1; j  < h4_value; j++){
-
-         create_node(NODE_LIST,layer=4, label="hidden")
-       }
-    }
-
-    if (parseInt(i) == 5){
-       for (var j=1; j  < h5_value; j++){
-
-         create_node(NODE_LIST,layer=5, label="hidden")
-       }
-    }
-
-    }
-
-  }
-
-   
-//output layers
-  for (var i=0; i< out_value; i++){
-      
-      var res = parseInt(hidden_amount) +1
+      var res = parseInt(hidden_amount) + 1
       console.log("out", res)
-      create_node(NODE_LIST, layer=res, label="out")
+      create_node(NODE_LIST, layer = res, label = "out")
     }
 
 
-  
+
 
 
     return json
-}
-
-
-
-
-
-
-function Train(){
-  var hidden_amount = extract_values("hidden_amount")
-  var h1_value = extract_values("hidden_units1")
-  var h2_value = extract_values("hidden_units2")
-  var h3_value = extract_values("hidden_units3")
-  var h4_value = extract_values("hidden_units4")
-  var h5_value = extract_values("hidden_units5")
- 
-var hidden_activation= extract_values('hidden_activation')
-
-var hiddenLayers = []
-
-if (hidden_amount == 1){
-  hiddenLayers.push(h1_value)
-
-
-}
-
-else if (hidden_amount == 2){
-  hiddenLayers.push(h1_value, h2_value)
-
-
-}
-
-else if (hidden_amount == 3){
-  hiddenLayers.push(h1_value, h2_value, h3_value)
-
-
-}
-
-else if (hidden_amount == 4){
-  hiddenLayers.push(h1_value, h2_value, h3_value, h4_value)
-
-
-}
-
-else if (hidden_amount == 5){
-  hiddenLayers.push(h1_value, h2_value, h3_value, h4_value, h5_value)
-
-
-}
-
-
-
-
-
-
-const config = {
-  binaryThresh: 0.5,
-  hiddenLayers: hiddenLayers, // array of ints for the sizes of the hidden layers in the network
-  activation: document.getElementById("activation").value, // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-  relu: 0.01, 
-  iterations: parseInt(document.getElementById("iterations").value),
-  learningRate: parseFloat(document.getElementById("learning_rate").value),
-
-
-}
-console.log(config)
-// create a simple feed forward neural network with backpropagation
-const net = new brain.NeuralNetwork(config)
-
-net.train([
-  { input: [0, 0], output: [0] },
-  { input: [0, 1], output: [1] },
-  { input: [1, 0], output: [1] },
-  { input: [1, 1], output: [0] },
-])
-
-const output = net.run([1, 0]) // [0.987]
-console.log(output)
-
-}
-function Render(){
-  var hidden_amount = extract_values("hidden_amount")
-  var in_value = extract_values("input_units")
-  var h1_value = extract_values("hidden_units1")
-  var h2_value = extract_values("hidden_units2")
-  var h3_value = extract_values("hidden_units3")
-  var h4_value = extract_values("hidden_units4")
-  var h5_value = extract_values("hidden_units5")
-  var out_value = extract_values("output_units")
-  
-if ($(".body_model").find("svg").length > 0){ // remove old model
-    $("svg").remove() 
   }
- // creates json formatted model
-  var json = create_model(in_value, 
-                          h1_value, 
-                          h2_value, 
-                          h3_value,
-                          h4_value,
-                          h5_value,
-                          out_value, 
-                          hidden_amount)
-  console.log(json)
-  new Create_Architecture(x_pos = -.5, y_pos = .1, json).build() //creates arch. based on json format
-  
+  function Train() {
+    var hidden_amount = extract_values("hidden_amount")
+    var h1_value = extract_values("hidden_units1")
+    var h2_value = extract_values("hidden_units2")
+    var h3_value = extract_values("hidden_units3")
+    var h4_value = extract_values("hidden_units4")
+    var h5_value = extract_values("hidden_units5")
+
+    var hidden_activation = extract_values('hidden_activation')
+
+    var hiddenLayers = []
+
+    if (hidden_amount == 1) {
+      hiddenLayers.push(h1_value)
+
 
     }
+
+    else if (hidden_amount == 2) {
+      hiddenLayers.push(h1_value, h2_value)
+
+
+    }
+
+    else if (hidden_amount == 3) {
+      hiddenLayers.push(h1_value, h2_value, h3_value)
+
+
+    }
+
+    else if (hidden_amount == 4) {
+      hiddenLayers.push(h1_value, h2_value, h3_value, h4_value)
+
+
+    }
+
+    else if (hidden_amount == 5) {
+      hiddenLayers.push(h1_value, h2_value, h3_value, h4_value, h5_value)
+
+
+    }
+
+
+
+    const config = {
+      binaryThresh: 0.5,
+      hiddenLayers: hiddenLayers, // array of ints for the sizes of the hidden layers in the network
+      activation: document.getElementById("activation").value, // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+      relu: 0.01,
+
+
+
+    }
+    console.log(config)
+    // create a simple feed forward neural network with backpropagation
+    const net = new brain.NeuralNetwork(config)
+    // var x = document.getElementById("training_box").children[1]
+    // console.log(x.childNodes()
+    // if ($(".scroller").find("h5").length > 0){ // remove old model
+    //   alert("found txt")
+    //     $("h5").remove() 
+    //   }
+
+
+    var h1 = document.createElement("h5")                // Create a <h1> element
+
+
+    net.train([
+      { input: [0, 0], output: [0] },
+      { input: [0, 1], output: [1] },
+      { input: [1, 0], output: [1] },
+      { input: [1, 1], output: [0] },
+    ], {
+      log: (stats) => h1.appendChild(document.createTextNode(JSON.stringify(stats))),
+      iterations: parseInt(document.getElementById("iterations").value),
+      learningRate: parseFloat(document.getElementById("learning_rate").value)
+    }
+
+
+    )
+    h1.style.cssText = 'position:relative; top:5vh'
+    document.getElementById("scroller").appendChild(h1);
+
+    const output = net.run([1, 0]) // [0.987]
+    console.log(output)
+
+
+
+
+
+  }
+
+
+
+  function Render() {
+    var hidden_amount = extract_values("hidden_amount")
+    var in_value = extract_values("input_units")
+    var h1_value = extract_values("hidden_units1")
+    var h2_value = extract_values("hidden_units2")
+    var h3_value = extract_values("hidden_units3")
+    var h4_value = extract_values("hidden_units4")
+    var h5_value = extract_values("hidden_units5")
+    var out_value = extract_values("output_units")
+
+    if ($(".body_model").find("svg").length > 0) { // remove old model
+      $("svg").remove()
+    }
+    // creates json formatted model
+    var json = create_model(in_value,
+      h1_value,
+      h2_value,
+      h3_value,
+      h4_value,
+      h5_value,
+      out_value,
+      hidden_amount)
+    console.log(json)
+    new Create_Architecture(x_pos = -.5, y_pos = -.5, json).build() //creates arch. based on json format
+
+
+  }
 </script>
 
 <script>
   class Create_Architecture {
-   constructor(x_pos, y_pos, json, width = 770, height = 300, nodeSize = 15) {
-    // alert('testing')
-     this.x_pos = x_pos
-     this.y_pos = y_pos
-     this.nodes = json[0].nodes;
-     this.width = width
-     this.height = height
-     this.nodeSize = nodeSize
-     this.color = d3.scale.category20()
-     this.svg = d3.select(".body_model").append("svg")
-       .attr("width", window.innerWidth)
-       .attr("height",window.innerHeight);
+    constructor(x_pos, y_pos, json, width = 770, height = 300, nodeSize = 15) {
+      // alert('testing')
+      this.x_pos = x_pos
+      this.y_pos = y_pos
+      this.nodes = json[0].nodes;
+      this.width = width
+      this.height = height
+      this.nodeSize = nodeSize
+      this.color = d3.scale.category20()
+      this.svg = d3.select(".body_model").append("svg")
+        .attr("width", window.innerWidth)
+        .attr("height", window.innerHeight);
 
 
-   }
-   _get_network_size() {
-     // get network size
-     var netsize = {};
-     this.nodes.forEach(function (d) {
-       if (d.layer in netsize) {
-         netsize[d.layer] += 1;
-       } else {
-         netsize[d.layer] = 1;
-       }
-       d["lidx"] = netsize[d.layer];
-     });
+    }
+    _get_network_size() {
+      // get network size
+      var netsize = {};
+      this.nodes.forEach(function (d) {
+        if (d.layer in netsize) {
+          netsize[d.layer] += 1;
+        } else {
+          netsize[d.layer] = 1;
+        }
+        d["lidx"] = netsize[d.layer];
+      });
 
-     // calc distances between nodes
-     var largestLayerSize = Math.max.apply(
-       null, Object.keys(netsize).map(function (i) { return netsize[i]; }));
+      // calc distances between nodes
+      var largestLayerSize = Math.max.apply(
+        null, Object.keys(netsize).map(function (i) { return netsize[i]; }));
 
-     var xdist = this.width / Object.keys(netsize).length,
-       ydist = this.height / largestLayerSize,
-       x_pos = this.x_pos,
-       y_pos = this.y_pos;
-     // create node locations
-     this.nodes.map(function (d) {
+      var xdist = this.width / Object.keys(netsize).length,
+        ydist = this.height / largestLayerSize,
+        x_pos = this.x_pos,
+        y_pos = this.y_pos;
+      // create node locations
+      this.nodes.map(function (d) {
 
-       d["x"] = (d.layer - x_pos) * xdist;
-       d["y"] = (d.lidx - y_pos) * ydist;
-     });
-
-
-   }
-
-   _autogenerate_links() {
-     // autogenerate links
-     var netsize = {}
-     var links = [];
-     var nodes = this.nodes;
-
-     this.nodes.map(function (d, i) {
-       for (var n in nodes) {
-         if (d.layer + 1 == nodes[n].layer) {
-           links.push({ "source": parseInt(i), "target": parseInt(n), "value": 1 })
-         }
-
-       }
-
-     }).filter(function (d) { return typeof d !== "undefined"; });
+        d["x"] = (d.layer - x_pos) * xdist;
+        d["y"] = (d.lidx - y_pos) * ydist;
+      });
 
 
-     this._draw_links(links)
-   }
+    }
 
-   _draw_links(links) {
-     // draw links
-     var nodes = this.nodes
-     var link = this.svg.selectAll(".link")
-       .data(links)
-       .enter().append("line")
-       .attr("class", "link")
-       .attr("x1", function (d) { return nodes[d.source].x; })
-       .attr("y1", function (d) { return nodes[d.source].y; })
-       .attr("x2", function (d) { return nodes[d.target].x; })
-       .attr("y2", function (d) { return nodes[d.target].y; })
-       .style("stroke-width", function (d) { return Math.sqrt(d.value); });
+    _autogenerate_links() {
+      // autogenerate links
+      var netsize = {}
+      var links = [];
+      var nodes = this.nodes;
 
+      this.nodes.map(function (d, i) {
+        for (var n in nodes) {
+          if (d.layer + 1 == nodes[n].layer) {
+            links.push({ "source": parseInt(i), "target": parseInt(n), "value": 1 })
+          }
 
+        }
 
-   }
+      }).filter(function (d) { return typeof d !== "undefined"; });
 
 
-   clear_contents(){
-     this.svg.selectAll("*").remove()
+      this._draw_links(links)
+    }
 
-   }
-   _draw_nodes() {
-     var color = this.color
-     // draw nodes
-     var node = this.svg.selectAll(".node")
-       .data(this.nodes)
-       .enter().append("g")
-       .attr("transform", function (d) {
-         return "translate(" + d.x + "," + d.y + ")";
-       }
-       );
-
-     var circle = node.append("circle")
-       .attr("class", "node")
-       .attr("r", this.nodeSize)
-       .style("fill", function (d) { return color(d.layer); });
-
-
-     node.append("text")
-       .attr("dx", "-.35em")
-       .attr("dy", ".35em")
-       .text(function (d) { return d.label; });
-   }
-   build() {
-
-     this._get_network_size()
-     this._autogenerate_links()
-     this._draw_nodes()
+    _draw_links(links) {
+      // draw links
+      var nodes = this.nodes
+      var link = this.svg.selectAll(".link")
+        .data(links)
+        .enter().append("line")
+        .attr("class", "link")
+        .attr("x1", function (d) { return nodes[d.source].x; })
+        .attr("y1", function (d) { return nodes[d.source].y; })
+        .attr("x2", function (d) { return nodes[d.target].x; })
+        .attr("y2", function (d) { return nodes[d.target].y; })
+        .style("stroke-width", function (d) { return Math.sqrt(d.value); });
 
 
 
-   }}
+    }
+
+
+    clear_contents() {
+      this.svg.selectAll("*").remove()
+
+    }
+    _draw_nodes() {
+      var color = this.color
+      // draw nodes
+      var node = this.svg.selectAll(".node")
+        .data(this.nodes)
+        .enter().append("g")
+        .attr("transform", function (d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        }
+        );
+
+      var circle = node.append("circle")
+        .attr("class", "node")
+        .attr("r", this.nodeSize)
+        .style("fill", function (d) { return color(d.layer); });
+
+
+      node.append("text")
+        .attr("dx", "-.35em")
+        .attr("dy", ".35em")
+        .text(function (d) { return d.label; });
+    }
+    build() {
+
+      this._get_network_size()
+      this._autogenerate_links()
+      this._draw_nodes()
+
+
+
+    }
+  }
 </script>
 
 
