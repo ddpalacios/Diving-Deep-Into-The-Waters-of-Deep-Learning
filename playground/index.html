@@ -40,7 +40,7 @@
     margin: 0 0 5px 0;
   }
 
-  .button {
+  /* .button {
     margin: 0 0 0 5px;
     text-indent: -9999px;
     cursor: pointer;
@@ -49,15 +49,15 @@
     float: left;
     text-align: center;
     background: url(../images/buttons.png) no-repeat;
-  }
+  } */
 
   .dec {
     background-position: 0 -29px;
   }
 
-  .buttons {
+  /* .buttons {
     padding: 20px 0 0 140px;
-  }
+  } */
 </style>
 
 
@@ -297,9 +297,9 @@ input:focus {
 
 <style>
   .name {
-    padding: 8px 90px;
+    /* padding: 8px 90px;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 700; */
     background-color: #9acd32;
     border: 2px solid gray;
     color: #fff;
@@ -324,7 +324,7 @@ input:focus {
     width: 50vh;
     right: 2.7vh;
     bottom: 2vh;
-    height: 75vh;
+    height: 35vh;
     padding: 40px 15px;
     border: 1px solid #000;
     border-radius: 4px;
@@ -332,6 +332,16 @@ input:focus {
     float: left;
     margin: 20px
   }
+  .three{
+    position: relative;
+    background-color: #fff;
+    top: 38vh;
+    outline: solid black;
+    height: 34vh;
+
+
+  }
+  
 </style>
 
 
@@ -349,46 +359,54 @@ input:focus {
 
 <div class="sidebar" style="outline: 6px solid black;background-color: aliceblue;width: 50vh; position: relative; bottom: 1vh;">
 
-  <div style="outline: solid; background-color: rgb(84, 86, 131); height: 10vh;">
+  <div style=" outline: solid; background-color: rgb(84, 86, 131); height: 10vh;">
     <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
   </div>
 
   <div class="two", id="two">
-    <div>
-      <label for="firstName" class="first-name"># Of Inputs:</label>
-      <input id="input_units" type="text" value="2">
-      </div>
-
-      <div>
-        <label ># Of Outputs:</label>
-                      <input id="input_units" type="text" value="2">
-        </div>
-
-<button style="position: relative; left: .2vh; top: 10vh;"  class="name" onclick="textBoxCreate()">Add Layer</button>
-  
-  
-
-
-  </div>
+<div style="position: relative; bottom: 5vh; outline: solid black; height: 27vh;">
+<div style="height: 5vh; outline: solid black;">
+  <h3 style="position:relative; right: 15vh;">Inputs #: </h3>
+  <input onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points" step="1">
 
 </div>
 
- 
+<div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
+<h3 style="position:relative; right: 20vh;">Output #:</h3>
+<input onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" name="points" step="1">
+</div>
+
+<div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
+  <h3 style="position:relative; right: 16vh;">Layer(s) #:</h3>
+  <input onchange="textBoxCreate()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount" name="points" step="1">
+  </div>
+
+<div style="outline: solid black; height: 5vh; position: relative;top: 3vh;">
+  <button style="position: relative;bottom: 8vh;height: 100%; width: 100%;" class="name" onclick="SAVE()">SAVE</button>
+  </div>
+
+    </div>
+  </div>
+<div class="three" id="three">
+<div class="hid", id="hid">
+
+  <button style="position: relative;bottom: 15vh;height: 5vh; width: 100%;" class="name" onclick="TRAIN()">TRAIN</button>
 
 
+</div>
 
-  
-<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 12vh; height:82vh; outline: 5px solid black;">
+</div>
+
+</div>
+<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 45vh; height:82vh; outline: 5px solid black;">
 <div style="background-color:aliceblue; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" >
   <div id="training_box" style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 10vh;">
-    <h1 style="  position: relative; bottom: 75vh;">Output</h1>
-    <div id="scroller" style=" overflow: scroll; height: 34vh;position: relative;bottom: 74vh; "></div>
+    <div id="scroller" style=" overflow: scroll; height: 34vh;position: relative;bottom: .1vh; "></div>
   </div>  
 </div>
 <div style= " background-color:aliceblue; position: relative; top: 5.3vh; height: 29vh;width: 100%; outline:5px solid black;">
   <div style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 5vh;">
-    <h1 style="  position: relative; top: .5vh;">Here Are its Computations:</h1>
-
+    <h1 style="  position: relative; top: .5vh;"></h1>
   </div>
 </div>
 
@@ -399,27 +417,121 @@ input:focus {
 </body>
 
 
+
+
 <script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
 
 <script>
 
+function OnChange(){
+  console.log("Change detected")
+  var in1 = document.getElementById("in_1").value
+  var out1 = document.getElementById("out_1").value
+  var layer1 = document.getElementById("layer_1").value
+  if ($('#two input').length == 3){
+    console.log(in1, out1, layer1)
+
+      
+    }
+ 
+  // if ($('#two input').length == 4){
+  //   var h2 = document.getElementById('layer2').value
+  //   console.log(in1, out1, layer1, h2)
+
+      
+  //   }
+
+  //   if ($('#two input').length == 5){
+  //   var h2 = document.getElementById('layer2').value
+  //   var h3 = document.getElementById('layer3').value
+  //   console.log(in1, out1, layer1, h2, h3)
+
+      
+  //   }
+
+  //   if ($('#two input').length == 6){
+  //   var h2 = document.getElementById('layer2').value
+  //   var h3 = document.getElementById('layer3').value
+  //   var h4 = document.getElementById('layer4').value
+  //   console.log(in1, out1, layer1, h2,h3,h4)
+
+      
+  //   }
+
+  //   if ($('#two input').length == 7){
+  //     var h2 = document.getElementById('layer2').value
+  //   var h3 = document.getElementById('layer3').value
+  //   var h4 = document.getElementById('layer4').value
+  //   var h5 = document.getElementById('layer5').value
+
+  //   console.log(in1, out1, layer1, h2,h3,h4,h5)
+
+      
+  //   }
+
+  //   if ($('#two input').length == 8){
+  //     var h2 = document.getElementById('layer2').value
+  //   var h3 = document.getElementById('layer3').value
+  //   var h4 = document.getElementById('layer4').value
+  //   var h5 = document.getElementById('layer5').value
+  //   var h6 = document.getElementById('layer6').value
+
+
+  //   console.log(in1, out1, layer1, h2,h3,h4,h5, h6)
+
+
+      
+  //   }
+
+  
+
+
+  // else{
+  // console.log(in1, out1, layer1)
+
+  // }
+  
+
+}
+
+
+
   // FormGet Online Form Builder JS Code
   // Creating and Adding Dynamic Form Elements.
-  var i = 1; // Global Variable for Name
-  var j = 1; // Global Variable for E-mail
+  var i = 2; // Global Variable for Name
   /*
   =================
   Creating Text Box for name field in the Form.
   =================
   */
   function textBoxCreate() {
-    var y = document.createElement("INPUT");
-    y.setAttribute("type", "text");
-    y.setAttribute("Placeholder", "Layer_" + i);
-    y.setAttribute("Name", "Name_" + i);
-    y.style.cssText = "position: relative; top: 10vh; left: 8vh"
-    document.getElementById("two").appendChild(y);
-    i++;
+   
+    var amount_layers = document.getElementById("layer_amount").value
+    
+    // if ($(".hid").find("input").length >= 0) { // remove old model
+    //     $(".hid").remove()
+
+    // }
+    // for (var j=0; j<amount_layers; j++){
+        var div = document.createElement("div")
+        div.setAttribute('id', 'hid')
+        div.setAttribute('class', 'hid')
+        var y = document.createElement("INPUT");
+        y.setAttribute("type", "text");
+        y.setAttribute('id', 'layer'+i)
+        y.setAttribute("Placeholder", "Layer" + i);
+        y.setAttribute('step', '1')
+        y.setAttribute("Name", "Name_" + i);
+        y.style.cssText = "position: relative; bottom: 38vh;left:5vh"
+        document.getElementById("hid").appendChild(y);
+        i++;
+
+
+    // }
+
+
+   
   }
 
 </script>
@@ -707,8 +819,6 @@ input:focus {
 
 
   }
-
-
 
   function Render() {
     var hidden_amount = extract_values("hidden_amount")
