@@ -367,7 +367,7 @@
 
 <head></head>
 <div id="wrapper">
-<body onload="Render()">
+<body onload="Train()">
 
   <div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;"
     class="container">
@@ -448,33 +448,33 @@
     <div  class="slidecontainer">
 
       <h3 style="outline: solid black;height: 4vh;" >Iterations:</h3>
-     <input id="iterations" style="position: relative;bottom: 1vh; width: 100%; background-color: gray;"onchange="OnChange()" type="range" min="1" max="100" value="50"><br>    
+     <input id="iterations" style="position: relative;bottom: 1vh; width: 100%; background-color: gray;"onchange="OnChange()" type="range" min="1000" max="5000" value="50"><br>    
     </div>
 
     <div  class="slidecontainer" style="bottom: 63vh;">
       <div id="lr_val" style="position: relative;top: 5.8vh;left: 18vh; outline: solid black; height: 3.2vh; width: 20vh;" ></div>
       <h3 style="outline: solid black;height: 4vh;" >Learning Rate:</h3>
-     <input id="learning_rate" style="position: relative; bottom: 1vh; width: 100%; background-color: gray;"onchange="OnChange()"type="range" min="1" max="100" value="50">
+     <input id="learning_rate" style="position: relative; bottom: 1vh; width: 100%; background-color: gray;"onchange="OnChange()"type="range" min="1" max=3 value="50">
     
     </div>
     <div style="position: relative;bottom: 22.3vh;">
     <div style="outline: solid black;height: 5vh;width: 44vh; position: relative;bottom: 50vh;left: 99vh;">
     <h3 style="position: relative;top: 1vh;left: 1vh; width: 20vh;" >Hidden Activation</h3>
-      <select style="position: relative;bottom: 4vh; left: 25vh; width: 15vh;" id="cars" name="cars">
-    <option value="volvo">reLu</option>
-    <option value="saab">leaky-relu</option>
-    <option value="fiat">Tahn</option>
-    <option value="audi">sigmoid</option>
+      <select onchange="OnChange()" id="hidden_activation" style="position: relative;bottom: 4vh; left: 25vh; width: 15vh;" id="cars" name="cars">
+    <option value="relu">reLu</option>
+    <option value="leaky-relu">leaky-relu</option>
+    <option value="tanh">Tahn</option>
+    <option value="sigmoid">sigmoid</option>
   </select>
 </div>
 
 <div style="outline: solid black;height: 5.5vh;width: 44vh; position: relative;bottom: 47vh;left: 99vh;">
   <h3 style="position: relative;top: 1vh;left: 1vh; width: 20vh;" >Output Activation</h3>
-    <select style="position: relative;bottom: 4vh; left: 25vh; width: 15vh;" id="cars" name="cars">
-  <option value="volvo">reLu</option>
-  <option value="saab">leaky-relu</option>
-  <option value="fiat">Tahn</option>
-  <option value="audi">sigmoid</option>
+    <select onchange="OnChange()" id="out_activation" style="position: relative;bottom: 4vh; left: 25vh; width: 15vh;" id="cars" name="cars">
+      <option value="relu">reLu</option>
+      <option value="leaky-relu">leaky-relu</option>
+      <option value="tanh">Tahn</option>
+      <option value="sigmoid">sigmoid</option>
 </select>
 </div>
 </div>
@@ -500,9 +500,6 @@
 
 
 </div>
-<!-- <div style= " background-color:aliceblue; position: relative; top: 5.3vh; height: 29vh;width: 100%; outline:5px solid black;">
-  <div style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 5vh;"> -->
-  
   </div>
 </div>
 
@@ -530,9 +527,23 @@
 <script>
 
 function OnChange(){
+  var LEARNING_RATE = null
   var iter = extract_values('iterations')
-  var lr = extract_values('learning_rate')
-  console.log(iter, lr)
+  var lr = parseInt(document.getElementById("learning_rate").value)
+
+  if (lr == 3){
+      LEARNING_RATE = .0001
+    }
+    else if (lr == 2){
+      LEARNING_RATE = .001
+    }
+    else if (lr == 1){
+      LEARNING_RATE = .01
+    }
+
+    console.log(LEARNING_RATE)
+
+
   var layer_num = extract_values("layers")
   if (layer_num == 5){
     document.getElementById('hidden_units1').disabled = false
@@ -604,6 +615,7 @@ function OnChange(){
 
   }
 
+ 
   function create_model(in_value,
     h1_value = null,
     h2_value = null,
@@ -768,7 +780,7 @@ function OnChange(){
     for (var i = 0; i < out_value; i++) {
 
       var res = parseInt(hidden_amount) + 1
-      console.log("out", res)
+      // console.log("out", res)
       create_node(NODE_LIST, layer = res, label = "out")
     }
 
@@ -778,17 +790,42 @@ function OnChange(){
 
     return json
   }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   function Train() {
+    var LEARNING_RATE = null
+
+    var iter = extract_values('iterations')
+    var lr = parseInt(document.getElementById("learning_rate").value)
     var hidden_amount = extract_values("layers")
     var h1_value = extract_values("hidden_units1")
     var h2_value = extract_values("hidden_units2")
     var h3_value = extract_values("hidden_units3")
     var h4_value = extract_values("hidden_units4")
     var h5_value = extract_values("hidden_units5")
-
-    var hidden_activation = extract_values('hidden_activation')
-
+    var e = document.getElementById("hidden_activation");
+    var hidden_activation = e.options[e.selectedIndex].value;
+    var out_e = document.getElementById("out_activation");
+    var out_activation = e.options[out_e.selectedIndex].value;
     var hiddenLayers = []
+
+    // console.log(out_activation, hidden_activation)
+
+    if (lr == 3){
+      LEARNING_RATE = .0001
+    }
+    else if (lr == 2){
+      LEARNING_RATE = .001
+    }
+    else if (lr == 1){
+      LEARNING_RATE = .01
+    }
 
     if (hidden_amount == 1) {
       hiddenLayers.push(h1_value)
@@ -820,57 +857,52 @@ function OnChange(){
 
     }
 
+    // console.log(LEARNING_RATE)
+
+    // const config = {
+    //   binaryThresh: 0.5,
+    //   hiddenLayers: hiddenLayers, // array of ints for the sizes of the hidden layers in the network
+    //   activation: out_activation,// document.getElementById("activation").value, // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+    //   relu: LEARNING_RATE,
+    // }
+    // console.log(config)
+    // // create a simple feed forward neural network with backpropagation
+    // const net = new brain.NeuralNetwork(config)
+    // // var x = document.getElementById("training_box").children[1]
+    // // console.log(x.childNodes())
+    // // if ($(".scroller").find("h5").length > 0){ // remove old model
+    // //   alert("found txt")
+    // //     $("h5").remove() 
+    // //   }
 
 
-    const config = {
-      binaryThresh: 0.5,
-      hiddenLayers: hiddenLayers, // array of ints for the sizes of the hidden layers in the network
-      activation: document.getElementById("activation").value, // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-      relu: 0.01,
+    // // var h1 = document.createElement("h5")                // Create a <h1> element
 
 
-
-    }
-    console.log(config)
-    // create a simple feed forward neural network with backpropagation
-    const net = new brain.NeuralNetwork(config)
-    // var x = document.getElementById("training_box").children[1]
-    // console.log(x.childNodes()
-    // if ($(".scroller").find("h5").length > 0){ // remove old model
-    //   alert("found txt")
-    //     $("h5").remove() 
-    //   }
-
-
-    var h1 = document.createElement("h5")                // Create a <h1> element
+    // net.train([
+    //   { input: [0, 0], output: [0] },
+    //   { input: [0, 1], output: [1] },
+    //   { input: [1, 0], output: [1] },
+    //   { input: [1, 1], output: [0] },
+    //  ])
+     //, {
+    //   log: (stats) => h1.appendChild(document.createTextNode(JSON.stringify(stats))),
+    //   iterations: 20000,// parseInt(document.getElementById("iterations").value),
+    //   learningRate: .01//parseFloat(document.getElementById("learning_rate").value)
+    // }
 
 
-    net.train([
-      { input: [0, 0], output: [0] },
-      { input: [0, 1], output: [1] },
-      { input: [1, 0], output: [1] },
-      { input: [1, 1], output: [0] },
-    ], {
-      log: (stats) => h1.appendChild(document.createTextNode(JSON.stringify(stats))),
-      iterations: parseInt(document.getElementById("iterations").value),
-      learningRate: parseFloat(document.getElementById("learning_rate").value)
-    }
+    
+    // h1.style.cssText = 'position:relative; top:5vh'
+    // document.getElementById("scroller").appendChild(h1);
 
-
-    )
-    h1.style.cssText = 'position:relative; top:5vh'
-    document.getElementById("scroller").appendChild(h1);
-
-    const output = net.run([1, 0]) // [0.987]
-    console.log(output)
-
-
-
-
-
+    // const output = net.run([1, 0]) // [0.987]
+    // console.log(output)
   }
 
   function Render() {
+    var iter = extract_values('iterations')
+    var lr = extract_values('learning_rate')
     var hidden_amount = extract_values("layers")
     var in_value = extract_values("in")
     var h1_value =extract_values("hidden_units1")
@@ -879,6 +911,15 @@ function OnChange(){
     var h4_value = extract_values("hidden_units4")
     var h5_value = extract_values("hidden_units5")
     var out_value = extract_values("out")
+
+    var e = document.getElementById("hidden_activation");
+    var hidden_activation = e.options[e.selectedIndex].value;
+    var out_e = document.getElementById("out_activation");
+    var out_activation = e.options[out_e.selectedIndex].value;
+    var hiddenLayers = []
+
+    // console.log(hidden_activation, out_activation)
+    
 
     if ($(".body_model").find("svg").length > 0) { // remove old model
       $("svg").remove()
