@@ -277,15 +277,55 @@
   svg {
     position: relative;
     width: 95vh;
-    /* outline: solid black; */
+    outline: solid black;
     height: 42vh;
-    left: 1vh;
-    bottom: 49vh;
+    right: 9vh;
+    bottom: 50vh;
   }
 
   body {
     background-image: url('https://data.whicdn.com/images/262378523/original.gif');
   }
+
+
+
+  .slidecontainer {
+  position: relative;
+  top: 6vh;
+  width: 15vh;
+  background-color: rgb(138, 59, 59);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
 </style>
 
 <style>
@@ -314,7 +354,7 @@
     text-align: center;
     background-color: #fff;
     position: relative;
-    width: 50vh;
+    width: 51vh;
     right: 2.7vh;
     bottom: 2vh;
     height: 35vh;
@@ -357,14 +397,14 @@
   </div>
 
   <div class="two", id="two">
-<div style="position: relative; bottom: 5vh; outline: solid black; height: 27vh;">
+<div style="position: relative; bottom: 5vh;right: 1vh; height: 27vh;width: 48vh;">
 <div style="height: 5vh; outline: solid black;">
   <h3 style="position:relative; right: 15vh;">Inputs #: </h3>
   <input min="1" id="in"onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points"value=2 step="1">
 
 </div>
 
-<div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
+<div style="outline: solid black; height: 5vh; position: relative;top: .5vh;">
 <h3 style="position:relative; right: 20vh;">Output #:</h3>
 <input min='1' id="out" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" value=2 name="points" step="1">
 </div>
@@ -374,15 +414,17 @@
   <input min=1 max="5" id="layers" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount"value=1 name="points" step="1">
   </div>
 
-<div style="outline: solid black; height: 5vh; position: relative;top: 3vh;">
-  <button style="position: relative;bottom: 8vh;height: 100%; width: 100%;" class="name" onclick="SAVE()">SAVE</button>
-  </div>
 
     </div>
   </div>
 <div class="three" id="three">
 <div class="hid", id="hid">
-  <div style="width: 50vh; height: 5vh; outline:solid black;position: relative;top: 3vh;  ">
+  
+  <div style="height: 5vh; position: relative; bottom: 15vh;">
+    <button style="position: relative;bottom: 10vh;height: 100%; width: 100%;" class="name" onclick="SAVE()">SAVE</button>
+    </div>
+  
+  <div style="width: 50vh; height: 5vh; position: relative;bottom: 13vh;  ">
     <div style="position: relative; bottom: 40vh;">
     <input id="hidden_units1"onchange="OnChange()" style=" width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 1' step="1">
     <input id="hidden_units2"onchange="OnChange()" style=" width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 2' step="1">
@@ -394,7 +436,7 @@
   </div>
   
 
-  <button style="position: relative;bottom: 35vh;height: 5vh; width: 100%;" class="name" onclick="TRAIN()">TRAIN</button>
+  <button style="position: relative;bottom: 45vh;height: 5vh; width: 100%;" class="name" onclick="Train()">TRAIN</button>
 
 
 </div>
@@ -402,18 +444,55 @@
 </div>
 
 </div>
-<div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 45vh; height:82vh; outline: 5px solid black;">
+<div class="body_model" style=" background-color: rgba(161, 135, 135, 0.336); position: relative;width: 146vh; left: 52vh; bottom: 45vh; height:82vh; outline: 5px solid black;">
 <div style="background-color:aliceblue; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 40vh;" >
-  <div style="background-color: rgb(84, 86, 131); outline: solid black;position: relative;left: .3vh;top:.5vh; height: 10vh; width: 45vh;" ></div>
+  <div style="background-color: rgb(84, 86, 131); outline: solid black;position: relative;left: .3vh;top:.5vh; height: 9vh; width: 45vh;" ></div>
+  <h1 style="position: relative; left: 10vh;bottom: 10vh;">Configurations</h1>
  
 </div>
+
+<div style="position: relative;bottom:30vh; left: 102vh">
+  
+  <div style="position: relative;left:5vh">
+    <div class="slidecontainer">
+      <input style="background-color: gray;" type="range" min="1" max="100" value="50">
+      
+    </div>
+  
+    <div class="slidecontainer">
+      <input style="background-color: gray;" type="range" min="1" max="100" value="50">
+    </div>
+    <div class="slidecontainer">
+      <input style="background-color: gray;" type="range" min="1" max="100" value="50">
+    </div>
+  </div>
+  <div style="position: relative;left:25vh; bottom: 24.5vh;">
+    <div class="slidecontainer">
+      <input style="background-color: gray;" type="range" min="1" max="100" value="50">
+      
+    </div>
+  
+    <div class="slidecontainer">
+      <input style="background-color: gray;" type="range" min="1" max="100" value="50">
+    </div>
+    <div class="slidecontainer">
+      <input style="background-color: gray;" type="range" min="1" max="100" value="50">
+    </div>
+  </div>
+  </div>
   <div id="training_box" style="position: relative;top: 5vh; text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 10vh;">
-    <!-- <div id="scroller" style=" overflow: scroll; height: 34vh;position: relative;bottom: 35vh;right: 3vh; "></div> -->
-  </div>  
+    <div id="scroller" style="outline: solid black; overflow: scroll;width: 95vh; height: 26vh;position: relative;top: 11vh;right: 10vh; "></div>
+  </div>
+
+
+
+
+
+
 </div>
 <div style= " background-color:aliceblue; position: relative; top: 5.3vh; height: 29vh;width: 100%; outline:5px solid black;">
   <div style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 5vh;">
-    <h1 style="  position: relative; top: .5vh;"></h1>
+  
   </div>
 </div>
 
@@ -423,6 +502,7 @@
 
 </body>
 <script>
+
  document.getElementById('hidden_units1').disabled = true
     document.getElementById('hidden_units2').disabled = true
     document.getElementById('hidden_units3').disabled = true
@@ -685,7 +765,7 @@ function OnChange(){
     return json
   }
   function Train() {
-    var hidden_amount = extract_values("hidden_amount")
+    var hidden_amount = extract_values("layers")
     var h1_value = extract_values("hidden_units1")
     var h2_value = extract_values("hidden_units2")
     var h3_value = extract_values("hidden_units3")
