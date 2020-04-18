@@ -236,14 +236,7 @@
     padding: 0.5em 1.5em 0.5em 0;
   }
 
-  /* input {
-  width: 100%;
-  padding: 0.7inputem;
-  margin-bottom: 0.5rem;
-}
-input:focus {
-  outline: 3px solid gold;
-} */
+ 
 
   @media (min-width: 400px) {
     form {
@@ -446,7 +439,6 @@ input:focus {
 <script>
 
 function OnChange(){
-  console.log("Change detected")
   var layer_num = extract_values("layers")
   if (layer_num == 5){
     document.getElementById('hidden_units1').disabled = false
@@ -494,56 +486,10 @@ function OnChange(){
   }
 
   Render()
-  // var in1 = document.getElementById("in_1").value
-  // var out1 = document.getElementById("out_1").value
-  // var layer1 = document.getElementById("layer_1").value
-//   if ($('#two input').length == 3){
-//     console.log(in1, out1, layer1)
-
-      
-//     }
- 
+  
 }
 
-
-
-  // FormGet Online Form Builder JS Code
-  // Creating and Adding Dynamic Form Elements.
-  var i = 2; // Global Variable for Name
-  /*
-  =================
-  Creating Text Box for name field in the Form.
-  =================
-  */
-  function textBoxCreate() {
-   
-    // var amount_layers = document.getElementById("layer_amount").value
-    
-    // // if ($(".hid").find("input").length >= 0) { // remove old model
-    // //     $(".hid").remove()
-
-    // // }
-    // // for (var j=0; j<amount_layers; j++){
-    //     var div = document.createElement("div")
-    //     div.setAttribute('id', 'hid')
-    //     div.setAttribute('class', 'hid')
-    //     var y = document.createElement("INPUT");
-    //     y.setAttribute("type", "text");
-    //     y.setAttribute('id', 'layer'+i)
-    //     y.setAttribute("Placeholder", "Layer" + i);
-    //     y.setAttribute('step', '1')
-    //     y.setAttribute("Name", "Name_" + i);
-    //     y.style.cssText = "position: relative; bottom: 38vh;left:5vh"
-    //     document.getElementById("hid").appendChild(y);
-    //     i++;
-
-
-    // }
-
-
-   
-  }
-
+  
 </script>
 
 <script>
@@ -853,7 +799,6 @@ function OnChange(){
       h5_value,
       out_value,
       hidden_amount)
-    console.log(json)
     new Create_Architecture(x_pos = -.5, y_pos = .2, json).build() //creates arch. based on json format
 
 
