@@ -1,3 +1,4 @@
+
 <html>
 <title></title>
 
@@ -15,9 +16,19 @@
 <script src="//unpkg.com/brain.js"></script>
 <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
 <style>
-  form {
-    margin: 50px 0 0 0;
+
+  #wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
   }
+  body{
+    position: relative;
+    right: 38vh;
+  }
+  /* form {
+    margin: 50px 0 0 0;
+  } */
 
   label {
     font: bold 20px Helvetica, sans-serif;
@@ -35,10 +46,10 @@
   padding: 3px 0 0 0;
   text-align: center;
 } */
-  form div {
+  /* form div {
     overflow: hidden;
     margin: 0 0 5px 0;
-  }
+  } */
 
   /* .button {
     margin: 0 0 0 5px;
@@ -379,7 +390,7 @@
 
 
 <head></head>
-
+<div id="wrapper">
 <body onload="Render()">
 
   <div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;"
@@ -501,6 +512,7 @@
 
 
 </body>
+</div>
 <script>
 
  document.getElementById('hidden_units1').disabled = true
