@@ -347,7 +347,7 @@ input:focus {
 
 <head></head>
 
-<body>
+<body onload="Render()">
 
   <div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 198vh; height: 10vh;"
     class="container">
@@ -367,18 +367,18 @@ input:focus {
 <div style="position: relative; bottom: 5vh; outline: solid black; height: 27vh;">
 <div style="height: 5vh; outline: solid black;">
   <h3 style="position:relative; right: 15vh;">Inputs #: </h3>
-  <input onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points" step="1">
+  <input id="in"onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points"value=2 step="1">
 
 </div>
 
 <div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
 <h3 style="position:relative; right: 20vh;">Output #:</h3>
-<input onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" name="points" step="1">
+<input id="out" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" value=2 name="points" step="1">
 </div>
 
 <div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
   <h3 style="position:relative; right: 16vh;">Layer(s) #:</h3>
-  <input onchange="textBoxCreate()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount" name="points" step="1">
+  <input id="layers" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount"value=5 name="points" step="1">
   </div>
 
 <div style="outline: solid black; height: 5vh; position: relative;top: 3vh;">
@@ -421,78 +421,20 @@ input:focus {
 
 <script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 
-
 <script>
 
 function OnChange(){
   console.log("Change detected")
-  var in1 = document.getElementById("in_1").value
-  var out1 = document.getElementById("out_1").value
-  var layer1 = document.getElementById("layer_1").value
-  if ($('#two input').length == 3){
-    console.log(in1, out1, layer1)
+  Render()
+  // var in1 = document.getElementById("in_1").value
+  // var out1 = document.getElementById("out_1").value
+  // var layer1 = document.getElementById("layer_1").value
+//   if ($('#two input').length == 3){
+//     console.log(in1, out1, layer1)
 
       
-    }
+//     }
  
-  // if ($('#two input').length == 4){
-  //   var h2 = document.getElementById('layer2').value
-  //   console.log(in1, out1, layer1, h2)
-
-      
-  //   }
-
-  //   if ($('#two input').length == 5){
-  //   var h2 = document.getElementById('layer2').value
-  //   var h3 = document.getElementById('layer3').value
-  //   console.log(in1, out1, layer1, h2, h3)
-
-      
-  //   }
-
-  //   if ($('#two input').length == 6){
-  //   var h2 = document.getElementById('layer2').value
-  //   var h3 = document.getElementById('layer3').value
-  //   var h4 = document.getElementById('layer4').value
-  //   console.log(in1, out1, layer1, h2,h3,h4)
-
-      
-  //   }
-
-  //   if ($('#two input').length == 7){
-  //     var h2 = document.getElementById('layer2').value
-  //   var h3 = document.getElementById('layer3').value
-  //   var h4 = document.getElementById('layer4').value
-  //   var h5 = document.getElementById('layer5').value
-
-  //   console.log(in1, out1, layer1, h2,h3,h4,h5)
-
-      
-  //   }
-
-  //   if ($('#two input').length == 8){
-  //     var h2 = document.getElementById('layer2').value
-  //   var h3 = document.getElementById('layer3').value
-  //   var h4 = document.getElementById('layer4').value
-  //   var h5 = document.getElementById('layer5').value
-  //   var h6 = document.getElementById('layer6').value
-
-
-  //   console.log(in1, out1, layer1, h2,h3,h4,h5, h6)
-
-
-      
-  //   }
-
-  
-
-
-  // else{
-  // console.log(in1, out1, layer1)
-
-  // }
-  
-
 }
 
 
@@ -507,25 +449,25 @@ function OnChange(){
   */
   function textBoxCreate() {
    
-    var amount_layers = document.getElementById("layer_amount").value
+    // var amount_layers = document.getElementById("layer_amount").value
     
-    // if ($(".hid").find("input").length >= 0) { // remove old model
-    //     $(".hid").remove()
+    // // if ($(".hid").find("input").length >= 0) { // remove old model
+    // //     $(".hid").remove()
 
-    // }
-    // for (var j=0; j<amount_layers; j++){
-        var div = document.createElement("div")
-        div.setAttribute('id', 'hid')
-        div.setAttribute('class', 'hid')
-        var y = document.createElement("INPUT");
-        y.setAttribute("type", "text");
-        y.setAttribute('id', 'layer'+i)
-        y.setAttribute("Placeholder", "Layer" + i);
-        y.setAttribute('step', '1')
-        y.setAttribute("Name", "Name_" + i);
-        y.style.cssText = "position: relative; bottom: 38vh;left:5vh"
-        document.getElementById("hid").appendChild(y);
-        i++;
+    // // }
+    // // for (var j=0; j<amount_layers; j++){
+    //     var div = document.createElement("div")
+    //     div.setAttribute('id', 'hid')
+    //     div.setAttribute('class', 'hid')
+    //     var y = document.createElement("INPUT");
+    //     y.setAttribute("type", "text");
+    //     y.setAttribute('id', 'layer'+i)
+    //     y.setAttribute("Placeholder", "Layer" + i);
+    //     y.setAttribute('step', '1')
+    //     y.setAttribute("Name", "Name_" + i);
+    //     y.style.cssText = "position: relative; bottom: 38vh;left:5vh"
+    //     document.getElementById("hid").appendChild(y);
+    //     i++;
 
 
     // }
@@ -821,14 +763,14 @@ function OnChange(){
   }
 
   function Render() {
-    var hidden_amount = extract_values("hidden_amount")
-    var in_value = extract_values("input_units")
-    var h1_value = extract_values("hidden_units1")
-    var h2_value = extract_values("hidden_units2")
-    var h3_value = extract_values("hidden_units3")
-    var h4_value = extract_values("hidden_units4")
-    var h5_value = extract_values("hidden_units5")
-    var out_value = extract_values("output_units")
+    var hidden_amount = extract_values("layers")
+    var in_value = extract_values("in")
+    var h1_value = 5//extract_values("hidden_units1")
+    var h2_value = 5//extract_values("hidden_units2")
+    var h3_value = 5//extract_values("hidden_units3")
+    var h4_value = 5//extract_values("hidden_units4")
+    var h5_value = 5//extract_values("hidden_units5")
+    var out_value = extract_values("out")
 
     if ($(".body_model").find("svg").length > 0) { // remove old model
       $("svg").remove()
