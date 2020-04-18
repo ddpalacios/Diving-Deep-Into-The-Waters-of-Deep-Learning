@@ -285,9 +285,9 @@ input:focus {
     position: relative;
     width: 95vh;
     /* outline: solid black; */
-    height: 50vh;
+    height: 42vh;
     left: 1vh;
-    bottom: 76vh;
+    bottom: 49vh;
   }
 
   body {
@@ -367,18 +367,18 @@ input:focus {
 <div style="position: relative; bottom: 5vh; outline: solid black; height: 27vh;">
 <div style="height: 5vh; outline: solid black;">
   <h3 style="position:relative; right: 15vh;">Inputs #: </h3>
-  <input id="in"onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points"value=2 step="1">
+  <input min="1" id="in"onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points"value=2 step="1">
 
 </div>
 
 <div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
 <h3 style="position:relative; right: 20vh;">Output #:</h3>
-<input id="out" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" value=2 name="points" step="1">
+<input min='1' id="out" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" value=2 name="points" step="1">
 </div>
 
 <div style="outline: solid black; height: 5vh; position: relative;top: 1vh;">
   <h3 style="position:relative; right: 16vh;">Layer(s) #:</h3>
-  <input id="layers" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount"value=5 name="points" step="1">
+  <input min=1 max="5" id="layers" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount"value=1 name="points" step="1">
   </div>
 
 <div style="outline: solid black; height: 5vh; position: relative;top: 3vh;">
@@ -389,8 +389,19 @@ input:focus {
   </div>
 <div class="three" id="three">
 <div class="hid", id="hid">
+  <div style="width: 50vh; height: 5vh; outline:solid black;position: relative;top: 3vh;  ">
+    <div style="position: relative; bottom: 40vh;">
+    <input id="hidden_units1"onchange="OnChange()" style=" width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 1' step="1">
+    <input id="hidden_units2"onchange="OnChange()" style=" width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 2' step="1">
+    <input id="hidden_units3"onchange="OnChange()" style="width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 3'step="1">
+    <input id="hidden_units4"onchange="OnChange()" style="width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 4'step="1">
+    <input id="hidden_units5"onchange="OnChange()" style="width: 10vh;" type="number"min=1 max="10" id="in_1" name="points"Placeholder='layer 5'step="1">
+  </div>
+    
+  </div>
+  
 
-  <button style="position: relative;bottom: 15vh;height: 5vh; width: 100%;" class="name" onclick="TRAIN()">TRAIN</button>
+  <button style="position: relative;bottom: 35vh;height: 5vh; width: 100%;" class="name" onclick="TRAIN()">TRAIN</button>
 
 
 </div>
@@ -399,9 +410,12 @@ input:focus {
 
 </div>
 <div class="body_model" style=" background-color: rgb(224, 224, 224); position: relative;width: 146vh; left: 52vh; bottom: 45vh; height:82vh; outline: 5px solid black;">
-<div style="background-color:aliceblue; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 45vh;" >
-  <div id="training_box" style="text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 10vh;">
-    <div id="scroller" style=" overflow: scroll; height: 34vh;position: relative;bottom: .1vh; "></div>
+<div style="background-color:aliceblue; outline: 5px solid black; width: 45vh; position: relative; left: 98vh;top: 3vh; height: 40vh;" >
+  <div style="background-color: rgb(84, 86, 131); outline: solid black;position: relative;left: .3vh;top:.5vh; height: 10vh; width: 45vh;" ></div>
+ 
+</div>
+  <div id="training_box" style="position: relative;top: 5vh; text-align: center; background-color: rgb(84,86,131); outline: 5px solid black; height: 10vh;">
+    <!-- <div id="scroller" style=" overflow: scroll; height: 34vh;position: relative;bottom: 35vh;right: 3vh; "></div> -->
   </div>  
 </div>
 <div style= " background-color:aliceblue; position: relative; top: 5.3vh; height: 29vh;width: 100%; outline:5px solid black;">
@@ -415,7 +429,15 @@ input:focus {
 
 
 </body>
+<script>
+ document.getElementById('hidden_units1').disabled = true
+    document.getElementById('hidden_units2').disabled = true
+    document.getElementById('hidden_units3').disabled = true
+    document.getElementById('hidden_units4').disabled = true
+    document.getElementById('hidden_units5').disabled = true
 
+
+</script>
 
 
 
@@ -425,6 +447,52 @@ input:focus {
 
 function OnChange(){
   console.log("Change detected")
+  var layer_num = extract_values("layers")
+  if (layer_num == 5){
+    document.getElementById('hidden_units1').disabled = false
+    document.getElementById('hidden_units2').disabled = false
+    document.getElementById('hidden_units3').disabled = false
+    document.getElementById('hidden_units4').disabled = false
+    document.getElementById('hidden_units5').disabled = false
+
+
+  }
+  if (layer_num == 4){
+    document.getElementById('hidden_units1').disabled = false
+    document.getElementById('hidden_units2').disabled = false
+    document.getElementById('hidden_units3').disabled = false
+    document.getElementById('hidden_units4').disabled = false
+    document.getElementById('hidden_units5').disabled = true
+
+
+  }
+  if (layer_num == 3){
+    document.getElementById('hidden_units1').disabled = false
+    document.getElementById('hidden_units2').disabled = false
+    document.getElementById('hidden_units3').disabled = false
+    document.getElementById('hidden_units4').disabled = true
+    document.getElementById('hidden_units5').disabled = true
+
+  }
+  if (layer_num == 2){
+    document.getElementById('hidden_units1').disabled = false
+    document.getElementById('hidden_units2').disabled = false
+    document.getElementById('hidden_units3').disabled = true
+    document.getElementById('hidden_units4').disabled = true
+    document.getElementById('hidden_units5').disabled = true
+
+
+  }
+  if (layer_num == 1){
+    document.getElementById('hidden_units1').disabled = false
+    document.getElementById('hidden_units2').disabled = true
+    document.getElementById('hidden_units3').disabled = true
+    document.getElementById('hidden_units4').disabled = true
+    document.getElementById('hidden_units5').disabled = true
+
+
+  }
+
   Render()
   // var in1 = document.getElementById("in_1").value
   // var out1 = document.getElementById("out_1").value
@@ -765,16 +833,17 @@ function OnChange(){
   function Render() {
     var hidden_amount = extract_values("layers")
     var in_value = extract_values("in")
-    var h1_value = 5//extract_values("hidden_units1")
-    var h2_value = 5//extract_values("hidden_units2")
-    var h3_value = 5//extract_values("hidden_units3")
-    var h4_value = 5//extract_values("hidden_units4")
-    var h5_value = 5//extract_values("hidden_units5")
+    var h1_value =extract_values("hidden_units1")
+    var h2_value = extract_values("hidden_units2")
+    var h3_value = extract_values("hidden_units3")
+    var h4_value = extract_values("hidden_units4")
+    var h5_value = extract_values("hidden_units5")
     var out_value = extract_values("out")
 
     if ($(".body_model").find("svg").length > 0) { // remove old model
       $("svg").remove()
     }
+
     // creates json formatted model
     var json = create_model(in_value,
       h1_value,
@@ -785,7 +854,7 @@ function OnChange(){
       out_value,
       hidden_amount)
     console.log(json)
-    new Create_Architecture(x_pos = -.5, y_pos = -.5, json).build() //creates arch. based on json format
+    new Create_Architecture(x_pos = -.5, y_pos = .2, json).build() //creates arch. based on json format
 
 
   }
