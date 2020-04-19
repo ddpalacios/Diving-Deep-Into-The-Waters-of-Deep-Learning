@@ -508,9 +508,9 @@
 </div>
 </div>
 
-<div style=" background-color: #f2f2f2cb; font-size: larger; outline:solid black; height: 7vh; position: relative; bottom: 7.5vh;width: 30.3vh; left: 2vh;" >
-<h1 style=" width: 15vh; position: relative; bottom: .1vh;">Output:</h1>
-<div id="output_val" style=" background-color: #a489b1; outline: solid black; height: 7vh;width:10vh; position: relative;left: 32vh; bottom: 8.8vh;"><h2></h2></div>
+<div style=" background-color: #f2f2f2cb; font-size: larger; outline:solid black; height: 7vh; position: relative; bottom: 7.5vh;width: 42.3vh; left: 2vh;" >
+<h1 style=" width: 45vh; position: relative; bottom: .1vh;">Predicted Output:</h1>
+<div id="output_val" style=" background-color: #a489b1; outline: solid black; height: 7vh;width:10vh; position: relative;left: 44vh; bottom: 8.8vh;"><h2></h2></div>
 
 </div>
 
@@ -1099,7 +1099,8 @@ plt_graph(loss, iter)
       out_val.appendChild(document.createTextNode(JSON.stringify(1)))
       
     }
-    out.style.cssText = 'position: relative; left: .5vh;'
+    out.style.cssText = 'position: relative; left: .5vh; top:1vh'
+    out_val.style.cssText = 'position: relative; left: 3vh; top:1vh;'
 
 
     document.getElementById("output_val").appendChild(out_val);
