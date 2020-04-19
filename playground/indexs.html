@@ -1,43 +1,57 @@
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>Create Form Dynamically And Increment Value</title>
-<!-- <script src="js/form.js" type="text/javascript"></script> -->
-<!-- <link href="css/form.css" rel="stylesheet" type="text/css"> -->
-</head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
-<body>
-
-
-    <div class="input_fields_wrap">
-        <button class="add_field_button">Add More Fields</button>
-        <div><input type="text" name="mytext[]"></div>
-    </div>
-
-
-
-</body>
 <script>
-$(document).ready(function() {
-	var max_fields      = 10; //maximum input boxes allowed
-	var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
-	var add_button      = $(".add_field_button"); //Add button ID
-	
-	var x = 1; //initlal text box count
-	$(add_button).click(function(e){ //on add input button click
-		e.preventDefault();
-		if(x < max_fields){ //max input box allowed
-			x++; //text box increment
-			$(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-		}
-	});
-	
-	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-		e.preventDefault(); $(this).parent('div').remove(); x--;
-	})
+window.onload = function () {
+
+var dps = []; // dataPoints
+var chart = new CanvasJS.Chart("chartContainer", {
+	title :{
+		text: "Dynamic Data"
+	},
+	axisY: {
+		includeZero: false
+	},      
+	data: [{
+		type: "line",
+		dataPoints: dps
+	}]
 });
+var start = 1
+var xVal = 0;
+var yVal = 100; 
+var updateInterval = 1000;
+var dataLength = 20; // number of dataPoints visible at any point
+
+var updateChart = function (count) {
+
+	count = count || 1;
+
+	for (var j = 0; j < 8000; j++) {
+		start -= .0001
+		yVal = start
+		dps.push({
+			x: j,
+			y: yVal
+		});
+		xVal++;
+	}
+
+	if (dps.length > dataLength) {
+		dps.shift();
+	}
+
+	chart.render();
+};
+
+updateChart(dataLength);
+// setInterval(function(){updateChart()}, updateInterval);
+
+}
 </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 50vh"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
 </html>
