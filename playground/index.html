@@ -72,7 +72,6 @@
   } */
 </style>
 
-
 <style>
   body {
     overflow: hidden;
@@ -293,7 +292,7 @@
     outline: solid black;
     height: 42vh;
     left: 1vh;
-    bottom: 201vh;
+    bottom: 198vh;
   }
 
   body {
@@ -425,13 +424,6 @@
 
   <button style="font-size: 5vh; position: relative;bottom: 35vh;height: 10vh; width: 100%;" class="name" onclick="Save()">SAVE</button>
 </div>
-   <!-- <div style=" position: relative;top: 1vh;">
-  <div style="height: 5vh; position: relative; bottom: 25vh;">
-    <button style="font-size: 5vh; position: relative;bottom: 2vh;height: 10vh; width: 100%;" class="name" onclick="SAVE()">SAVE</button>
-    </div>
-
-  <button style="font-size: 5vh; position: relative;bottom: 45vh;height: 10vh; width: 100%;" class="name" onclick="Train()">TRAIN</button>
-</div> -->
 
 </div>
 
@@ -451,7 +443,7 @@
     <div  class="slidecontainer">
 
       <h3 style="outline: solid black;height: 4vh;" >Iterations:</h3>
-     <input id="iterations" style="position: relative;bottom: 12.5vh; width: 100%; background-color: gray;"onchange="OnChange()" type="range" min="1000" max="5000" value="50"><br>    
+     <input id="iterations" style="position: relative;bottom: 12.5vh; width: 100%; background-color: gray;"onchange="OnChange()" type="range" min="1000" max="50000" value="25000"><br>    
     </div>
 
     <div  class="slidecontainer" style="bottom: 69vh;">
@@ -459,7 +451,7 @@
       <h5 id="value_change"></h5>
       </div>
       <h3 style="outline: solid black;height: 4vh;" >Learning Rate:</h3>
-     <input id="learning_rate" style="position: relative; bottom: 1vh; width: 100%; background-color: gray;"onchange="OnChange()"type="range" min="1" max=3 value="50">
+     <input id="learning_rate" style="position: relative; bottom: 1vh; width: 100%; background-color: gray;"onchange="OnChange()"type="range" min="1" max=3 value="2">
     
     </div>
     <div style="position: relative;bottom: 28.3vh;">
@@ -483,13 +475,13 @@
 </select>
 </div>
 </div>
-<div style="text-align: center; background-color: #f2f2f2dc;  width: 13vh; outline: solid black; height: 10vh; position: relative; bottom: 74.5vh; left: 29vh;">
+<div style="text-align: center; background-color: #f2f2f2dc;  width: 13vh; outline: solid black; height: 10vh; position: relative; bottom: 78.5vh; left: 29vh;">
 <h3>Expected:</h3>
 <div id="expected_out" style="width: 8vh; height: 6.5vh;position: relative;left: 2vh; bottom: 5.2vh; "></div>
 <h5>1</h5>
 </div>
 
-<div style="text-align: center; background-color: #f2f2f2e0; width: 25vh; outline: solid black; height: 10vh; position: relative; bottom: 87vh; left: 1vh;">
+<div style="text-align: center; background-color: #f2f2f2e0; width: 25vh; outline: solid black; height: 10vh; position: relative; bottom: 91vh; left: 1vh;">
 <h3>Test Inputs:</h3>
 <div style="position: relative;bottom: 4.6vh;">
 <input onchange="OnChange()" id="test1" value="1" type="number" style="position: relative;width: 5.5vh; top: 3vh; left: 4vh;">
@@ -497,29 +489,22 @@
 </div>
 </div>
 
-<div style=" background-color: #f2f2f2cb; font-size: larger; outline:solid black; height: 7vh; position: relative; bottom: 97.5vh;width: 97.3vh; left: 44.5vh;" >
+<div style=" background-color: #f2f2f2cb; font-size: larger; outline:solid black; height: 7vh; position: relative; bottom: 101.5vh;width: 62.3vh; left: 44.5vh;" >
 <h1 style=" width: 15vh;">Output:</h1>
 <div id="output_val" style="outline: solid black; height: 5vh;width:3vh; position: relative;left: 20vh; bottom: 7.8vh;"><h2></h2></div>
 
 <div id="output_prob_val" style=" height: 5vh;width: 25vh; position: relative;left: 35vh; bottom: 15.8vh;"><h2></h2></div>
 </div>
 
-  <div  id="training_box" style="width: 96vh; font-size: larger; position: relative;left: 1vh; bottom:163vh; text-align: center; background-color: rgb(84,86,131); outline: solid black; height: 7vh;">
+  <div  id="training_box" style="width: 96vh; font-size: larger; position: relative;left: 1vh; bottom:167vh; text-align: center; background-color: rgb(84,86,131); outline: solid black; height: 7vh;">
     <h1 style=" width: 35vh; position: relative;top:1vh;">Dataset: <b>XOR</b></h1>
     <div style="position: relative;left: 30vh; top: 1vh;">
       <button style="position: relative;bottom:9.3vh;height: 5vh; width: 20vh; right: 20vh;" class="name" onclick="RESET()">CHOOSE DATASET</button>
-      <button style="position: relative;bottom:9.1vh;height: 5vh; width: 20vh; right: 5vh;" class="name" onclick="RESET()">Reset</button>
+      <button style="position: relative;bottom:9.1vh;height: 5vh; width: 20vh; right: 5vh;" class="name" onclick="reload()">Reset</button>
     </div>
   </div>
-  <button style="position: relative;bottom:114.3vh;height: 5vh; width: 20vh; left: 121vh;" class="name" onclick="RESET()">CLEAR OUTPUT</button>
 
-  <div id="scroller" style="background-color: rgba(153, 153, 153, 0.788); outline: solid black; overflow: scroll;width: 100%; height: 33vh;position: relative;bottom: 113vh;left: .2vh; "></div>
-
-
-
-
-
-
+  <div id="scroller" style="background-color: rgba(153, 153, 153, 0.788); outline: solid black; overflow: scroll;width: 100%; height: 32vh;position: relative;bottom: 110vh;left: .2vh; "></div>
 </div>
   </div>
 </div>
@@ -546,6 +531,21 @@
 <script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 
 <script>
+
+function reload(){
+
+  location.reload()
+}
+
+function RESET(){
+
+  if ($(".body_model").find("h5").length > 0) { // remove old model
+      $("h5").remove()
+    }
+
+
+}
+
 
 function OnChange(){
   var expected_integer = null
@@ -577,13 +577,13 @@ function OnChange(){
 
  
   if (lr == 3){
-      LEARNING_RATE = .0001
+      LEARNING_RATE = .01
     }
     else if (lr == 2){
       LEARNING_RATE = .001
     }
     else if (lr == 1){
-      LEARNING_RATE = .01
+      LEARNING_RATE = .0001
     }
 
     console.log(LEARNING_RATE)
@@ -672,7 +672,6 @@ expected_out.style.cssText = 'font-size:30px'
 
   }
 
- 
   function create_model(in_value,
     h1_value = null,
     h2_value = null,
@@ -849,12 +848,6 @@ expected_out.style.cssText = 'font-size:30px'
   }
  
  
- 
- 
- 
- 
- 
- 
   function Train() {
     var test1 = parseInt(document.getElementById('test1').value)
   var test2 = parseInt(document.getElementById('test2').value)
@@ -955,6 +948,7 @@ net.train(trainingData, {
 
     
     h1.style.cssText = 'position:relative; bottom: 3vh; font-size:17px'
+    out.style.cssText = "position: relative; right:10vh"
     document.getElementById("scroller").appendChild(h1);
 
     const output = net.run([test1, test2]) 
@@ -968,7 +962,6 @@ net.train(trainingData, {
       out_val.appendChild(document.createTextNode(JSON.stringify(1)))
       
     }
-
     document.getElementById("output_val").appendChild(out_val);
     document.getElementById("output_prob_val").appendChild(out);
 
