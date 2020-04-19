@@ -1,245 +1,264 @@
-<!DOCTYPE html>
-<html>
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-
-body{
-  background-image: url("background.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100%;
-  height: 450px;
-  
-
-}
-
-.rectangle{
-  position: static;
-  height: 25%;
-  width: 100%;
-  bottom: 50px;
-  background-color: rgba(0, 0, 0, 0.486);
-}
-
-b{
-  color: rgb(230, 215, 215);
-  
-  }
-  .header_text{
-    text-shadow: 1px 1px 1px rgb(129, 86, 86),
-               2px 2px 1px rgba(40, 38, 42, 0.63);
-    position: relative;
-    top: 150px;
-    left: 30%;
-    color: rgb(133, 99, 187);
-  }
-img{
-border: 20;
-
-}
-
-.mySlides {display:none;}
-
-div.text_history {
-    border: 1px solid gray;
-    padding: 8px;
-  }
-  
-  h1.header_text {
-    text-transform: uppercase;
-    color: #4CAF50;
-    position: relative;
-    right: 200px;
-  }
-  
-  p.body_text {
-    position: relative;
-    right: 500px;
-    letter-spacing: 3px;
-  }
-
-  .navbar {
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  
-  .navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .navbar a:hover {
-    background: #ddd;
-    color: black;
-  }
-
-
-
- 
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-
-  45% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0%;
-  }
-}
-
-.discription_title {
-  position: relative;
-  top: 5rem;
-  left: 37%;
-  top: -5px;
-  opacity: 0;
-  font-size: 50px;
-
-  animation-name: fadeInOut;
-  animation: fadeInOut 1s infinite alternate;
-  animation-duration: 5s;
-  text-shadow: 1px 1px 1px rgb(214, 210, 219),
-             2px 2px 1px rgba(253, 253, 253, 0.63);
-  
-  color: rgb(255, 255, 255);
-}
-</style>
-
-<div class="navbar">
-  <a href="../index.html">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-</div>
-
-
-
-<div class="header_text" style="position: relative; top: 76px; left: 25%;">
-  <h1>Observe Some <b> EXAMPLES </b> Of PreMade Neural Networks. <br></h1>
-</div>
-<div class='rectangle'></div>
-
-<body>
-<h2 class="w3-center"></h2>
-
-<div class="w3-content" style="position: relative; top: 90px;left: 180px;"   >
-  <div class="mySlides w3-container" style="width: 900px; height: 100%;">
-    <h1>A Neural Network with 2 hidden layers; 15 units; 5 outputs</h1>
-  <img src="ex2.png" style="width:100%">
-   
-    
-  </div>
-  <img class="mySlides" src="ex3.png" style="width:100%">
-
-  <div class="mySlides w3-container w3-xlarge ">
-      <h1>A Neural Network with 2 hidden layers; 15 units; 5 outputs</h1>
-  <img src="ex4.png" style="width:100%">
-  </div>
-  <img class="mySlides" src="ex1.png" style="width:100%">
-</div>
-
-<div class="main_description">
-  <div class="text_description" style="position: relative; left: 33%;  width: 40%;">
-  
-    
-
-    <div class="text_history" style="color: rgb(89, 206, 226); position: relative; top: 200px; right: 590px; font-size: 40px; width: 1900px; background-color: rgba(34, 48, 48, 0.315);">
-     
-      The idea of neural networks began unsurprisingly as a model of how neurons in the brain function, 
-      termed ‘connectionism’ and used connected circuits to simulate intelligent behaviour .In 1943, portrayed
-       with a simple electrical circuit by neurophysiologist Warren McCulloch and mathematician Walter Pitts. 
-       Donald Hebb took the idea further in his book, The Organization of Behaviour (1949), 
-      proposing that neural pathways strengthen over each successive use, especially between neurons 
-      that tend to fire at the same time thus beginning the long journey towards quantifying the complex processes of the brain.
-  
-      <hr>
-      <h2>Perceptron</h2>
-      <img src="perceptron.png" style="position: relative; top: -50px; left: 35%;">
-     
-     <br> In machine learning, the perceptron is an algorithm for supervised
-       learning of binary classifiers. A binary classifier is a function
-        which can decide whether or not an input, represented by a vector 
-        of numbers, belongs to some specific class.[1] It is a type of linear classifier,
-       i.e. a classification algorithm that makes its predictions based on a linear predictor 
-       function combining a set of weights with the feature vector. 
-      <hr>
-      <h2>Adaline</h2>
-      <br>
-      <img src="adaline.png" style="position: relative; top: -50px; left: 35%; width: 600px;">
-      <br>ADALINE (Adaptive Linear Neuron or later Adaptive Linear Element) is an early single-layer artificial 
-      neural network and the name of the physical device that implemented this network.[1][2][3][4][5] 
-      The network uses memistors. It was developed by Professor Bernard Widrow and his graduate student 
-      <br><br>Ted Hoff at Stanford University in 1960. It is based on the McCulloch–Pitts neuron. It consists of a weight, 
-      a bias and a summation function. <br><br> The difference between Adaline and the standard (McCulloch–Pitts) perceptron 
-      is that in the learning phase, the weights are adjusted according to the weighted sum of the inputs (the net). 
-      In the standard perceptron, the net is passed to the activation (transfer) function and the function's output is 
-      used for adjusting the weights. 
-  
-      <hr>
-  
+<html><head>
+  <meta charset="utf-8">
+  <title>Full Page Background Image | CSS #1</title>
+  <style>
+    body {
+		overflow-x: hidden;
+    background-image: url('https://data.whicdn.com/images/262378523/original.gif');
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+	}
+	
       
-      <h2>Multi-Layer Perceptron</h2>
-      <img src="mlp.png" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-      <br>
-      A multilayer perceptron (MLP) is a class of feedforward artificial neural network (ANN).
-       The term MLP is used ambiguously, sometimes loosely to refer to any feedforward ANN, 
-       sometimes strictly to refer to networks composed of multiple layers of perceptrons 
-       (with threshold activation); Multilayer perceptrons are sometimes 
-       colloquially referred to as "vanilla" neural networks, especially when they have a single hidden layer.
-      <hr>
-      <h2>Deep Neural Network</h2>
-      <img src="deep-neural-network.jpg" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-  
-      <br>
-      Deep learning (also known as deep structured learning or 
-      differential programming) is part of a broader family of machine 
-      learning methods based on artificial neural networks with representation learning. 
-      Learning can be supervised, semi-supervised or unsupervised.
-      <hr>
-      <h2>Evolution of Deep Neural Network</h2>
-      <img src="evolv.jpg" style=" position: relative;left: 35%; top: -50px; width: 650px;">
-      <br>
-      Neuroevolution, or neuro-evolution, is a form of artificial intelligence that uses 
-      evolutionary algorithms to generate artificial neural networks (ANN), parameters, 
-      topology and rules. It is most commonly applied in artificial life, general game
-      playing and evolutionary robotics.
-    </p>
-    </div>
-    
+      img.bg {
+        /* Set rules to fill background */
+        min-height: 100%;
+        min-width: 1024px;
+        
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
+        
+        /* Set up positioning */
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+      
+      @media screen and (max-width: 1024px){
+        img.bg {
+          left: 50%;
+          margin-left: -512px; }
+      }
+      
+      #page-wrap { position: relative; width: 400px; margin: 50px auto; padding: 20px; background: white; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
+      p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
    
-  </div>
-  </div>
-
-
-<script>
-var slideIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none"; 
-  }
-  slideIndex++;
-  if (slideIndex > x.length) {slideIndex = 1} 
-  x[slideIndex-1].style.display = "block"; 
-  setTimeout(carousel, 2000); 
+   
+   
+   
+   
+   
+      .couponcode:hover .coupontooltip {
+    display: block;
 }
-</script>
 
-</body>
-</html>
+
+.coupontooltip {
+    display: none;
+    background: #C8C8C8;
+    margin-left: 28px;
+    padding: 10px;
+    position: relative;
+    left: 80vh;
+    z-index: 1000;
+    width:200px;
+    height:100px;
+}
+
+.couponcode {
+  outline: solid black;
+    margin:-22px;
+    width: 100%;
+    position: absolute;
+    top: 15vh;
+}
+
+
+
+.second:hover .secondlinK {
+    display: block;
+}
+
+.second{
+
+  outline: solid black;
+    margin:-22px;
+    width: 100%;
+    position: absolute;
+    top: 80vh;
+}
+.secondlinK{
+
+  display: none;
+    background: #C8C8C8;
+    margin-left: 28px;
+    padding: 10px;
+    position: relative;
+    left: 80vh;
+    z-index: 1000;
+    width:200px;
+    height:100px;
+
+}
+
+
+
+
+.third:hover .thirdlinK {
+    display: block;
+}
+
+.third{
+
+  outline: solid black;
+    margin:-22px;
+    width: 100%;
+    position: absolute;
+    top: 140vh;
+}
+.thirdlinK{
+
+  display: none;
+    background: #C8C8C8;
+    margin-left: 28px;
+    padding: 10px;
+    position: relative;
+    left: 80vh;
+    z-index: 1000;
+    width:200px;
+    height:100px;
+
+}
+    
+
+
+
+
+
+
+.fourth:hover .fourthlinK {
+    display: block;
+}
+
+.fourth{
+
+  outline: solid black;
+    margin:-22px;
+    width: 100%;
+    position: absolute;
+    top: 200vh;
+}
+.fourthlinK{
+
+  display: none;
+    background: #C8C8C8;
+    margin-left: 28px;
+    padding: 10px;
+    position: absolute;
+    left: 80vh;
+    bottom: 20vh;
+    z-index: 1000;
+    width:200px;
+    height:100px;
+
+}
+    
+    
+
+
+ img{
+   width: 100%;
+   
+ }  
+   
+   
+   p{
+     color: rgba(200, 200, 200, 0);
+   }
+   
+   
+   
+    </style>
+  </head>
+  <body>
+  <img  class="bg">
+  <div id="page-wrap">
+    <div class="couponcode">First Link
+      <img src="ex3.png"> 
+      <span class="coupontooltip">Content 1</span>
+  </div>
+  
+  <div class="second">Second Link
+    <img src="ex3.png">
+      <span class="secondlink"> Content 2</span>
+  </div>
+
+  <div class="third">third Link
+    <img src="ex3.png">
+    <span class="thirdlink"> Content 2</span>
+</div>
+
+<div class="fourth">fourth Link
+  <img src="ex3.png">
+  <span class="fourthlink"> Content 2</span>
+</div>
+  <p>bi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+  </div>
+  <style type="text/css" style="display: none !important;">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overflow-x: hidden;
+    }
+    #demo-top-bar {
+      text-align: left;
+      background: #222;
+      position: relative;
+      zoom: 1;
+      width: 100% !important;
+      z-index: 6000;
+      padding: 20px 0 20px;
+    }
+    #demo-bar-inside {
+      width: 960px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    #demo-bar-buttons {
+      padding-top: 10px;
+      float: right;
+    }
+    #demo-bar-buttons a {
+      font-size: 12px;
+      margin-left: 20px;
+      color: white;
+      margin: 2px 0;
+      text-decoration: none;
+      font: 14px "Lucida Grande", Sans-Serif !important;
+    }
+    #demo-bar-buttons a:hover,
+    #demo-bar-buttons a:focus {
+      text-decoration: underline;
+    }
+    #demo-bar-badge {
+      display: inline-block;
+      width: 302px;
+      padding: 0 !important;
+      margin: 0 !important;
+      background-color: transparent !important;
+    }
+    #demo-bar-badge a {
+      display: block;
+      width: 100%;
+      height: 38px;
+      border-radius: 0;
+      bottom: auto;
+      margin: 0;
+      background: url(/images/examples-logo.png) no-repeat;
+      background-size: 100%;
+      overflow: hidden;
+      text-indent: -9999px;
+    }
+    #demo-bar-badge:before, #demo-bar-badge:after {
+      display: none !important;
+    }
+  </style>
+  
+  </body></html>
