@@ -20,14 +20,26 @@
     left: 92vh;
     width: 85vh;
     height: 900%;
-    bottom: 1%;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdpNf1yvGf3mHN6DldG07ldzIYLOuw_Rp_mOC9aqjSYn1A_xRB&usqp=CAU');
+    background-position: center; 
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+    /* background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); */
+    /* bottom: 1%; */
+    top: 1vh;
   }
 
   .item1 {
     grid-column-start: 1;
     grid-column-end: 3;
     position: relative;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdpNf1yvGf3mHN6DldG07ldzIYLOuw_Rp_mOC9aqjSYn1A_xRB&usqp=CAU');
+   background-position: center;
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+    /* background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); */
     left: 5vh;
+    top: 1vh;
     width: 103vh;
     height: 25vh;
 
@@ -37,17 +49,25 @@
   .item3 {
     grid-row-start: 2;
     grid-row-end: 4;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdpNf1yvGf3mHN6DldG07ldzIYLOuw_Rp_mOC9aqjSYn1A_xRB&usqp=CAU');
+    /* background-position: center; Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+    /* background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); */
     position: relative;
-    top: 40vh;
+    top: 43vh;
     width: 85vh;
     height: 45vh;
     left: 112vh;
   }
 
   .item4 {
-    background-image: url('brain.jpg');
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzRnbrIVi2G7ggfXGRnPe3iAVsqxWHT7aLSVIQ-OjykSq7ee63&usqp=CAU');
 
     grid-column-start: 2;
+  background-position: center; 
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
     grid-column-end: 4;
     position: relative;
     top: 25vh;
@@ -62,16 +82,34 @@ body{
   background-size: cover; /* Resize the background image to cover the entire container */
 }
   .item5 {
-    background-image: url('brain.jpg');
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrrQwl4T3TkJ7hMcoQELtj_cBA9otDVywwI-9KW5eWxJn60Ie9&usqp=CAU');
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+
     position: relative;
     top: 49vh;
     right: 5vh;
     width: 103vh;
     height: 17vh;
   }
+  h1{
+     color: rgb(0, 0, 0);
+     font-size: 45px;
+     font-family: "Comic Sans MS", cursive, sans-serif;
+   }
+   h5{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: rgb(162, 151, 167);
+
+     
+   }
 
   .item6 {
-    background-image: url('brain.jpg');
+    background-image: url('https://s3.amazonaws.com/prod-www-blackline-com/blog/wp-content/uploads/2019/01/29163118/A-Conversation-With-BlackLines-Machine-Learning-Experts.jpg');
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
     position: relative;
     top: 70vh;
     right: 15vh;
@@ -241,6 +279,11 @@ bottom: 5px;
     text-decoration: none;
     font-weight: bolder;
 }
+img{
+  outline: 5px solid black;
+  position: relative;
+  top: .1vh;
+}
 
 #footer a:hover{
     color: rgb(255, 255, 255);
@@ -248,15 +291,23 @@ bottom: 5px;
 
 
 * {box-sizing: border-box}
-.mySlides {display: none}
-img {vertical-align: middle;}
+.mySlides {display: none;
+outline: solid black;
+height: 31vh;
+
+}
+/* img {vertical-align: middle;} */
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 200vh;
+  /* max-width: 200vh; */
+  background-color: rgba(37, 29, 114, 0.705);
+  outline: solid black;
   position: relative;
-  left: 1vh;
-  top: 2vh;
+  height:76%;
+  width: 85vh;
+  right: .1vh;
+  bottom: 6vh;
   margin: auto;
 }
 
@@ -356,36 +407,42 @@ img {vertical-align: middle;}
 
 <body>
 
-  <div class="wrapper">
-    <div class="item1">1
-      <h2 style="text-align: center;">Diving Deep</h2>
-      <div style="height: 12vh; background-color: rgba(128, 128, 128, 0.74); text-align: center; font-size: 190%; outline: 5px solid black;">
-        <h4 style="position: relative; top: 2vh; " >Tinker With a <b >Neural Network</b> Right Here in Your Browser. <br>
-          Don't Worry, You Can't Break it. We Promise.</h4>
+  <div class="wrapper" style="overflow: hidden;">
+    <div class="item1">
+      <h1 style= "font-size: 40px;position: relative; bottom: 1vh;left: 6vh;">Welcome To</h1>
+      <h1 style="position: relative;bottom:10vh;left: 12vh; font-size: 70px; text-align: center;">Diving Deep</h1>
+      <div style=" background-color: rgba(128, 128, 128, 0.74); text-align: center; font-size: 190%; ">
+      
       <!-- <img style="width: 100vh; height: 10vh;" src="https://cdn.wallpapersafari.com/96/92/7mznSF.jpg"> -->
     </div>
     </div>
-    <div class="item2">2
-      <h1 style="text-align: center;">Into The Waters Of</h1>
-      <div style="text-align: center; font-size: 190%; outline: 5px solid black;">
+    <div class="item2">
+      <h1 style="position: relative;bottom: 2vh; text-align: center;">Into The Waters Of</h1>
+      <div style="text-align: center; font-size: 190%;">
        
 <div class="slideshow-container">
+  <h5 style="position: relative; top: 3vh;">Keep Up With ML & Check Out Some Interesting Papers</h5>
 
-  <div class="mySlides fade">
+  <div class="mySlides fade" >
     <div class="numbertext">1 / 3</div>
-    <img  src="NN1.png" style="outline: 5px solid black; width:40vh; height: 25vh;">
+    <a href="http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf">
+    <img  src="https://image.slidesharecdn.com/neat-180115095419/95/evolving-neural-networks-through-augmenting-topologies-neat-10-638.jpg?cb=1516010229" style=" width:40vh; height: 25vh;"></a>
     <div class="text">Caption Text</div>
   </div>
   
+  
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="NN2.png" style="outline: 5px solid black; width:40vh">
+    <a href="https://arxiv.org/pdf/1703.00548.pdf">
+    <img src="data:image/jpeg;base64,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" style="width:40vh"></a>
     <div class="text">Caption Two</div>
   </div>
   
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="nn4.jpg" style="outline: 5px solid black; width:40vh">
+    <a href="https://arxiv.org/pdf/1506.02640.pdf">
+    <img src="https://blog.paperspace.com/content/images/size/w2000/2018/04/maxresdefault-p1.jpg" style="width:40vh">
+  </a>
     <div class="text">Caption Three</div>
   </div>
   
@@ -429,12 +486,12 @@ img {vertical-align: middle;}
       </div>
     </div>
     <div class="item4">4
-    <a href="playground/index.html">
+    <a  href="playground/index.html">
 
       <div class="container">
         <div class="middle">
-          <div style=" right: 40px; width: 100vh; top: 3vh; height:25vh; outline: 5px solid black;" class="text">
-            <h1 style=" color: black;">Playground </h1>
+          <div style=" right: 40px; width: 100vh; top: 3vh; height:25vh;" class="text">
+            <h1 style="position: relative;top: 5vh; color: black;">Playground </h1>
           </div>
         </div>
       </div>
@@ -444,7 +501,7 @@ img {vertical-align: middle;}
     <a href="Examples/index.html">
       <div class="container">
         <div class="middle">
-          <div style="width: 100vh;height: 16vh; outline: 5px solid black;" class="text">
+          <div style="text-align: center; width: 100vh;height: 16vh; " class="text">
             <h1 style=" color: black;">Examples</h1>
           </div>
         </div>
@@ -453,10 +510,10 @@ img {vertical-align: middle;}
     </div> 
      <div class="item6">6
       <a href="Tutorial/index.html">
-      <div class="container">
-        <div class="middle">
-          <div style="width: 100vh; height: 13vh; outline: 5px solid black;" class="text">
-            <h1 style=" color: black;">View History</h1>
+      <div class="container" style="text-align: center;">
+        <div class="middle" >
+          <div style="text-align: center; width: 100vh; height: 13vh;" class="text">
+            <h1 style="position: relative;bottom: 3vh; color: black;">View History</h1>
           </div>
         </div>
       </div>

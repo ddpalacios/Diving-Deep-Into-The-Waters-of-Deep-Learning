@@ -286,7 +286,7 @@
   }
 
   svg {
-    background-color: rgba(66, 19, 66, 0.815);
+    background-color: rgba(55, 107, 109, 0.596);
     position: relative;
     width: 96vh;
     outline: solid black;
@@ -300,7 +300,11 @@
 
 
   }
-
+h1{
+  color: rgb(0, 0, 0);
+     /* font-size: 45px; */
+     font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
 
   /* .slidecontainer {
@@ -371,34 +375,34 @@
 <div id="wrapper">
 <body onload="Render()">
 
-  <div style="background-color: rgb(153, 153, 153); outline: 5px solid black;width: 52vh; height: 10vh;"
+  <div style="background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); outline: 5px solid black;width: 52vh; height: 10vh;"
     class="container">
-    <h1 style="position: relative; left: 1vh; bottom: 2vh; ">Welcome to The Playground</h1>
+    <h1 style="position: relative; left: 1vh; bottom: 3.5vh; ">Welcome to The Playground</h1>
     <a href="../index.html">
       <h3 style="position: relative; left:25vh;">Return to Homepage</h3>
     </a>
   </div>
 
-<div class="sidebar" style="outline: 6px solid black;background-color: aliceblue;width: 50vh; position: relative; bottom: 1vh;">
+<div class="sidebar" style="outline: 6px solid black;background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg');width: 50vh; position: relative; bottom: 1vh;">
 
-  <div style=" outline: solid; background-color: rgb(84, 86, 131); height: 10vh;">
+  <div style=" outline: solid;background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); height: 10vh;">
     <h1 style=" font-size: 4vh; position: relative; left: 7vh; top: 3vh;">Design Your Model:</h1>
   </div>
 
-  <div class="two", id="two" style="background-color:rgb(132, 109, 145);">
+  <div class="two", id="two" style="background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg');">
 <div style="position: relative; bottom: 5vh;right: 1.6vh; height: 26vh;width:49.9vh;">
-<div style="background-color: #ddd;height: 5vh; outline: solid black;">
+<div style="background-color: rgba(221, 221, 221, 0.699);height: 5vh; outline: solid black;">
   <h3  style=" position: relative; right: 5vh; width: 25vh;">Inputs #: </h3>
   <input min="1" id="in"onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="in_1" name="points"value=2 step="1">
 
 </div>
 
-<div style="background-color: #ddd; outline: solid black; height: 5vh; position: relative;top: .5vh;">
+<div style="background-color: rgba(221, 221, 221, 0.699); outline: solid black; height: 5vh; position: relative;top: .5vh;">
 <h3  style="position: relative; right: 10vh; width: 25vh;">Output #:</h3>
 <input min='1' id="out" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="out_1" value=2 name="points" step="1">
 </div>
 
-<div style="background-color: #ddd; outline: solid black; height: 5vh; position: relative;top: 1vh;">
+<div style="background-color: rgba(221, 221, 221, 0.699); outline: solid black; height: 5vh; position: relative;top: 1vh;">
   <h3 style="position: relative; right: 10vh; width: 25vh;">Layer(s) #:</h3>
   <input min=1 max="5" id="layers" onchange="OnChange()" style="position: relative;bottom: 5vh;left: 25vh; width: 10vh;" type="number" id="layer_amount"value=1 name="points" step="1">
   
@@ -433,20 +437,20 @@
 
 </div>
 <div class="body_model" style=" background-color: rgba(161, 135, 135, 0.336); position: relative;width: 144vh; left: 54vh; bottom: 56vh; height:97vh; outline: 9px solid black;">
-<div style="background-color:rgb(132, 109, 145); width: 44.2vh;outline: solid black; position: relative; left: 99vh;top: .9vh; height: 54vh;" >
-  <div style="background-color: rgba(84, 86, 131, 0.603); outline: solid black;position: relative;left: .1vh;top:.5vh; height: 9vh; width: 44vh;" ></div>
+<div style="background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); width: 44.2vh;outline: solid black; position: relative; left: 99vh;top: .9vh; height: 54vh;" >
+  <div style="background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); outline: solid black;position: relative;left: .1vh;top:.5vh; height: 9vh; width: 44vh;" ></div>
   <h1 style="position: relative; left: 9vh;bottom: 10vh;">Configurations</h1>
 </div>
 
 </div>
 <div style=" outline: solid black; position: relative; height: 14vh;width: 42vh;left: 154vh; bottom: 142vh;">
-  <h3 style="background-color: #ddd; outline: solid black;height: 4vh;" >Iterations</h3>
+  <h3 style="background-color: rgba(221, 221, 221, 0.699); outline: solid black;height: 4vh;" >Iterations</h3>
   
  <input id="iterations" style=" width: 100%; background-color: gray;"onchange="OnChange()"type="range" step="1000" type="range" min="1000" max="50000" value="25000"> 
 </div>
   
 <div style="outline: solid black; position: relative; height: 10vh;width: 42vh;left: 154vh; bottom: 143vh;">
-      <h3 style="background-color: #ddd; outline: solid black;height: 4vh;" >Learning Rate</h3>
+      <h3 style="background-color: rgba(221, 221, 221, 0.699); outline: solid black;height: 4vh;" >Learning Rate</h3>
      <input id="learning_rate" style="position: relative; bottom: 2vh;width: 100%; background-color: gray;"onchange="OnChange()"type="range" min="1" max=3 value="2"> 
     </div>
 
@@ -495,7 +499,7 @@
 <!-- </div> -->
     <!-- </div> -->
 <div>
-<div id="results" style="outline: 10px solid black; background-color: rgba(153, 153, 153, 0.527);width: 75.3vh; position: relative;left:57vh; bottom: 162vh;">
+<div id="results" style="outline: 10px solid black; background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg');width: 75.3vh; position: relative;left:57vh; bottom: 162vh;">
 <div style="text-align: center; background-color: #f2f2f2dc;  width: 13vh; outline: solid black; height: 10vh; position: relative; top: 2.6vh; left: 47vh;">
 <h3>Expected:</h3>
 <div id="expected_out" style="width: 8vh; height: 6.5vh;"></div>
@@ -525,11 +529,11 @@
 
 </div>
 
-  <div  id="training_box" style="width: 96vh; font-size: larger; position: relative;left: 54vh; bottom:260vh; text-align: center; background-color: rgb(84,86,131); outline: solid black; height: 7vh;">
-    <h1 style=" width: 35vh; position: relative;top:1vh;">Dataset: <b>XOR</b></h1>
+  <div  id="training_box" style="background-image: url('https://www.xmple.com/wallpaper/linear-gradient-green-blue-1920x1080-c2-00ff7f-00008b-a-195-f-14.svg'); width: 96vh; font-size: larger; position: relative;left: 54vh; bottom:260vh; text-align: center; background-color: rgb(84,86,131); outline: solid black; height: 7vh;">
+    <h1 style=" width: 35vh; position: relative;top:.1vh;">Dataset: <b>XOR</b></h1>
     <div style="position: relative;left: 30vh; top: 1vh;">
-      <button style="position: relative;bottom:9.3vh;height: 5vh; width: 20vh; right: 20vh;" class="name" onclick="RESET()">XOR</button>
-      <button style="position: relative;bottom:9.1vh;height: 5vh; width: 20vh; right: 5vh;" class="name" onclick="reload()">Reset</button>
+    <a href="xor.txt">  <button style="position: relative;bottom:10.3vh;height: 5vh; width: 20vh; right: 20vh;" class="name">View Data</button></a>
+      <button style="position: relative;bottom:10.3vh;height: 5vh; width: 20vh; right: 5vh;" class="name" onclick="reload()">Reset</button>
     </div>
   </div>
 
@@ -548,6 +552,10 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 <script>
+
+  function Save(){
+    alert("Saved!")
+  }
 
 // function plt_graph(){
 
