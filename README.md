@@ -7,6 +7,8 @@
 
 Artificial Neural Network (ANN) Design &amp; Architecture for simplistic understanding and modeling
 
+![](images/homepage.png)
+
 **Abstract**
 
 ---
@@ -32,39 +34,18 @@ further complex models.  By playing around with its values and tuning, when the 
 there is a visual graph on how the current set model solves its dataset by separating data points
 by individual classes. 
 
+![](images/orig.png)
 
-**Drag n Drop**
+This webpage is meant to provide interest and to get users excited about a subject they felt may be impossible or too complicated to understand. By using CSS grids to outline the homepage made things simpler for the user to have easy navigation and have better design patterns and format viewpoints.
 
-Here is a good example of previous repository from ==> https://github.com/kofmangregory/Drag-and-Drop-Deep-Learning.git
-
-In these images, we see that the UI has block features that represent individual features for a given layer and from here we can then export this model and the application will save a .py file of a KERAS implemented model of your design. 
-
-**Frontend:**
-![](images/Prototype.png)
-
-**Output Python file:**
-![](images/output.png)
-
-We want to be able to make this a bit more flexiable... This application does not give the user a simple drag n drop as it still faces certain limitations when wanting to build bigger or more complex models, we need to be able to use those features when needed. 
-
-**Things to take note:**
-
-- Drag n Drop is a good implementation to use. It creates entertainment and flexibility for the user.
-
-- We also need to give our application the needed features in order to generate complex models
-
-- Lastly, we need to render our model to visualize and train
+For the course of this web application, CSS grids were the main use to outline the containers and set the initial graphics for the user.  As we proceed forward to the playground in figure 3, we can see the resemblances and design motivation
+that was given from the original neural network playground to Diving Deeps web page.
 
 
-For visualization, there exists a neural network playground for Tensorflow that allows these extra features to design further complex models in comparison to our first repository. 
-
-
-**Output Python file:**
 ![](images/playground.png)
+Figure 3:  ”Diving Deep”’s main playground.  This page consists of the users ability to create their
+own Artificial Neural Network
 
 
-
-
-This is a great application for designing complex models however, this does not provide drang n drop implementations. We want to be able to combine a simple drag n drop UI as well as have complexity in our models. 
 
 ---
