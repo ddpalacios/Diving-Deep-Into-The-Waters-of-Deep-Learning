@@ -11,26 +11,27 @@ Artificial Neural Network (ANN) Design &amp; Architecture for simplistic underst
 
 ---
 
-As the field of Machine Learning (ML) becomes increasingly more popular around the field of Computer Science, there are simply not enough people who are willing or even have the slightest idea of what ML is all about.
+As Machine Learning (ML) becomes increasingly more popular around the field of Computer Science, there are simply not enough people who are willing or even have the slightest idea of what ML is all about. 
 
-Imagine a domain where anyone of any age can easily enter this site and be able to understand how Artificial Neural Networks (ANN) work without involving any of the math and strictly relying on a visual representation on how data is processed through a Neural Network (NN).
+Imagine a domain where anyone of any age can easily enter this site and be able to understand how Artificial Neural Networks (ANN) work without relying on complex formulas. However, The concept and diagram of an NN are simple to interpret. Diving Deep into The Waters of Deep Learning is an application that relies on a visual representation of how data is processed through a Neural Network (NN).
 
-The concept and diagram of an NN are simple to interpret. Using a simple UI, The user (with no knowledge of Computer Science) would be able to design their own NN (Imagine a drag n drop feature) and feed the algorithm some input data and be able to observe exactly how an image (for example) is then interpreted by a computer, visually.
+Using a simple user-interface, the user (with no knowledge of Computer Science) would be able to design their own NN and feed their model input data which would then be able to observe exactly how the data was then interpreted by a computer, visually. As a result, a person at the age of 12 (for example) who does not know computers whatsoever would be able to create their own ANN that could solve a multitude of problems without having too many complications. 
 
-As a result, a person at the age of 12 who has no knowledge about computers whatsoever would be able to create their own ANN that could solve a multitude of problems without having to know any of the math (if they wish)
+My goal is to express this field to a variety of people since this is a hot topic in Computer Science today. Excitement is what gets people motivated to learn more in-depth - this web application would be a starting point for that excitement. 
 
-My goal is to express this field to a variety of people since this is a hot topic in Computer Science today. Excitement is what gets people motivated to learn more in-depth - this project would be a starting point for that excitement.
 
 ---
 
 **Motivation**
 
 ---
-Building Artificial Neural Networks can become overwhelming and a user-interface can fix this issue. 
+The motivation for Diving Deeps layout design comes from the existing application that is named
+Neural  Network  Playground  for  Tensorflow.   From  looking  at  figure  1,  this  existing  application
+allows  the  manipulation  of  the  NN  attributes  and  the  augmentation  of  its  topology  to  design
+further complex models.  By playing around with its values and tuning, when the user hits play
+there is a visual graph on how the current set model solves its dataset by separating data points
+by individual classes. 
 
-There are plenty of applications that allow you to visualize Neural Networks, however, most of these applications are still too complex and non-attractive or flexiable. 
-
-We want this appliction to be as flexiable and as simple it can be for the user experience. 
 
 **Drag n Drop**
 
